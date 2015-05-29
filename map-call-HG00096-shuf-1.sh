@@ -168,3 +168,8 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
 
 grep  "\#\|PASS" $BAMFILE.ug.vqsrfilter_refilter.vcf > $BAMFILE.ug.final.vcf
 
+# cleanup                                                                                                                                                                                                           
+
+rm -f $BAMFILE.hc.recal $BAMFILE.hc.recal.idx $BAMFILE.hc.tranches $BAMFILE.hc.tranches.pdf $BAMFILE.hc.R $BAMFILE.recal_data.grp
+rm -f $BAMFILE.rmdup.bam.intervals
+rm -f $BAMFILE.ug.recal $BAMFILE.ug.recal.idx $BAMFILE.ug.tranches $BAMFILE.ug.tranches.pdf $BAMFILE.ug.R $BAMFILE.recal_data.grp
