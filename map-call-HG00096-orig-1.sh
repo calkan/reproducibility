@@ -107,7 +107,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  --variant $BAMFILE.hc.vqsrfilter.vcf \
  --clusterWindowSize 10 \
  --clusterSize 3 \
- --filterExpression "MQ0 > 50 || QUAL < 10" \
+ --filterExpression "QUAL < 30" \
  --filterName "Qualfilter"
 
 grep  "\#\|PASS" $BAMFILE.hc.vqsrfilter_refilter.vcf > $BAMFILE.hc.final.vcf
@@ -157,7 +157,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  --variant $BAMFILE.ug.vqsrfilter.vcf \
  --clusterWindowSize 10 \
  --clusterSize 3 \
- --filterExpression "MQ0 > 50 || QUAL < 10" \
+ --filterExpression "QUAL < 30" \
  --filterName "Qualfilter"
 
 grep  "\#\|PASS" $BAMFILE.ug.vqsrfilter_refilter.vcf > $BAMFILE.ug.final.vcf
