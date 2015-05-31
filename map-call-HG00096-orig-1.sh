@@ -23,10 +23,7 @@ samtools merge $BAMFILE.bam tmp*.bam
 
 picard-tools AddOrReplaceReadGroups I= $BAMFILE.bam O= $BAMFILE.rg.bam RGPU= tata RGID= $SAMPLE RGLB= $SAMPLE RGPL= illumina RGSM= $SAMPLE;
 
-
 picard-tools MarkDuplicates I= $BAMFILE.rg.bam O= $BAMFILE.rmdup.bam M= $BAMFILE.txt;
-
-rm -f $BAMFILE.bam tmp*.bam $BAMFILE.rg.bam
 
 samtools index $BAMFILE.rmdup.bam
 
@@ -62,7 +59,6 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -BQSR $BAMFILE.recal_data.grp \
  -o $BAMFILE.recal.bam
 
-rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T HaplotypeCaller \
@@ -164,6 +160,9 @@ grep  "\#\|PASS" $BAMFILE.ug.vqsrfilter_refilter.vcf > $BAMFILE.ug.final.vcf
 
 # cleanup
 
+#rm -f $BAMFILE.bam $BAMFILE.rg.bam
+#rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
+rm -f tmp*.bam
 rm -f $BAMFILE.hc.recal $BAMFILE.hc.recal.idx $BAMFILE.hc.tranches $BAMFILE.hc.tranches.pdf $BAMFILE.hc.R $BAMFILE.recal_data.grp 
 rm -f $BAMFILE.rmdup.bam.intervals
 rm -f $BAMFILE.ug.recal $BAMFILE.ug.recal.idx $BAMFILE.ug.tranches $BAMFILE.ug.tranches.pdf $BAMFILE.ug.R $BAMFILE.recal_data.grp 
