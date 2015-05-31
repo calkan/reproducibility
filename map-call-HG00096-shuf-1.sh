@@ -14,7 +14,7 @@ THREADS=16
 
 # shuffle
 
-FASTQ='SRR062634 SRR062635 SRR062641 SRR077487 SRR081241'
+FASTQ='SRR062634 SRR062635 SRR062641'
 for i in `echo $FASTQ`;
 do
 	 shuffle-fastq $i\_1.filt.fastq.gz $i\_2.filt.fastq.gz $i-
