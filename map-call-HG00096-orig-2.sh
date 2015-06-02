@@ -16,15 +16,15 @@ FASTQ='SRR062634 SRR062635 SRR062641'
 
 for i in `echo $FASTQ`;
 do
-        bwa mem -t $THREADS $REF $i\_1.filt.fastq.gz $i\_2.filt.fastq.gz  | samtools view -@ $THREADS -S -b -u - | samtools sort -@ $THREADS -m $MAXMEM -  tmp.$BAMFILE.$i;
+        bwa mem -M -t $THREADS $REF $i\_1.filt.fastq.gz $i\_2.filt.fastq.gz  | samtools view -@ $THREADS -S -b -u - | samtools sort -@ $THREADS -m $MAXMEM -  tmp.$BAMFILE.$i;
 done
 
-samtools merge $BAMFILE.bam tmp*.bam 
+samtools merge $BAMFILE.bam tmp.$BAMFILE.*.bam 
 
-picard-tools AddOrReplaceReadGroups I= $BAMFILE.bam O= $BAMFILE.rg.bam RGPU= tata RGID= $SAMPLE RGLB= $SAMPLE RGPL= illumina RGSM= $SAMPLE;
+picard-tools AddOrReplaceReadGroups I= $BAMFILE.bam O= $BAMFILE.rg.bam RGPU= tata RGID= $SAMPLE RGLB= $SAMPLE RGPL= illumina RGSM= $SAMPLE
 
 
-picard-tools MarkDuplicates I= $BAMFILE.rg.bam O= $BAMFILE.rmdup.bam M= $BAMFILE.txt;
+picard-tools MarkDuplicates I= $BAMFILE.rg.bam O= $BAMFILE.rmdup.bam M= $BAMFILE.txt
 
 
 samtools index $BAMFILE.rmdup.bam
@@ -164,7 +164,7 @@ grep  "\#\|PASS" $BAMFILE.ug.vqsrfilter_refilter.vcf > $BAMFILE.ug.final.vcf
 
 #rm -f $BAMFILE.bam $BAMFILE.rg.bam
 #rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
-rm -f tmp*.bam
+rm -f tmp.$BAMFILE.*.bam
 rm -f $BAMFILE.hc.recal $BAMFILE.hc.recal.idx $BAMFILE.hc.tranches $BAMFILE.hc.tranches.pdf $BAMFILE.hc.R $BAMFILE.recal_data.grp
 rm -f $BAMFILE.rmdup.bam.intervals
 rm -f $BAMFILE.ug.recal $BAMFILE.ug.recal.idx $BAMFILE.ug.tranches $BAMFILE.ug.tranches.pdf $BAMFILE.ug.R $BAMFILE.recal_data.grp
