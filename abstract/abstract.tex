@@ -1,0 +1,41 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx,amssymb}
+\usepackage{authblk}
+
+\textwidth=15cm \hoffset=-1.2cm
+\textheight=25cm \voffset=-2cm
+
+\pagestyle{empty}
+
+\date{}
+
+\def\keywords#1{\begin{center}{\bf Keywords}\\{#1}\end{center}}
+
+\def\titulo#1{\title{#1}}
+\def\autores#1{\author{#1}}
+
+\begin{document}
+
+\titulo{Title?}
+
+\author[1]{Can Alkan}
+\author[1]{Can Firtina}
+\affil[1]{\small Dept. of Computer Engineering, Bilkent University, 06800 Ankara, Turkey}
+%\renewcommand\Authands{ and }
+
+\maketitle
+The recent advancements in next-generation sequencing technologies has increased the demand on producing whole genome sequencing data. Along with the increasing demand, analysing and interpreting the sequencing data in different ways with high accuracy and low cost is the current challenge. Variation discovery from a whole genome has been the main interest for analysing the sequencing data. However, variant discovery at high sensitivity is still an unsolved problem for which many algorithms have been introduced. Event though, there is still no absolute algorithm to solve the problem, there are several variant callers in the field that are commonly used. In addition to high accuracy problem,  these tools are expected to be deterministic in the way that a variant caller should always produce the same variation discovery when sequencing data has been applied several times.
+
+In our experiment, we have applied GATK HaplotypeCaller, GATK UnifiedGenotyper, Delly, freebayes, LUMPY, Platypus, and SAMTools variant callers for whole genome sequencing data produced twice by Illumina for each HG00096 and HG02107 individuals from 1000 Genomes Project. All variant callers produced VCF files from corresponding BAM files. We examined and compared the variation discoveries of a variant caller for the sequencing data from the same individuals. We expect that variation discoveries should not differ if the same variant caller is applied to the sequencing data of a same individual. Otherwise, we state that the variant caller is not deterministic.
+
+Our results show that all the variant callers but GATK HaplotypeCaller and GATK UnifiedGenotyper produce same variation discovery when the same individual's sequncing data is given as input. However, GATK HaplotypeCaller and GATK UnifiedGenotyper fail to be deterministic when the same individual's sequencing data is given as input to these variant callers.  Therefore,
+\thispagestyle{empty}
+
+% The abstract
+
+\begin{abstract}
+
+\end{abstract}
+
+\keywords{keywords?} % Write down at least 3 Keywords
+\end{document}
