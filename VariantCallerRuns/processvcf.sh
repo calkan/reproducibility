@@ -1,18 +1,18 @@
 #!/bin/bash
 VCFSOURCEDIR=$1
 DESTDIR=$2
-QUALTHRESHOLD=$3
+DIFFFIRSTFILE=$3
+DIFFSECONDFILE=$4
+QUALTHRESHOLD=$5
 BEDSOURCEDIR="/mnt/storage1/projects/shuffle/GATK/b37/"
 ORIGDIR="$DESTDIR/noIntersectBed/"
 GENESFILENAME="b37_genes.bed"
 EXONSFILENAME="b37_exons.bed"
 DUPSFILENAME="build37.dups.bed"
 REPSFILENAME="build37.reps.bed"
-DIFFFIRSTFILE="orig"
-DIFFSECONDFILE="orig2"
 
 #qual filter
-if [ "$#" -gt 2 ]; then
+if [ "$#" -gt 4 ]; then
 	mkdir $VCFSOURCEDIR/filtered/
 	for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; cat $i | awk -F'\t' '{if($6 >= qual || substr($1,1,1) == "#") print $0;}' qual="$QUALTHRESHOLD" > "$VCFSOURCEDIR/filtered/$fname.filtered"; done;
 	VCFSOURCEDIR=$VCFSOURCEDIR/filtered/
