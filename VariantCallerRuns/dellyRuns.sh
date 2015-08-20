@@ -9,10 +9,11 @@ for i in `ls $BAMDIR/*.bam`; do
 	$DELLYBIN -t INV -o $OUTDIR/"$(echo "$fname" | sed s/".bam"/".inv.vcf.tmp"/)" -g $REFFILE $BAMDIR/$fname
 	$DELLYBIN -t DUP -o $OUTDIR/"$(echo "$fname" | sed s/".bam"/".dup.vcf.tmp"/)" -g $REFFILE $BAMDIR/$fname
 	$DELLYBIN -t DEL -o $OUTDIR/"$(echo "$fname" | sed s/".bam"/".del.vcf.tmp"/)" -g $REFFILE $BAMDIR/$fname
-	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".tra.vcf.tmp"/)" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".tra.vcf"/)"
-	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".inv.vcf.tmp"/)" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".inv.vcf"/)"
-	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".dup.vcf.tmp"/)" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".dup.vcf"/)"
-	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".del.vcf.tmp"/)" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".del.vcf"/)"
+	#delete id column, delete lowpass lines
+	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".tra.vcf.tmp"/)" | grep "#\|PASS" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".tra.vcf"/)"
+	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".inv.vcf.tmp"/)" | grep "#\|PASS" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".inv.vcf"/)"
+	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".dup.vcf.tmp"/)" | grep "#\|PASS" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".dup.vcf"/)"
+	cat $OUTDIR/"$(echo "$fname" | sed s/".bam"/".del.vcf.tmp"/)" | grep "#\|PASS" | cut -f 1,2,4,5,6,7,8,9,10 > $OUTDIR/"$(echo "$fname" | sed s/".bam"/".del.vcf"/)"
 	rm -f $OUTDIR/"$(echo "$fname" | sed s/".bam"/".tra.vcf.tmp"/)"
 	rm -f $OUTDIR/"$(echo "$fname" | sed s/".bam"/".inv.vcf.tmp"/)"
 	rm -f $OUTDIR/"$(echo "$fname" | sed s/".bam"/".dup.vcf.tmp"/)"

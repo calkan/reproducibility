@@ -26,7 +26,7 @@ lumpy :
 
 samtools :
 	mkdir -p $(OUTDIR)/SAMTools/VCF/
-	sh samtoolsRuns.sh $(BAMDIR) $(OUTDIR)/SAMTools/VCF/
+	sh samtoolsRuns.sh $(BAMDIR) $(OUTDIR)/SAMTools/VCF/ 30
 	sh processvcf.sh $(OUTDIR)/SAMTools/VCF/ $(OUTDIR)/SAMTools/ $(FIRSTVCF) $(SECONDVCF)
 
 gatk :
