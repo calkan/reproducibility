@@ -7,7 +7,7 @@ if [ "$#" -gt 2 ]; then
 	for i in `ls $BAMDIR/*bam`; do
 		fname=`basename $i`
 		samtools mpileup -ugf $REFFILE $BAMDIR/$fname | bcftools call -vmO z -o $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.tmp.gz"/)"
-		gzip -d $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.gz"/)"
+		gzip -d $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.tmp.gz"/)"
 		#qual filter
 		cat $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.tmp"/)" | awk -F'\t' '{if($6 >= qual || substr($1,1,1) == "#") print $0;}' qual="$QUALTHRESHOLD" > $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf"/)"
 	done;
