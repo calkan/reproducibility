@@ -32,7 +32,11 @@ samtools :
 gatk :
 	sh processvcf.sh $(OUTDIR)/GATK/VCF/ $(OUTDIR)/GATK/ $(FIRSTVCF) $(SECONDVCF)
 
-clean : cleanplatypus cleanfreebayes cleandelly cleanlumpy cleansamtools cleangatk
+gasv :
+	mkdir -p $(OUTDIR)/GASV/VCF/
+	sh gasvRuns.sh $(BAMDIR) $(OUTDIR)/GASV/VCF/ 30
+
+clean : cleanplatypus cleanfreebayes cleandelly cleanlumpy cleansamtools cleangatk cleangasv
 	
 cleanplatypus :
 	rm -r -f $(OUTDIR)/Platypus/
@@ -51,3 +55,6 @@ cleansamtools :
 
 cleangatk :
 	rm -r -f $(OUTDIR)/GATK/
+
+cleangasv :
+	rm -r -f $(OUTDIR)/GASV/
