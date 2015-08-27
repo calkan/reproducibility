@@ -24,3 +24,4 @@ else
 		mv *.clusters $OUTDIR/
 	done;
 fi
+wait
