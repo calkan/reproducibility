@@ -21,29 +21,35 @@ fi
 mkdir $ORIGDIR
 HOMDIR="$ORIGDIR/hom"
 mkdir $HOMDIR
-for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; grep "1/1" $i > "$HOMDIR/$fname.hom"; done;
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; grep "1/1" $i > "$HOMDIR/$fname.hom" & done;
 
 HETDIR="$ORIGDIR/het"
 mkdir $HETDIR
-for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; grep "0/1" $i > "$HETDIR/$fname.het"; done;
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; grep "0/1" $i > "$HETDIR/$fname.het" & done;
 
 SNVDIR="$ORIGDIR/snv"
 mkdir $SNVDIR
-for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) ==  length($5)) print };' $i > "$SNVDIR/$fname.snv"; done;
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) ==  length($5)) print };' $i > "$SNVDIR/$fname.snv" & done;
 
 INDELDIR="$ORIGDIR/indel"
 mkdir $INDELDIR
-for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) !=  length($5)) print };' $i > "$INDELDIR/$fname.indel"; done;
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) !=  length($5)) print };' $i > "$INDELDIR/$fname.indel" & done;
+
+SNPDIR="$ORIGDIR/dbsnps"
+mkdir $SNPDIR
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -f 1.0 -r -a $i -b /mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/dbsnp_138.b37.vcf | uniq -w 50 > "$SNPDIR/$fname.dbsnp" & done;
+wait
 
 #create tsvs
-for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$ORIGDIR/$fname.tsv"; done;
-for i in `ls $HOMDIR/*.hom`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$HOMDIR/$fname.tsv"; done;
-for i in `ls $HETDIR/*.het`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$HETDIR/$fname.tsv"; done;
-for i in `ls $SNVDIR/*.snv`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$SNVDIR/$fname.tsv"; done;
-for i in `ls $INDELDIR/*.indel`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INDELDIR/$fname.tsv"; done;
-
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$ORIGDIR/$fname.tsv" & done;
+for i in `ls $HOMDIR/*.hom`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$HOMDIR/$fname.tsv" & done;
+for i in `ls $HETDIR/*.het`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$HETDIR/$fname.tsv" & done;
+for i in `ls $SNVDIR/*.snv`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$SNVDIR/$fname.tsv" & done;
+for i in `ls $INDELDIR/*.indel`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INDELDIR/$fname.tsv" & done;
+for i in `ls $SNPDIR/*.dbsnp`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$SNPDIR/$fname.tsv" & done;
+wait
 #create diffs
-for j in $ORIGDIR $HOMDIR $HETDIR $SNVDIR $INDELDIR; do
+for j in $ORIGDIR $HOMDIR $HETDIR $SNVDIR $INDELDIR $SNPDIR; do
 	mkdir "$j/diff"
 	for i in `ls $j/*.tsv`; do fname=`basename $i`;
 		if (echo "$fname" | grep -q ".$DIFFSECONDFILE.") then
@@ -52,36 +58,44 @@ for j in $ORIGDIR $HOMDIR $HETDIR $SNVDIR $INDELDIR; do
 			opFName="$(echo "$fname" | sed s/".$DIFFFIRSTFILE."/".$DIFFSECONDFILE."/)"
 		fi
 
-		diff "$j/$fname" "$j/$opFName" | grep "<" | sed 's/^<//g' > "$j/diff/$fname.diff";
+		diff "$j/$fname" "$j/$opFName" | grep "<" | sed 's/^<//g' > "$j/diff/$fname.diff" &
 	done;
 done;
 
 #create genes, exons, reps, dups intersection vcfs
 for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$DESTDIR/$j";
-	for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -a $i -b "$BEDSOURCEDIR/$j" > "$DESTDIR/$j/$fname.$j"; done;
-	
+	for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -a $i -b "$BEDSOURCEDIR/$j" > "$DESTDIR/$j/$fname.$j" & done;
+	wait
+
 	CURCALLSETDIR="$DESTDIR/$j/"
 	INTRSCTHOMDIR="$CURCALLSETDIR/hom"
 	mkdir $INTRSCTHOMDIR
-	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep "1/1" $i > "$INTRSCTHOMDIR/$fname.hom"; done;
+	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep "1/1" $i > "$INTRSCTHOMDIR/$fname.hom" & done;
 
 	INTRSCTHETDIR="$CURCALLSETDIR/het"
 	mkdir $INTRSCTHETDIR
-	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep "0/1" $i > "$INTRSCTHETDIR/$fname.het"; done;
+	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep "0/1" $i > "$INTRSCTHETDIR/$fname.het" & done;
 
 	INTRSCTSNVDIR="$CURCALLSETDIR/snv"
 	mkdir $INTRSCTSNVDIR
-	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) ==  length($5)) print };' $i > "$INTRSCTSNVDIR/$fname.snv"; done;
+	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) ==  length($5)) print };' $i > "$INTRSCTSNVDIR/$fname.snv" & done;
 
 	INTRSCTINDELDIR="$CURCALLSETDIR/indel"
 	mkdir $INTRSCTINDELDIR
-	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) !=  length($5)) print };' $i > "$INTRSCTINDELDIR/$fname.indel"; done;
+	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; awk 'BEGIN{OFS = "\t"}; { if (length($4) !=  length($5)) print };' $i > "$INTRSCTINDELDIR/$fname.indel" & done;
 
-	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$CURCALLSETDIR/$fname.tsv"; done;
-	for i in `ls $INTRSCTHOMDIR/*.$j.hom`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTHOMDIR/$fname.tsv"; done;
-	for i in `ls $INTRSCTHETDIR/*.$j.het`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTHETDIR/$fname.tsv"; done;
-	for i in `ls $INTRSCTSNVDIR/*.$j.snv`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTSNVDIR/$fname.tsv"; done;
-	for i in `ls $INTRSCTINDELDIR/*.$j.indel`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTINDELDIR/$fname.tsv"; done;
+	# INTRSCTSNPDIR="$CURCALLSETDIR/dbsnps"
+	# mkdir $INTRSCTSNPDIR
+	# for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; intersectBed -f 1.0 -r -a $i -b /mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/dbsnp_138.b37.vcf | uniq -w 50 > "$INTRSCTSNPDIR/$fname.dbsnp" & done;
+	wait
+
+	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$CURCALLSETDIR/$fname.tsv" & done;
+	for i in `ls $INTRSCTHOMDIR/*.$j.hom`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTHOMDIR/$fname.tsv" & done;
+	for i in `ls $INTRSCTHETDIR/*.$j.het`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTHETDIR/$fname.tsv" & done;
+	for i in `ls $INTRSCTSNVDIR/*.$j.snv`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTSNVDIR/$fname.tsv" & done;
+	for i in `ls $INTRSCTINDELDIR/*.$j.indel`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTINDELDIR/$fname.tsv" & done;
+	# for i in `ls $INTRSCTSNPDIR/*.$j.dbsnp`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTSNPDIR/$fname.tsv" & done;
+	wait
 
 	#create diffs
 	for k in $CURCALLSETDIR $INTRSCTHOMDIR $INTRSCTHETDIR $INTRSCTSNVDIR $INTRSCTINDELDIR; do
@@ -93,7 +107,7 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 				opFName="$(echo "$fname" | sed s/".$DIFFFIRSTFILE."/".$DIFFSECONDFILE."/)"
 			fi
 
-			diff "$k/$fname" "$k/$opFName" | grep "<" | sed 's/^<//g' > "$k/diff/$fname.diff";
+			diff "$k/$fname" "$k/$opFName" | grep "<" | sed 's/^<//g' > "$k/diff/$fname.diff" &
 		done;
 	done;
 done;
