@@ -55,8 +55,7 @@ The BWA~\cite{Li2009a} mapper's  approach to handle such ambiguity is randomly s
 
 Although many algorithms were developed for HTS data analysis, a handful of computational pipelines from mapping to variant calling may be considered ``standard'' as they are commonly used in large-scale genome projects such as the 1000 Genomes Project~\cite{1000GP,1000GP2012}. For example, to discover and genotype variants using Illumina data, first the reads are mapped to reference genome assembly using BWA~\cite{Li2009a} or Bowtie~\cite{Langmead2009}, then the alignment files are processed using SAMtools~\cite{Li2009b} and Picard~\cite{picard}, and finally the single nucleotide polymophisms (SNP) and indels are predicted and filtered using GATK~\cite{DePristo2011}, Platypus~\cite{Rimmer2014}, or Freebayes~\cite{Garrison2012}. 
 Structural variation (SV) discovery is even more challenging as exemplified by the 1000 Genomes Project~\cite{1000GP,1000GP2012,Mills2011}, where more than 20 algorithms were used to characterize SVs.
-Recently, the Genome in a Bottle Project~\cite{Zook2014} was started to set standards for accurate HTS data analysis for both research and clinical uses,
-which aims to address the differences in performances (i.e. accuracy, sensitivity, specificity, etc.) of different algorithms and different sequencing platforms
+Recently, the Genome in a Bottle Project~\cite{Zook2014} was started to set standards for accurate HTS data analysis for both research and clinical uses by addressing the differences in performances (i.e. accuracy, sensitivity, specificity, etc.) of different algorithms and different sequencing platforms
  to find a ``best practices'' approach.
 
 In this study, we investigated whether some of the commonly used variant discovery algorithms
