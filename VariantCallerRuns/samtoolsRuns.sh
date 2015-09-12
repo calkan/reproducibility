@@ -10,6 +10,7 @@ samWithThreshold () {
 	gzip -d $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.tmp.gz"/)"
 	#qual filter
 	cat $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.tmp"/)" | awk -F'\t' '{if($6 >= qual || substr($1,1,1) == "#") print $0;}' qual="$QUALTHRESHOLD" > $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf"/)"
+	rm -f $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.tmp"/)"
 }
 
 samWoThreshold () {
