@@ -131,8 +131,6 @@
   Number                   = {6},
   Pages                    = {e41},
   Volume                   = {40},
-
-  __markedentry            = {[calkan:6]},
   Abstract                 = {Recent advances in sequencing technology have enabled the rapid generation of billions of bases at relatively low cost. A crucial first step in many sequencing applications is to map those reads to a reference genome. However, when the reference genome is large, finding accurate mappings poses a significant computational challenge due to the sheer amount of reads, and because many reads map to the reference sequence approximately but not exactly. We introduce Hobbes, a new gram-based program for aligning short reads, supporting Hamming and edit distance. Hobbes implements two novel techniques, which yield substantial performance improvements: an optimized gram-selection procedure for reads, and a cache-efficient filter for pruning candidate mappings. We systematically tested the performance of Hobbes on both real and simulated data with read lengths varying from 35 to 100 bp, and compared its performance with several state-of-the-art read-mapping programs, including Bowtie, BWA, mrsFast and RazerS. Hobbes is faster than all other read mapping programs we have tested while maintaining high mapping quality. Hobbes is about five times faster than Bowtie and about 2-10 times faster than BWA, depending on read length and error rate, when asked to find all mapping locations of a read in the human genome within a given Hamming or edit distance, respectively. Hobbes supports the SAM output format and is publicly available at http://hobbes.ics.uci.edu.},
   Doi                      = {10.1093/nar/gkr1246},
   Institution              = {Department of Computer Science, University of California, Irvine, CA 92697, USA.},
@@ -3263,6 +3261,29 @@
   Url                      = {http://dx.doi.org/10.1101/gr.229202. Article published online before March 2002}
 }
 
+@Article{Kent2002,
+  Title                    = {The human genome browser at {UCSC}.bed},
+  Author                   = {Kent, W James and Sugnet, Charles W. and Furey, Terrence S. and Roskin, Krishna M. and Pringle, Tom H. and Zahler, Alan M. and Haussler, David},
+  Journal                  = {Genome Res},
+  Year                     = {2002},
+
+  Month                    = {Jun},
+  Number                   = {6},
+  Pages                    = {996--1006},
+  Volume                   = {12},
+
+  __markedentry            = {[calkan:]},
+  Doi                      = {10.1101/gr.229102. Article published online before print in May 2002},
+  Institution              = {Department of Molecular, Cellular, and Developmental Biology, University of California, Santa Cruz, CA 95064, USA. kent@biology.ucsc.edu},
+  Keywords                 = {California; Database Management Systems; Databases, Genetic; Gene Expression; Genes; Genome, Human; Humans; RNA, Messenger; Sequence Homology, Nucleic Acid; Software; Universities, trends},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {calkan},
+  Pmid                     = {12045153},
+  Timestamp                = {2015.09.12},
+  Url                      = {http://dx.doi.org/10.1101/gr.229102. Article published online before print in May 2002}
+}
+
 @Article{Khaja2006,
   Title                    = {Genome assembly comparison identifies structural variants in the human genome.},
   Author                   = {Razi Khaja and Junjun Zhang and Jeffrey R MacDonald and Yongshu He and Ann M Joseph-George and John Wei and Muhammad A Rafiq and Cheng Qian and Mary Shago and Lorena Pantano and Hiroyuki Aburatani and Keith Jones and Richard Redon and Matthew Hurles and Lluis Armengol and Xavier Estivill and Richard J Mural and Charles Lee and Stephen W Scherer and Lars Feuk},
@@ -3546,8 +3567,6 @@
   Number                   = {6},
   Pages                    = {722--729},
   Volume                   = {26},
-
-  __markedentry            = {[calkan:6]},
   Abstract                 = {Several recent studies have demonstrated the effectiveness of resequencing and single nucleotide variant (SNV) detection by deep short-read sequencing platforms. While several reliable algorithms are available for automated SNV detection, the automated detection of microindels in deep short-read data presents a new bioinformatics challenge.We systematically analyzed how the short-read mapping tools MAQ, Bowtie, Burrows-Wheeler alignment tool (BWA), Novoalign and RazerS perform on simulated datasets that contain indels and evaluated how indels affect error rates in SNV detection. We implemented a simple algorithm to compute the equivalent indel region eir, which can be used to process the alignments produced by the mapping tools in order to perform indel calling. Using simulated data that contains indels, we demonstrate that indel detection works well on short-read data: the detection rate for microindels (<4 bp) is >90\%. Our study provides insights into systematic errors in SNV detection that is based on ungapped short sequence read alignments. Gapped alignments of short sequence reads can be used to reduce this error and to detect microindels in simulated short-read data. A comparison with microindels automatically identified on the ABI Sanger and Roche 454 platform indicates that microindel detection from short sequence reads identifies both overlapping and distinct indels.peter.krawitz@googlemail.com; peter.robinson@charite.deSupplementary data are available at Bioinformatics online.},
   Doi                      = {10.1093/bioinformatics/btq027},
   Institution              = {Institute for Medical Genetics, Charité-Universitätsmedizin Berlin, 13353 Berlin. peter.krawitz@googlemail.com},
@@ -3802,6 +3821,13 @@
   Pmid                     = {17803354},
   Timestamp                = {2008.03.03},
   Url                      = {http://dx.doi.org/10.1371/journal.pbio.0050254}
+}
+
+@Article{Li2013,
+  Title                    = {Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM},
+  Author                   = {Li, Heng},
+  Journal                  = {arXiv preprint arXiv:1303.3997},
+  Year                     = {2013}
 }
 
 @Article{Li2011a,
@@ -5066,6 +5092,31 @@
   Url                      = {http://dx.doi.org/10.1101/gr.102970.109}
 }
 
+@Article{Quinlan2010a,
+  Title                    = {{BEDTools}: a flexible suite of utilities for comparing genomic features.},
+  Author                   = {Quinlan, Aaron R. and Hall, Ira M.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2010},
+
+  Month                    = {Mar},
+  Number                   = {6},
+  Pages                    = {841--842},
+  Volume                   = {26},
+
+  __markedentry            = {[calkan:6]},
+  Abstract                 = {Testing for correlations between different sets of genomic features is a fundamental task in genomics research. However, searching for overlaps between features with existing web-based methods is complicated by the massive datasets that are routinely produced with current sequencing technologies. Fast and flexible tools are therefore required to ask complex questions of these data in an efficient manner.This article introduces a new software suite for the comparison, manipulation and annotation of genomic features in Browser Extensible Data (BED) and General Feature Format (GFF) format. BEDTools also supports the comparison of sequence alignments in BAM format to both BED and GFF features. The tools are extremely efficient and allow the user to compare large datasets (e.g. next-generation sequencing data) with both public and custom genome annotation tracks. BEDTools can be combined with one another as well as with standard UNIX commands, thus facilitating routine genomics tasks as well as pipelines that can quickly answer intricate questions of large genomic datasets.BEDTools was written in C++. Source code and a comprehensive user manual are freely available at http://code.google.com/p/bedtoolsaaronquinlan@gmail.com; imh4y@virginia.eduSupplementary data are available at Bioinformatics online.},
+  Doi                      = {10.1093/bioinformatics/btq033},
+  Institution              = {Department of Biochemistry and Molecular Genetics, University of Virginia School of Medicine, Charlottesville, VA 22908, USA. aaronquinlan@gmail.com},
+  Keywords                 = {Genome; Genomics, methods; Internet; Software},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {calkan},
+  Pii                      = {btq033},
+  Pmid                     = {20110278},
+  Timestamp                = {2015.09.12},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btq033}
+}
+
 @MastersThesis{Rasekh2015,
   Title                    = {Algorithms for the discovery of large genomic inversions using pooled clone sequencing},
   Author                   = {Marzieh E. Rasekh},
@@ -5306,8 +5357,6 @@
   Number                   = {23},
   Pages                    = {3259--3265},
   Volume                   = {27},
-
-  __markedentry            = {[calkan:]},
   Abstract                 = {Assembling genomes from short read data has become increasingly popular, but the problem remains computationally challenging especially for larger genomes. We study the scaffolding phase of sequence assembly where preassembled contigs are ordered based on mate pair data.We present MIP Scaffolder that divides the scaffolding problem into smaller subproblems and solves these with mixed integer programming. The scaffolding problem can be represented as a graph and the biconnected components of this graph can be solved independently. We present a technique for restricting the size of these subproblems so that they can be solved accurately with mixed integer programming. We compare MIP Scaffolder to two state of the art methods, SOPRA and SSPACE. MIP Scaffolder is fast and produces better or as good scaffolds as its competitors on large genomes.The source code of MIP Scaffolder is freely available at http://www.cs.helsinki.fi/u/lmsalmel/mip-scaffolder/.leena.salmela@cs.helsinki.fi.},
   Doi                      = {10.1093/bioinformatics/btr562},
   Institution              = {Department of Computer Science, Helsinki Institute for Information Technology, University of Helsinki, Helsinki, Finland. leena.salmela@cs.helsinki.fi},
@@ -5739,8 +5788,6 @@
   Number                   = {7},
   Pages                    = {e78},
   Volume                   = {41},
-
-  __markedentry            = {[calkan:6]},
   Abstract                 = {We present Masai, a read mapper representing the state-of-the-art in terms of speed and accuracy. Our tool is an order of magnitude faster than RazerS 3 and mrFAST, 2-4 times faster and more accurate than Bowtie 2 and BWA. The novelties of our read mapper are filtration with approximate seeds and a method for multiple backtracking. Approximate seeds, compared with exact seeds, increase filtration specificity while preserving sensitivity. Multiple backtracking amortizes the cost of searching a large set of seeds by taking advantage of the repetitiveness of next-generation sequencing data. Combined together, these two methods significantly speed up approximate search on genomic data sets. Masai is implemented in C++ using the SeqAn library. The source code is distributed under the BSD license and binaries for Linux, Mac OS X and Windows can be freely downloaded from http://www.seqan.de/projects/masai.},
   Doi                      = {10.1093/nar/gkt005},
   Institution              = {Department of Mathematics and Computer Science, Freie Universität Berlin, Takustr. 9, 14195 Berlin, Germany. enrico.siragusa@fu-berlin.de},
@@ -6101,6 +6148,27 @@
   Timestamp                = {2014.04.19}
 }
 
+@Article{VanderAuwera2013,
+  Title                    = {From FastQ data to high confidence variant calls: the Genome Analysis Toolkit best practices pipeline.},
+  Author                   = {{Van der Auwera}, Geraldine A. and Carneiro, Mauricio O. and Hartl, Chris and Poplin, Ryan and {Del Angel}, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and Banks, Eric and Garimella, Kiran V. and Altshuler, David and Gabriel, Stacey and DePristo, Mark A.},
+  Journal                  = {Curr Protoc Bioinformatics},
+  Year                     = {2013},
+
+  Month                    = {Oct},
+  Number                   = {1110},
+  Pages                    = {11.10.1--11.10.33},
+  Volume                   = {11},
+  Abstract                 = {This unit describes how to use BWA and the Genome Analysis Toolkit (GATK) to map genome sequencing data to a reference and produce high-quality variant calls that can be used in downstream analyses. The complete workflow includes the core NGS data processing steps that are necessary to make the raw data suitable for analysis by the GATK, as well as the key methods involved in variant discovery using the GATK.},
+  Doi                      = {10.1002/0471250953.bi1110s43},
+  Institution              = {Broad Institute, Genome Sequencing and Analysis Group, 301 Binney Street, Cambridge MA 02142.},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {calkan},
+  Pmid                     = {25431634},
+  Timestamp                = {2015.09.12},
+  Url                      = {http://dx.doi.org/10.1002/0471250953.bi1110s43}
+}
+
 @Article{Ventura2007,
   Title                    = {Evolutionary formation of new centromeres in macaque.},
   Author                   = {Mario Ventura and Francesca Antonacci and Maria Francesca Cardone and Roscoe Stanyon and Pietro D'Addabbo and Angelo Cellamare and L. James Sprague and Evan E Eichler and Nicoletta Archidiacono and Mariano Rocchi},
@@ -6265,8 +6333,6 @@
   Number                   = {9},
   Pages                    = {1646--1654},
   Volume                   = {19},
-
-  __markedentry            = {[calkan:6]},
   Abstract                 = {Second-generation sequencing technologies deliver DNA sequence data at unprecedented high throughput. Common to most biological applications is a mapping of the reads to an almost identical or highly similar reference genome. Due to the large amounts of data, efficient algorithms and implementations are crucial for this task. We present an efficient read mapping tool called RazerS. It allows the user to align sequencing reads of arbitrary length using either the Hamming distance or the edit distance. Our tool can work either lossless or with a user-defined loss rate at higher speeds. Given the loss rate, we present an approach that guarantees not to lose more reads than specified. This enables the user to adapt to the problem at hand and provides a seamless tradeoff between sensitivity and running time.},
   Doi                      = {10.1101/gr.088823.108},
   Institution              = {Department of Computer Science, Free University of Berlin, 14195 Berlin, Germany. weese@inf.fu-berlin.de},
@@ -6290,8 +6356,6 @@
   Number                   = {20},
   Pages                    = {2592--2599},
   Volume                   = {28},
-
-  __markedentry            = {[calkan:6]},
   Abstract                 = {During the past years, next-generation sequencing has become a key technology for many applications in the biomedical sciences. Throughput continues to increase and new protocols provide longer reads than currently available. In almost all applications, read mapping is a first step. Hence, it is crucial to have algorithms and implementations that perform fast, with high sensitivity, and are able to deal with long reads and a large absolute number of insertions and deletions.RazerS is a read mapping program with adjustable sensitivity based on counting q-grams. In this work, we propose the successor RazerS 3, which now supports shared-memory parallelism, an additional seed-based filter with adjustable sensitivity, a much faster, banded version of the Myers' bit-vector algorithm for verification, memory-saving measures and support for the SAM output format. This leads to a much improved performance for mapping reads, in particular, long reads with many errors. We extensively compare RazerS 3 with other popular read mappers and show that its results are often superior to them in terms of sensitivity while exhibiting practical and often competitive run times. In addition, RazerS 3 works without a pre-computed index.Source code and binaries are freely available for download at http://www.seqan.de/projects/razers. RazerS 3 is implemented in C++ and OpenMP under a GPL license using the SeqAn library and supports Linux, Mac OS X and Windows.},
   Doi                      = {10.1093/bioinformatics/bts505},
   Institution              = {Department of Mathematics and Computer Science, Freie Universität Berlin, Berlin, Germany. david.weese@fu-berlin.de},
@@ -6620,12 +6684,14 @@
 1 ExplicitGroup:Pattern Matching\;0\;Ferragina2000\;Ukkonen1983\;;
 1 ExplicitGroup:Structural Variation\;0\;Layer2014\;;
 1 ExplicitGroup:Error Correction\;0\;;
-1 ExplicitGroup:Mapping/Alignment\;0\;Altschul1990\;Lee2015\;Weese2009
-\;Weese2012\;Zhang2000\;;
+1 ExplicitGroup:Mapping/Alignment\;0\;Altschul1990\;Lee2015\;Li2013\;W
+eese2009\;Weese2012\;Zhang2000\;;
 1 ExplicitGroup:aDNA\;0\;Green2010\;Meyer2012\;;
 1 ExplicitGroup:LargeScaleProjects\;0\;1000GP\;1000GP2012\;;
 1 ExplicitGroup:Evolution\;0\;;
 1 ExplicitGroup:SNP/indel\;0\;Zook2014\;;
 1 ExplicitGroup:Genomic Variation\;0\;Zook2014\;;
+1 ExplicitGroup:Databases\;0\;Kent2002\;;
+1 ExplicitGroup:Visualization\;0\;Kent2002\;;
 }
 
