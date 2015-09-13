@@ -7,30 +7,30 @@ SECONDVCF = shuf
 platypus :
 	mkdir -p $(OUTDIR)/Platypus/VCF/
 	sh platypusRuns.sh $(BAMDIR) $(OUTDIR)/Platypus/VCF/
-	sh processvcf.sh $(OUTDIR)/Platypus/VCF/ $(OUTDIR)/Platypus/ $(FIRSTVCF) $(SECONDVCF)
+	sh processvcf.sh $(OUTDIR)/Platypus/VCF/ $(OUTDIR)/Platypus/ $(FIRSTVCF) $(SECONDVCF) 5
 
 freebayes :
 	mkdir -p $(OUTDIR)/Freebayes/VCF/
 	sh freebayesRuns.sh $(BAMDIR) $(OUTDIR)/Freebayes/VCF/ 30
-	sh processvcf.sh $(OUTDIR)/Freebayes/VCF/ $(OUTDIR)/Freebayes/ $(FIRSTVCF) $(SECONDVCF)
+	sh processvcf.sh $(OUTDIR)/Freebayes/VCF/ $(OUTDIR)/Freebayes/ $(FIRSTVCF) $(SECONDVCF) 5
 
 delly :
 	mkdir -p $(OUTDIR)/DELLY/VCF/
 	sh dellyRuns.sh $(BAMDIR) $(OUTDIR)/DELLY/VCF/
-	sh processvcf.sh $(OUTDIR)/DELLY/VCF/ $(OUTDIR)/DELLY/ $(FIRSTVCF) $(SECONDVCF)
+	sh processvcf.sh $(OUTDIR)/DELLY/VCF/ $(OUTDIR)/DELLY/ $(FIRSTVCF) $(SECONDVCF) 5
 
 lumpy :
 	mkdir -p $(OUTDIR)/LUMPY/VCF/
 	sh lumpyRuns.sh $(BAMDIR) $(OUTDIR)/LUMPY/VCF/
-	sh processvcf.sh $(OUTDIR)/LUMPY/VCF/ $(OUTDIR)/LUMPY/ $(FIRSTVCF) $(SECONDVCF)
+	sh processvcf.sh $(OUTDIR)/LUMPY/VCF/ $(OUTDIR)/LUMPY/ $(FIRSTVCF) $(SECONDVCF) 5
 
 samtools :
 	mkdir -p $(OUTDIR)/SAMTools/VCF/
 	sh samtoolsRuns.sh $(BAMDIR) $(OUTDIR)/SAMTools/VCF/ 30
-	sh processvcf.sh $(OUTDIR)/SAMTools/VCF/ $(OUTDIR)/SAMTools/ $(FIRSTVCF) $(SECONDVCF)
+	sh processvcf.sh $(OUTDIR)/SAMTools/VCF/ $(OUTDIR)/SAMTools/ $(FIRSTVCF) $(SECONDVCF) 5
 
 gatk :
-	sh processvcf.sh $(OUTDIR)/GATK/VCF/ $(OUTDIR)/GATK/ $(FIRSTVCF) $(SECONDVCF)
+	sh processvcf.sh $(OUTDIR)/GATK/VCF/ $(OUTDIR)/GATK/ $(FIRSTVCF) $(SECONDVCF) 5
 
 gasv :
 	mkdir -p $(OUTDIR)/GASV/VCF/
