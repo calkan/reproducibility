@@ -15,3 +15,56 @@ Shuffled & 2,294,808 & 2,174,342 \\
 }
 \label{supptab:gatk-orig-shuf-lowcov}
 \end{table}
+
+% continue for the other tables in the Orig vs Shuf sheets.
+
+
+% main paper tables:
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c|c||c|c||c||c|c||c|c||c|}
+\hline
+{\bf Tool} & \multicolumn{5}{|c||}{\bf HG00096} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }
+& \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
+\cline{2-11}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }
+& {\it All } & {\it Private } &  {\it All } & {\it Private } & {\it }\\
+\hline
+HaplotypeCaller & & & & & & & & & & \\
+UnifiedGenotyper & & & & & & & & & & \\
+Freebayes & & & & & & & & & & \\
+SAMtools & & & & & & & & & & \\
+Platypus & & & & & & & & & & \\
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:snps-orig-vs-shuf}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c|c||c|c||c||c|c||c|c||c|}
+\hline
+{\bf Tool} & \multicolumn{5}{|c||}{\bf HG00096} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }
+& \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
+\cline{2-11}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }
+& {\it All } & {\it Private } &  {\it All } & {\it Private } & {\it }\\
+\hline
+DELLY & & & & & & & & & & \\
+LUMPY  & & & & & & & & & & \\
+GASVPro & & & & & & & & & & \\
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:dels-orig-vs-shuf}
+\end{table}
+
+
