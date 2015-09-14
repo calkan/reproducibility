@@ -198,54 +198,7 @@ these differences intersected with common repeats.
 
 More interestingly, when we ran GATK's both HaplotypeCaller and UnifiedGenotyper on the {\bf same} BAM file twice, we observed similar differences. Other tools produced no discrepancies.
 
-
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c|c||c|c||c||c|c||c|c||c|}
-\hline
-{\bf Tool} & \multicolumn{5}{|c||}{\bf HG00096} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }
-& \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
-\cline{2-11}
-{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }
-& {\it All } & {\it Private } &  {\it All } & {\it Private } & {\it }\\
-\hline
-HaplotypeCaller & & & & & & & & & & \\
-UnifiedGenotyper & & & & & & & & & & \\
-Freebayes & & & & & & & & & & \\
-SAMtools & & & & & & & & & & \\
-Platypus & & & & & & & & & & \\
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:snps-orig-vs-shuf}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c|c||c|c||c||c|c||c|c||c|}
-\hline
-{\bf Tool} & \multicolumn{5}{|c||}{\bf HG00096} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }
-& \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
-\cline{2-11}
-{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }
-& {\it All } & {\it Private } &  {\it All } & {\it Private } & {\it }\\
-\hline
-DELLY & & & & & & & & & & \\
-LUMPY  & & & & & & & & & & \\
-GASVPro & & & & & & & & & & \\
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:dels-orig-vs-shuf}
-\end{table}
-
+\input{supptables.tex}
 
 \section{Discussion}
 
