@@ -3,6 +3,7 @@
 \usepackage{authblk}
 \usepackage{fullpage}
 \usepackage{url}
+\usepackage{rotating}
 
 %\usepackage{geometry}
 %\geometry{lmargin=0.3in,rmargin=0.3in,tmargin=0in,bmargin=0.1in}
@@ -10,8 +11,8 @@
 %\textwidth=18cm \hoffset=-0.6cm
 %\textheight=28cm \voffset=-1cm
 
+\newcommand {\junk}[1]{}
 
-\pagestyle{empty}
 
 \date{}
 
@@ -185,20 +186,143 @@ We then repeated the same mapping, shuffling, and remapping strategy to the full
 would generate the same alignments before and after reshuffling based on the small scale test. We performed the standard BAM processing steps as described 
 in~\cite{VanderAuwera2013} (Methods) to obtain sorted, duplicate-removed, realigned, recalibrated, and indexed BAM files. We also investigated BWA-MEM's behavior of random placements in the
 HG00096 genome, and interestingly, although BWA-MEM reported zero mapping qualities for 
-most of the discrepant read mappings ($\sim$94\%), it also assigned high MAPQ values ($\geq$30) for a fraction of them ($\sim$1.75\%; Supplementary TableXXXXXX). 
+most of the discrepant read mappings ($\sim$94\%), it also assigned high MAPQ values ($\geq$30) for a fraction of them ($\sim$1.75\%; Supplementary Table~\ref{supptab:bwa-map}). 
+
+
+% main paper tables:
+
+\junk{
+  \begin{sidewaystable}[htb]
+    \begin{center}
+      \begin{tabular}{|l|c|c||c|c||c||c|c||c|c||c|}
+        \hline
+            {\bf Tool} & \multicolumn{5}{|c||}{\bf HG00096} & \multicolumn{5}{|c|}{\bf HG02107} \\
+            \hline
+                {\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }
+                & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
+                \cline{2-11}
+                      {\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }
+                      & {\it All } & {\it Private } &  {\it All } & {\it Private } & {\it }\\
+                      \hline
+                      HaplotypeCaller & 2,279,678 & 10,898 & 2,294,808 & 26,028 & 1.06 & 4,654,338 & 54,051 & 4,625,648 & 25,361 & 1.70 \\
+                      UnifiedGenotyper & 2,470,690 & 315,174 & 2,174,342 & 18,826 & 13.41 & 4,717,918 & 38,635 & 4,723,109 & 272,491 & 6.53 \\
+                      Freebayes & 2,400,545 & 992 & 2,400,595 & 1,042 & 0.08 & 5,174,644 & 4,715 & 5,189,285 & 19,356 & 0.46 \\
+                      SAMtools & 2,277,691 & 2,683 & 2,277,674 & 2,666 & 0.24 & 5,355,604 & 9,838 & 5,355,053 & 9,287 & 0.36 \\
+                      Platypus & 2,022,412 & 2,342 & 2,022,294 & 2,224 & 0.23 & 4,642,336 & 6,200 & 4,642,300 & 6,164 & 0.27 \\
+                      \hline
+      \end{tabular}
+    \end{center}
+    \caption{ .. }
+    \label{tab:snps-orig-vs-shuf}
+  \end{sidewaystable}
+}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c|c||c|c||c|}
+\hline
+{\bf Tool} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }\\
+\cline{2-6}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it } \\
+\hline
+HaplotypeCaller & 2,279,678 & 10,898 & 2,294,808 & 26,028 & 1.06 \\
+UnifiedGenotyper & 2,470,690 & 315,174 & 2,174,342 & 18,826 & 13.41 \\
+Freebayes & 2,400,545 & 992 & 2,400,595 & 1,042 & 0.08 \\
+SAMtools & 2,277,691 & 2,683 & 2,277,674 & 2,666 & 0.24 \\
+Platypus & 2,022,412 & 2,342 & 2,022,294 & 2,224 & 0.23 \\
+\hline
+\hline
+{\bf } & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }\\
+\cline{2-6}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it } \\
+\hline
+HaplotypeCaller & 4,654,338 & 54,051 & 4,625,648 & 25,361 & 1.70 \\
+UnifiedGenotyper & 4,717,918 & 38,635 & 4,723,109 & 272,491 & 6.53 \\
+Freebayes & 5,174,644 & 4,715 & 5,189,285 & 19,356 & 0.46 \\
+SAMtools & 5,355,604 & 9,838 & 5,355,053 & 9,287 & 0.36 \\
+Platypus & 4,642,336 & 6,200 & 4,642,300 & 6,164 & 0.27 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:snps-orig-vs-shuf}
+\end{table}
+
+\junk{
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c|c||c|c||c||c|c||c|c||c|}
+\hline
+{\bf Tool} & \multicolumn{5}{|c||}{\bf HG00096} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) }
+& \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
+\cline{2-11}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }
+& {\it All } & {\it Private } &  {\it All } & {\it Private } & {\it }\\
+\hline
+DELLY & 7,434 & 257 & 7,439 & 262 & 6.74 & 86,510 & 4,806 & 87,616 & 5,912 & 11.60 \\
+LUMPY  & & & & & & & & & & \\
+GASVPro & & & & & & & & & & \\
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:dels-orig-vs-shuf}
+\end{table}
+}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c|c||c|c||c|}
+\hline
+{\bf Tool} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
+\cline{2-6}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }\\
+\hline
+DELLY & 7,434 & 257 & 7,439 & 262 & 6.74 \\
+LUMPY  & & & & &   \\
+GASVPro & & & & &  \\
+\hline
+\hline
+{\bf } & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+{\bf } & \multicolumn{2}{c||}{Original} & \multicolumn{2}{c||}{Shuffled} & {\it Diff (\%) } \\
+\cline{2-6}
+{\bf } & {\it All } & {\it Private } & {\it All } & {\it Private } & {\it }\\
+\hline
+DELLY & 86,510 & 4,806 & 87,616 & 5,912 & 11.60 \\
+LUMPY  & & & & &  \\
+GASVPro & & & & & \\
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:dels-orig-vs-shuf}
+\end{table}
+
+
 
 %%%%%%%%%%%%%%%
 
 As expected, 72 to 80\% of the discrepant calls were found within common repeats. However, we also observed 165 to 4,397 SNVs 
 that were called within one alignment but not the other that map to coding exons. 
-Furthermore, 691 of the 4,397 (15.7\%) discrepant exonic SNVs predicted by GATK UnifiedGenotyper,  did not intersect with any common repeats or segmental duplications.
+Furthermore, 691 of the 4,397 (15.7\%) discrepant exonic SNVs predicted by GATK UnifiedGenotyper  did not intersect with any common repeats or segmental duplications.
 Freebayes, Platypus, and SAMtools predictions were more reproducable, as $>$98.5\% of the calls were identical.
 DELLY also predicted different calls: $\sim$3\% of deletion, $\sim$4\% of tandem duplication, $\sim$6\% of inversion, and $\sim$3.6\% of translocation calls were spefic to a single alignment (i.e. BAM file), and $>$91\% of
 these differences intersected with common repeats. 
 
+
 More interestingly, when we ran GATK's both HaplotypeCaller and UnifiedGenotyper on the {\bf same} BAM file twice, we observed similar differences. Other tools produced no discrepancies.
 
-\input{supptables.tex}
+
+
 
 \section{Discussion}
 
@@ -215,5 +339,8 @@ one would prefer full reproducibility.
 \bibliographystyle{plain}
 
 \bibliography{calkan}
+
+
+\input{supptables.tex}
 
 \end{document}
