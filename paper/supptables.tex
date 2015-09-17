@@ -14,20 +14,19 @@
 
 \begin{table}[htb]
 \begin{center}
-\begin{tabular}{|l|c|c|c||c|c|c|}
+\begin{tabular}{|l|c|c|c|c|c|}
 \hline
-{\bf Sample} & \multicolumn{3}{c||}{\bf Original Order} & \multicolumn{3}{c|}{\bf Shuffled}\\
-\cline{2-7}
-{\bf } & {\it Total} & {\it Private} & {\it Private (\%)} 
-& {\it Total} & {\it Private} & {\it Private (\%)} \\
+{\bf Order } & {\it Total} & {\it Private} & {\it Private (\%)} & {\it Private (MAPQ=0)} & {\it Private (MAPQ$\geq$30)} \\
 \hline
-HG00096 & 146,347,388 & 4,127,562 & 2.82 & 146,347,372 & 4,127,554 & 2.82\\
-HG02107 & 1,319,393,745 & & & 1,319,369,530 & &  \\
+Original & 146,347,388 & 4,127,562 & 2.82 & 3,877,429  & 72,225 \\ 
+Shuffled & 146,347,372 & 4,127,554 & 2.82 & 3,877,495 & 72,044\\
+%HG00096 & 146,347,388 & 4,127,562 & 2.82 & 146,347,372 & 4,127,554 & 2.82\\
+%HG02107 & 1,319,393,745 & & & 1,319,369,530 & &  \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Call set differences in the HG00096 genome using GATK HaplotypeCaller and UnifiedGenotyper.
-}
+\caption{Summary of read mapping of the HG00096 genome in both original and shuffled order using BWA-MEM. Map locations that are specific to one order of reads are listed as {\it Private}. We also list the number of private mappings
+with $0$ and $\geq 30$ mapping quality.}
 \label{supptab:bwa-map}
 \end{table}
 
@@ -42,8 +41,7 @@ Shuffled & 2,294,808 & 2,174,342 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Call set differences in the HG00096 genome using GATK HaplotypeCaller and UnifiedGenotyper.
-}
+\caption{Call set differences in the HG00096 genome using GATK HaplotypeCaller and UnifiedGenotyper.}
 \label{supptab:gatk-orig-shuf-lowcov}
 \end{table}
 
@@ -68,13 +66,13 @@ Original 1 only dbsnp & 10599 &  &  &  & \\
 \hline 
 Original 2 only dbsnp & 20374 &  &  &  & \\
 \hline 
-Original 1 only hom & 10564 & 8343 & 1664 & 8631 & 151\\
+Original 1 only hom. & 10564 & 8343 & 1664 & 8631 & 151\\
 \hline 
-Original 2 only hom & 21233 & 16805 & 7691 & 14523 & 367\\
+Original 2 only hom. & 21233 & 16805 & 7691 & 14523 & 367\\
 \hline 
-Original 1 only snv & 10630 & 8382 & 1682 & 8677 & 151\\
+Original 1 only SNV & 10630 & 8382 & 1682 & 8677 & 151\\
 \hline 
-Original 2 only snv & 21499 & 16968 & 7854 & 14612 & 370\\
+Original 2 only SNV & 21499 & 16968 & 7854 & 14612 & 370\\
 \hline
 \hline
 {\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -94,13 +92,13 @@ Original 1 only dbsnp & 41782 &  &  &  & \\
 \hline 
 Original 2 only dbsnp & 102255 &  &  &  & \\
 \hline 
-Original 1 only hom & 10442 & 8455 & 1293 & 9351 & 154\\
+Original 1 only hom. & 10442 & 8455 & 1293 & 9351 & 154\\
 \hline 
-Original 2 only hom & 33704 & 29413 & 6519 & 26681 & 547\\
+Original 2 only hom. & 33704 & 29413 & 6519 & 26681 & 547\\
 \hline 
-Original 1 only snv & 44148 & 34770 & 4556 & 39189 & 715\\
+Original 1 only SNV & 44148 & 34770 & 4556 & 39189 & 715\\
 \hline 
-Original 2 only snv & 107697 & 92350 & 18224 & 89880 & 1733\\
+Original 2 only SNV & 107697 & 92350 & 18224 & 89880 & 1733\\
 \hline 
 \end{tabular}
 \end{center}
@@ -129,13 +127,13 @@ Original 1 only dbsnp & 19618 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 19085 &  &  &  & \\ 
 \hline
-Original 1 only hom & 19260 & 9599 & 527 & 17965 & 447\\ 
+Original 1 only hom. & 19260 & 9599 & 527 & 17965 & 447\\ 
 \hline
-Original 2 only hom & 18771 & 9236 & 508 & 17534 & 434\\ 
+Original 2 only hom. & 18771 & 9236 & 508 & 17534 & 434\\ 
 \hline
-Original 1 only snv & 20077 & 10388 & 941 & 17972 & 447\\ 
+Original 1 only SNV & 20077 & 10388 & 941 & 17972 & 447\\ 
 \hline
-Original 2 only snv & 19481 & 9923 & 868 & 17541 & 435\\ 
+Original 2 only SNV & 19481 & 9923 & 868 & 17541 & 435\\ 
 \hline
 \hline
 {\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -155,13 +153,13 @@ Original 1 only dbsnp & 38378 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 266185 &  &  &  & \\ 
 \hline
-Original 1 only hom & 31498 & 24884 & 8070 & 22873 & 718\\ 
+Original 1 only hom. & 31498 & 24884 & 8070 & 22873 & 718\\ 
 \hline
-Original 2 only hom & 15586 & 12444 & 2537 & 12903 & 279\\ 
+Original 2 only hom. & 15586 & 12444 & 2537 & 12903 & 279\\ 
 \hline
-Original 1 only snv & 38991 & 30241 & 9275 & 29731 & 899\\ 
+Original 1 only SNV & 38991 & 30241 & 9275 & 29731 & 899\\ 
 \hline
-Original 2 only snv & 279518 & 232800 & 56605 & 225180 & 4650\\ 
+Original 2 only SNV & 279518 & 232800 & 56605 & 225180 & 4650\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -190,13 +188,13 @@ Original 1 only dbsnp & 0 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 0 &  &  &  & \\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -216,13 +214,13 @@ Original 1 only dbsnp & 0 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 0 &  &  &  & \\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -251,13 +249,13 @@ Original 1 only dbsnp & 0 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 0 &  &  &  & \\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -277,13 +275,13 @@ Original 1 only dbsnp & 0 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 0 &  &  &  & \\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -312,13 +310,13 @@ Original 1 only dbsnp & 0 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 0 &  &  &  & \\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf Platypus} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -338,13 +336,13 @@ Original 1 only dbsnp & 0 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 0 &  &  &  & \\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -369,13 +367,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -391,13 +389,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -422,13 +420,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -444,13 +442,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -475,13 +473,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -497,13 +495,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -528,13 +526,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -550,13 +548,13 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -585,13 +583,13 @@ Original 1 only dbsnp & 10802 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 24536 &  &  &  & \\ 
 \hline
-Original 1 only hom & 10648 & 8401 & 1842 & 9075 & 252\\ 
+Original 1 only hom. & 10648 & 8401 & 1842 & 9075 & 252\\ 
 \hline
-Original 2 only hom & 25404 & 20236 & 9220 & 18042 & 561\\ 
+Original 2 only hom. & 25404 & 20236 & 9220 & 18042 & 561\\ 
 \hline
-Original 1 only snv & 10775 & 8474 & 1877 & 9123 & 252\\ 
+Original 1 only SNV & 10775 & 8474 & 1877 & 9123 & 252\\ 
 \hline
-Original 2 only snv & 25914 & 20516 & 9519 & 18328 & 572\\ 
+Original 2 only SNV & 25914 & 20516 & 9519 & 18328 & 572\\ 
 \hline
 \hline
 {\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -611,13 +609,13 @@ Original 1 only dbsnp & 51002 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 23224 &  &  &  & \\ 
 \hline
-Original 1 only hom & 8228 & 6287 & 1546 & 7122 & 275\\ 
+Original 1 only hom. & 8228 & 6287 & 1546 & 7122 & 275\\ 
 \hline
-Original 2 only hom & 3318 & 2725 & 468 & 2831 & 47\\ 
+Original 2 only hom. & 3318 & 2725 & 468 & 2831 & 47\\ 
 \hline
-Original 1 only snv & 53166 & 42338 & 5734 & 47515 & 1241\\ 
+Original 1 only SNV & 53166 & 42338 & 5734 & 47515 & 1241\\ 
 \hline
-Original 2 only snv & 24535 & 18964 & 4385 & 21049 & 643\\ 
+Original 2 only SNV & 24535 & 18964 & 4385 & 21049 & 643\\ 
 \hline 
 \end{tabular}
 \end{center}
@@ -648,13 +646,13 @@ Original 1 only dbsnp & 265445 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 18774 &  &  &  & \\ 
 \hline
-Original 1 only hom & 111373 & 94551 & 25313 & 85263 & 1945\\ 
+Original 1 only hom. & 111373 & 94551 & 25313 & 85263 & 1945\\ 
 \hline
-Original 2 only hom & 18664 & 9083 & 422 & 18042 & 559\\ 
+Original 2 only hom. & 18664 & 9083 & 422 & 18042 & 559\\ 
 \hline
-Original 1 only snv & 314767 & 247454 & 117161 & 189091 & 6099\\ 
+Original 1 only SNV & 314767 & 247454 & 117161 & 189091 & 6099\\ 
 \hline
-Original 2 only snv & 18782 & 9138 & 426 & 18160 & 565\\ 
+Original 2 only SNV & 18782 & 9138 & 426 & 18160 & 565\\ 
 \hline
 \hline
 {\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -674,13 +672,13 @@ Original 1 only dbsnp & 38091 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 262671 &  &  &  & \\ 
 \hline
-Original 1 only hom & 35484 & 28211 & 8682 & 27160 & 1080\\ 
+Original 1 only hom. & 35484 & 28211 & 8682 & 27160 & 1080\\ 
 \hline
-Original 2 only hom & 14214 & 11311 & 2257 & 11989 & 317\\ 
+Original 2 only hom. & 14214 & 11311 & 2257 & 11989 & 317\\ 
 \hline
-Original 1 only snv & 37995 & 29865 & 9513 & 29412 & 1231\\ 
+Original 1 only SNV & 37995 & 29865 & 9513 & 29412 & 1231\\ 
 \hline
-Original 2 only snv & 271821 & 226836 & 50569 & 229411 & 6017\\ 
+Original 2 only SNV & 271821 & 226836 & 50569 & 229411 & 6017\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -709,13 +707,13 @@ Original 1 only dbsnp & 549 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 566 &  &  &  & \\ 
 \hline
-Original 1 only hom & 265 & 224 & 93 & 125 & 0\\ 
+Original 1 only hom. & 265 & 224 & 93 & 125 & 0\\ 
 \hline
-Original 2 only hom & 263 & 215 & 81 & 163 & 6\\ 
+Original 2 only hom. & 263 & 215 & 81 & 163 & 6\\ 
 \hline
-Original 1 only snv & 848 & 655 & 361 & 281 & 9\\ 
+Original 1 only SNV & 848 & 655 & 361 & 281 & 9\\ 
 \hline
-Original 2 only snv & 899 & 687 & 352 & 350 & 11\\ 
+Original 2 only SNV & 899 & 687 & 352 & 350 & 11\\ 
 \hline
 \hline
 {\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -735,13 +733,13 @@ Original 1 only dbsnp & 1570 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 9149 &  &  &  & \\ 
 \hline
-Original 1 only hom & 2128 & 1802 & 404 & 1697 & 33\\ 
+Original 1 only hom. & 2128 & 1802 & 404 & 1697 & 33\\ 
 \hline
-Original 2 only hom & 902 & 716 & 288 & 533 & 6\\ 
+Original 2 only hom. & 902 & 716 & 288 & 533 & 6\\ 
 \hline
-Original 1 only snv & 3415 & 2712 & 1231 & 1618 & 45\\ 
+Original 1 only SNV & 3415 & 2712 & 1231 & 1618 & 45\\ 
 \hline
-Original 2 only snv & 12633 & 9292 & 3632 & 9190 & 316\\  
+Original 2 only SNV & 12633 & 9292 & 3632 & 9190 & 316\\  
 \hline
 \end{tabular}
 \end{center}
@@ -770,13 +768,13 @@ Original 1 only dbsnp & 1822 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 1845 &  &  &  & \\ 
 \hline
-Original 1 only hom & 1012 & 824 & 453 & 462 & 32\\ 
+Original 1 only hom. & 1012 & 824 & 453 & 462 & 32\\ 
 \hline
-Original 2 only hom & 989 & 765 & 450 & 480 & 24\\ 
+Original 2 only hom. & 989 & 765 & 450 & 480 & 24\\ 
 \hline
-Original 1 only snv & 2492 & 1919 & 1286 & 830 & 55\\ 
+Original 1 only SNV & 2492 & 1919 & 1286 & 830 & 55\\ 
 \hline
-Original 2 only snv & 2488 & 1886 & 1255 & 865 & 60\\ 
+Original 2 only SNV & 2488 & 1886 & 1255 & 865 & 60\\ 
 \hline
 \hline
 {\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -796,13 +794,13 @@ Original 1 only dbsnp & 5690 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 5553 &  &  &  & \\ 
 \hline
-Original 1 only hom & 2179 & 1813 & 938 & 1056 & 34\\ 
+Original 1 only hom. & 2179 & 1813 & 938 & 1056 & 34\\ 
 \hline
-Original 2 only hom & 2102 & 1716 & 908 & 1050 & 44\\ 
+Original 2 only hom. & 2102 & 1716 & 908 & 1050 & 44\\ 
 \hline
-Original 1 only snv & 8597 & 6572 & 4148 & 3458 & 182\\ 
+Original 1 only SNV & 8597 & 6572 & 4148 & 3458 & 182\\ 
 \hline
-Original 2 only snv & 8074 & 6161 & 3993 & 3233 & 148\\ 
+Original 2 only SNV & 8074 & 6161 & 3993 & 3233 & 148\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -833,13 +831,13 @@ Original 1 only dbsnp & 1776 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 1723 &  &  &  & \\ 
 \hline
-Original 1 only hom & 1107 & 935 & 335 & 661 & 9\\ 
+Original 1 only hom. & 1107 & 935 & 335 & 661 & 9\\ 
 \hline
-Original 2 only hom & 1071 & 875 & 309 & 757 & 27\\ 
+Original 2 only hom. & 1071 & 875 & 309 & 757 & 27\\ 
 \hline
-Original 1 only snv & 2079 & 1571 & 973 & 977 & 27\\ 
+Original 1 only SNV & 2079 & 1571 & 973 & 977 & 27\\ 
 \hline
-Original 2 only snv & 1977 & 1466 & 937 & 1134 & 44\\ 
+Original 2 only SNV & 1977 & 1466 & 937 & 1134 & 44\\ 
 \hline
 \hline
 {\bf Platypus} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -859,13 +857,13 @@ Original 1 only dbsnp & 4620 &  &  &  & \\
 \hline
 Original 2 only dbsnp & 4675 &  &  &  & \\ 
 \hline
-Original 1 only hom & 1653 & 1350 & 463 & 1249 & 28\\ 
+Original 1 only hom. & 1653 & 1350 & 463 & 1249 & 28\\ 
 \hline
-Original 2 only hom & 1698 & 1391 & 488 & 1368 & 35\\ 
+Original 2 only hom. & 1698 & 1391 & 488 & 1368 & 35\\ 
 \hline
-Original 1 only snv & 5113 & 3895 & 1932 & 3212 & 113\\ 
+Original 1 only SNV & 5113 & 3895 & 1932 & 3212 & 113\\ 
 \hline
-Original 2 only snv & 5164 & 3967 & 1940 & 3342 & 115\\ 
+Original 2 only SNV & 5164 & 3967 & 1940 & 3342 & 115\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -890,13 +888,13 @@ Original 1 only & 37 & 32 & 21 & 7 & 2\\
 \hline
 Original 2 only & 35 & 34 & 17 & 0 & 0\\ 
 \hline
-Original 1 only hom & 3 & 2 & 1 & 2 & 0\\ 
+Original 1 only hom. & 3 & 2 & 1 & 2 & 0\\ 
 \hline
-Original 2 only hom & 4 & 3 & 2 & 0 & 0\\ 
+Original 2 only hom. & 4 & 3 & 2 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -912,13 +910,13 @@ Original 1 only & 831 & 698 & 273 & 158 & 1\\
 \hline
 Original 2 only & 819 & 690 & 266 & 156 & 2\\ 
 \hline
-Original 1 only hom & 28 & 22 & 12 & 15 & 0\\ 
+Original 1 only hom. & 28 & 22 & 12 & 15 & 0\\ 
 \hline
-Original 2 only hom & 25 & 19 & 6 & 12 & 0\\ 
+Original 2 only hom. & 25 & 19 & 6 & 12 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -943,13 +941,13 @@ Original 1 only & 25 & 24 & 15 & 2 & 0\\
 \hline
 Original 2 only & 31 & 28 & 17 & 6 & 0\\ 
 \hline
-Original 1 only hom & 3 & 3 & 1 & 0 & 0\\ 
+Original 1 only hom. & 3 & 3 & 1 & 0 & 0\\ 
 \hline
-Original 2 only hom & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -965,13 +963,13 @@ Original 1 only & 384 & 334 & 152 & 61 & 1\\
 \hline
 Original 2 only & 452 & 406 & 175 & 72 & 0\\ 
 \hline
-Original 1 only hom & 13 & 10 & 3 & 3 & 0\\ 
+Original 1 only hom. & 13 & 10 & 3 & 3 & 0\\ 
 \hline
-Original 2 only hom & 9 & 9 & 4 & 1 & 0\\ 
+Original 2 only hom. & 9 & 9 & 4 & 1 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -996,13 +994,13 @@ Original 1 only & 30 & 29 & 14 & 1 & 0\\
 \hline
 Original 2 only & 41 & 41 & 21 & 2 & 0\\ 
 \hline
-Original 1 only hom & 5 & 5 & 3 & 0 & 0\\ 
+Original 1 only hom. & 5 & 5 & 3 & 0 & 0\\ 
 \hline
-Original 2 only hom & 1 & 1 & 1 & 0 & 0\\ 
+Original 2 only hom. & 1 & 1 & 1 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -1018,13 +1016,13 @@ Original 1 only & 465 & 414 & 148 & 25 & 2\\
 \hline
 Original 2 only & 540 & 476 & 195 & 47 & 0\\ 
 \hline
-Original 1 only hom & 14 & 13 & 5 & 0 & 0\\ 
+Original 1 only hom. & 14 & 13 & 5 & 0 & 0\\ 
 \hline
-Original 2 only hom & 30 & 29 & 8 & 0 & 0\\ 
+Original 2 only hom. & 30 & 29 & 8 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -1049,13 +1047,13 @@ Original 1 only & 165 & 153 & 62 & 1 & 0\\
 \hline
 Original 2 only & 155 & 147 & 48 & 4 & 0\\ 
 \hline
-Original 1 only hom & 9 & 9 & 2 & 0 & 0\\ 
+Original 1 only hom. & 9 & 9 & 2 & 0 & 0\\ 
 \hline
-Original 2 only hom & 17 & 17 & 4 & 0 & 0\\ 
+Original 2 only hom. & 17 & 17 & 4 & 0 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -1071,13 +1069,13 @@ Original 1 only & 3126 & 2407 & 1021 & 229 & 13\\
 \hline
 Original 2 only & 4101 & 3170 & 1260 & 277 & 8\\ 
 \hline
-Original 1 only hom & 105 & 75 & 41 & 6 & 0\\ 
+Original 1 only hom. & 105 & 75 & 41 & 6 & 0\\ 
 \hline
-Original 2 only hom & 107 & 74 & 27 & 8 & 0\\ 
+Original 2 only hom. & 107 & 74 & 27 & 8 & 0\\ 
 \hline
-Original 1 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 2 only snv & 0 & 0 & 0 & 0 & 0\\ 
+Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
