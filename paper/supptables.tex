@@ -32,17 +32,491 @@ with $0$ and $\geq 30$ mapping quality.}
 
 \begin{table}[htb]
 \begin{center}
-\begin{tabular}{|l|r|r|}
+\begin{tabular}{|l|c||c|c|c|c|}
 \hline
-{\bf Call} & {\bf HaplotypeCaller} & {\bf UnifiedGenotyper}\\
+{\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG00096} \\
 \hline
-Original & 2,279,678 & 2,470,690\\
-Shuffled & 2,294,808 & 2,174,342 \\
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 2279678 & 1160574 & 83944 & 2098633 & 53726\\ 
+\hline
+Shuffled total & 2294808 & 1172610 & 91573 & 2107371 & 53954\\ 
+\hline
+Original 1 only & 10898 & 8577 & 1917 & 9205 & 253\\ 
+\hline
+Shuffled only & 26028 & 20613 & 9546 & 18381 & 572\\ 
+\hline
+Original 1 only (in dbSNP 138) & 10802 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 24536 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 10648 & 8401 & 1842 & 9075 & 252\\ 
+\hline
+Shuffled only hom. & 25404 & 20236 & 9220 & 18042 & 561\\ 
+\hline
+Original 1 only SNV & 10775 & 8474 & 1877 & 9123 & 252\\ 
+\hline
+Shuffled only SNV & 25914 & 20516 & 9519 & 18328 & 572\\ 
+\hline
+\hline
+{\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 4654338 & 2423277 & 149867 & 4442738 & 158971\\ 
+\hline
+Shuffled total & 4625648 & 2399863 & 148480 & 4416242 & 158379\\ 
+\hline
+Original 1 only & 54051 & 43084 & 6020 & 48034 & 1249\\ 
+\hline
+Shuffled only & 25361 & 19670 & 4633 & 21538 & 657\\ 
+\hline
+Original 1 only (in dbSNP 138) & 51002 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 23224 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 8228 & 6287 & 1546 & 7122 & 275\\ 
+\hline
+Shuffled only hom. & 3318 & 2725 & 468 & 2831 & 47\\ 
+\hline
+Original 1 only SNV & 53166 & 42338 & 5734 & 47515 & 1241\\ 
+\hline
+Shuffled only SNV & 24535 & 18964 & 4385 & 21049 & 643\\ 
+\hline 
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-hc}
+\end{table}
+
+
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 2470690 & 1335457 & 201057 & 2163192 & 56994\\ 
+\hline
+Shuffled total & 2174342 & 1096859 & 84130 & 2000691 & 53044\\ 
+\hline
+Original 1 only & 315174 & 247777 & 117368 & 189169 & 6103\\ 
+\hline
+Shuffled only & 18826 & 9179 & 441 & 18173 & 567\\ 
+\hline
+Original 1 only (in dbSNP 138) & 265445 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 18774 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 111373 & 94551 & 25313 & 85263 & 1945\\ 
+\hline
+Shuffled only hom. & 18664 & 9083 & 422 & 18042 & 559\\ 
+\hline
+Original 1 only SNV & 314767 & 247454 & 117161 & 189091 & 6099\\ 
+\hline
+Shuffled only SNV & 18782 & 9138 & 426 & 18160 & 565\\ 
+\hline
+\hline
+{\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 4489253 & 2283267 & 132449 & 4294650 & 157013\\ 
+\hline
+Shuffled total & 4723109 & 2480235 & 173500 & 4494733 & 161795\\ 
+\hline
+Original 1 only & 38635 & 30414 & 9669 & 29858 & 1237\\ 
+\hline
+Shuffled only & 272491 & 227382 & 50720 & 229941 & 6019\\ 
+\hline
+Original 1 only (in dbSNP 138) & 38091 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 262671 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 35484 & 28211 & 8682 & 27160 & 1080\\ 
+\hline
+Shuffled only hom. & 14214 & 11311 & 2257 & 11989 & 317\\ 
+\hline
+Original 1 only SNV & 37995 & 29865 & 9513 & 29412 & 1231\\ 
+\hline
+Shuffled only SNV & 271821 & 226836 & 50569 & 229411 & 6017\\ 
 \hline
 \end{tabular}
 \end{center}
-\caption{Call set differences in the HG00096 genome using GATK HaplotypeCaller and UnifiedGenotyper.}
-\label{supptab:gatk-orig-shuf-lowcov}
+\caption{ .. }
+\label{tab:orig-vs-shuf-ug}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 2400545 & 1336125 & 172214 & 2125570 & 54445\\ 
+\hline
+Shuffled total & 2400595 & 1336148 & 172214 & 2125675 & 54447\\ 
+\hline
+Original 1 only & 992 & 789 & 400 & 341 & 11\\ 
+\hline
+Shuffled only & 1042 & 812 & 400 & 446 & 13\\ 
+\hline
+Original 1 only (in dbSNP 138) & 549 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 566 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 265 & 224 & 93 & 125 & 0\\ 
+\hline
+Shuffled only hom. & 263 & 215 & 81 & 163 & 6\\ 
+\hline
+Original 1 only SNV & 848 & 655 & 361 & 281 & 9\\ 
+\hline
+Shuffled only SNV & 899 & 687 & 352 & 350 & 11\\ 
+\hline
+\hline
+{\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 5174644 & 2906071 & 380096 & 4735347 & 170214\\ 
+\hline
+Shuffled total & 5189285 & 2917114 & 382898 & 4748004 & 170638\\ 
+\hline
+Original 1 only & 4715 & 3878 & 1394 & 2711 & 61\\ 
+\hline
+Shuffled only & 19356 & 14921 & 4196 & 15368 & 485\\ 
+\hline
+Original 1 only (in dbSNP 138) & 1570 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 9149 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 2128 & 1802 & 404 & 1697 & 33\\ 
+\hline
+Shuffled only hom. & 902 & 716 & 288 & 533 & 6\\ 
+\hline
+Original 1 only SNV & 3415 & 2712 & 1231 & 1618 & 45\\ 
+\hline
+Shuffled only SNV & 12633 & 9292 & 3632 & 9190 & 316\\  
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-freebayes}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 2277691 & 1269164 & 176433 & 2055105 & 69037\\ 
+\hline
+Shuffled total & 2277674 & 1269121 & 176401 & 2055168 & 69042\\ 
+\hline
+Original 1 only & 2683 & 2092 & 1361 & 878 & 56\\ 
+\hline
+Shuffled only & 2666 & 2049 & 1329 & 941 & 61\\ 
+\hline
+Original 1 only (in dbSNP 138) & 1822 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 1845 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 1012 & 824 & 453 & 462 & 32\\ 
+\hline
+Shuffled only hom. & 989 & 765 & 450 & 480 & 24\\ 
+\hline
+Original 1 only SNV & 2492 & 1919 & 1286 & 830 & 55\\ 
+\hline
+Shuffled only SNV & 2488 & 1886 & 1255 & 865 & 60\\ 
+\hline
+\hline
+{\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 5355604 & 3055463 & 417874 & 4862553 & 175803\\ 
+\hline
+Shuffled total & 5355053 & 3055015 & 417735 & 4862421 & 175790\\ 
+\hline
+Original 1 only & 9838 & 7688 & 4494 & 4274 & 198\\ 
+\hline
+Shuffled only & 9287 & 7240 & 4355 & 4142 & 185\\ 
+\hline
+Original 1 only (in dbSNP 138) & 5690 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 5553 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 2179 & 1813 & 938 & 1056 & 34\\ 
+\hline
+Shuffled only hom. & 2102 & 1716 & 908 & 1050 & 44\\ 
+\hline
+Original 1 only SNV & 8597 & 6572 & 4148 & 3458 & 182\\ 
+\hline
+Shuffled only SNV & 8074 & 6161 & 3993 & 3233 & 148\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-samtools}
+\end{table}
+
+\clearpage
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf Platypus} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 2022412 & 1073056 & 115590 & 1843781 & 47144\\ 
+\hline
+Shuffled total & 2022294 & 1072940 & 115538 & 1843952 & 47166\\ 
+\hline
+Original 1 only & 2342 & 1778 & 1097 & 1119 & 27\\ 
+\hline
+Shuffled only & 2224 & 1662 & 1045 & 1290 & 49\\ 
+\hline
+Original 1 only (in dbSNP 138) & 1776 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 1723 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 1107 & 935 & 335 & 661 & 9\\ 
+\hline
+Shuffled only hom. & 1071 & 875 & 309 & 757 & 27\\ 
+\hline
+Original 1 only SNV & 2079 & 1571 & 973 & 977 & 27\\ 
+\hline
+Shuffled only SNV & 1977 & 1466 & 937 & 1134 & 44\\ 
+\hline
+\hline
+{\bf Platypus} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 4642336 & 2470826 & 235690 & 4355365 & 156396\\ 
+\hline
+Shuffled total & 4642300 & 2470844 & 235640 & 4355392 & 156401\\ 
+\hline
+Original 1 only & 6200 & 4741 & 2255 & 4004 & 123\\ 
+\hline
+Shuffled only & 6164 & 4759 & 2205 & 4031 & 128\\ 
+\hline
+Original 1 only (in dbSNP 138) & 4620 &  &  &  & \\ 
+\hline
+Shuffled only (in dbSNP 138) & 4675 &  &  &  & \\ 
+\hline
+Original 1 only hom. & 1653 & 1350 & 463 & 1249 & 28\\ 
+\hline
+Shuffled only hom. & 1698 & 1391 & 488 & 1368 & 35\\ 
+\hline
+Original 1 only SNV & 5113 & 3895 & 1932 & 3212 & 113\\ 
+\hline
+Shuffled only SNV & 5164 & 3967 & 1940 & 3342 & 115\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-platypus}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf Deletions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 1325 & 1052 & 495 & 460 & 17\\ 
+\hline
+Shuffled total & 1323 & 1054 & 491 & 453 & 15\\ 
+\hline
+Original 1 only & 37 & 32 & 21 & 7 & 2\\ 
+\hline
+Shuffled only & 35 & 34 & 17 & 0 & 0\\ 
+\hline
+Original 1 only hom. & 3 & 2 & 1 & 2 & 0\\ 
+\hline
+Shuffled only hom. & 4 & 3 & 2 & 0 & 0\\ 
+\hline
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf Deletions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 13517 & 9237 & 3372 & 7999 & 489\\ 
+\hline
+Shuffled total & 13505 & 9229 & 3365 & 7997 & 490\\ 
+\hline
+Original 1 only & 831 & 698 & 273 & 158 & 1\\ 
+\hline
+Shuffled only & 819 & 690 & 266 & 156 & 2\\ 
+\hline
+Original 1 only hom. & 28 & 22 & 12 & 15 & 0\\ 
+\hline
+Shuffled only hom. & 25 & 19 & 6 & 12 & 0\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-delly-deletions}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf Tandem dups.} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 767 & 677 & 390 & 242 & 2\\ 
+\hline
+Shuffled total & 773 & 681 & 392 & 246 & 2\\ 
+\hline
+Original 1 only & 25 & 24 & 15 & 2 & 0\\ 
+\hline
+Shuffled only & 31 & 28 & 17 & 6 & 0\\ 
+\hline
+Original 1 only hom. & 3 & 3 & 1 & 0 & 0\\ 
+\hline
+Shuffled only hom. & 0 & 0 & 0 & 0 & 0\\ 
+\hline
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf Tandem dups.} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 6389 & 5157 & 2423 & 2036 & 114\\ 
+\hline
+Shuffled total & 6457 & 5229 & 2446 & 2047 & 113\\ 
+\hline
+Original 1 only & 384 & 334 & 152 & 61 & 1\\ 
+\hline
+Shuffled only & 452 & 406 & 175 & 72 & 0\\ 
+\hline
+Original 1 only hom. & 13 & 10 & 3 & 3 & 0\\ 
+\hline
+Shuffled only hom. & 9 & 9 & 4 & 1 & 0\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-delly-dups}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf Inversions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 610 & 545 & 202 & 63 & 2\\ 
+\hline
+Shuffled total & 621 & 557 & 209 & 64 & 2\\ 
+\hline
+Original 1 only & 30 & 29 & 14 & 1 & 0\\ 
+\hline
+Shuffled only & 41 & 41 & 21 & 2 & 0\\ 
+\hline
+Original 1 only hom. & 5 & 5 & 3 & 0 & 0\\ 
+\hline
+Shuffled only hom. & 1 & 1 & 1 & 0 & 0\\ 
+\hline
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf Inversions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 7242 & 5915 & 2757 & 1968 & 185\\ 
+\hline
+Shuffled total & 7317 & 5977 & 2804 & 1990 & 183\\ 
+\hline
+Original 1 only & 465 & 414 & 148 & 25 & 2\\ 
+\hline
+Shuffled only & 540 & 476 & 195 & 47 & 0\\ 
+\hline
+Original 1 only hom. & 14 & 13 & 5 & 0 & 0\\ 
+\hline
+Shuffled only hom. & 30 & 29 & 8 & 0 & 0\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-delly-inv}
+\end{table}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|c||c|c|c|c|}
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-6}
+{\bf Translocations} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 4732 & 4449 & 1533 & 300 & 13\\ 
+\hline
+Shuffled total & 4722 & 4443 & 1519 & 303 & 13\\ 
+\hline
+Original 1 only & 165 & 153 & 62 & 1 & 0\\ 
+\hline
+Shuffled only & 155 & 147 & 48 & 4 & 0\\ 
+\hline
+Original 1 only hom. & 9 & 9 & 2 & 0 & 0\\ 
+\hline
+Shuffled only hom. & 17 & 17 & 4 & 0 & 0\\ 
+\hline
+\hline
+{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-6}
+{\bf Translocations} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
+\hline
+Original 1 total & 59362 & 45595 & 18445 & 12175 & 582\\ 
+\hline
+Shuffled total & 60337 & 46358 & 18684 & 12223 & 577\\ 
+\hline
+Original 1 only & 3126 & 2407 & 1021 & 229 & 13\\ 
+\hline
+Shuffled only & 4101 & 3170 & 1260 & 277 & 8\\ 
+\hline
+Original 1 only hom. & 105 & 75 & 41 & 6 & 0\\ 
+\hline
+Shuffled only hom. & 107 & 74 & 27 & 8 & 0\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{ .. }
+\label{tab:orig-vs-shuf-delly-trans}
 \end{table}
 
 \begin{table}[htb]
@@ -62,9 +536,9 @@ Original 1 only & 10646 & 8396 & 1689 & 8681 & 151\\
 \hline 
 Original 2 only & 21510 & 16977 & 7860 & 14613 & 370\\
 \hline 
-Original 1 only dbsnp & 10599 &  &  &  & \\
+Original 1 only (in dbSNP 138) & 10599 &  &  &  & \\
 \hline 
-Original 2 only dbsnp & 20374 &  &  &  & \\
+Original 2 only (in dbSNP 138) & 20374 &  &  &  & \\
 \hline 
 Original 1 only hom. & 10564 & 8343 & 1664 & 8631 & 151\\
 \hline 
@@ -88,9 +562,9 @@ Original 1 only & 44293 & 34901 & 4629 & 39235 & 715\\
 \hline 
 Original 2 only & 107873 & 92502 & 18308 & 89916 & 1735\\
 \hline 
-Original 1 only dbsnp & 41782 &  &  &  & \\
+Original 1 only (in dbSNP 138) & 41782 &  &  &  & \\
 \hline 
-Original 2 only dbsnp & 102255 &  &  &  & \\
+Original 2 only (in dbSNP 138) & 102255 &  &  &  & \\
 \hline 
 Original 1 only hom. & 10442 & 8455 & 1293 & 9351 & 154\\
 \hline 
@@ -123,9 +597,9 @@ Original 1 only & 20107 & 10412 & 958 & 17979 & 447\\
 \hline
 Original 2 only & 19508 & 9947 & 881 & 17541 & 435\\ 
 \hline
-Original 1 only dbsnp & 19618 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 19618 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 19085 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 19085 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 19260 & 9599 & 527 & 17965 & 447\\ 
 \hline
@@ -149,9 +623,9 @@ Original 1 only & 39112 & 30338 & 9325 & 29770 & 902\\
 \hline
 Original 2 only & 279655 & 232902 & 56661 & 225247 & 4650\\ 
 \hline
-Original 1 only dbsnp & 38378 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 38378 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 266185 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 266185 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 31498 & 24884 & 8070 & 22873 & 718\\ 
 \hline
@@ -184,9 +658,9 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only dbsnp & 0 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 0 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
@@ -210,9 +684,9 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only dbsnp & 0 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 0 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
@@ -245,9 +719,9 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only dbsnp & 0 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 0 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
@@ -271,9 +745,9 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only dbsnp & 0 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 0 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
@@ -306,9 +780,9 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only dbsnp & 0 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 0 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
@@ -332,9 +806,9 @@ Original 1 only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only dbsnp & 0 &  &  &  & \\ 
+Original 1 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
-Original 2 only dbsnp & 0 &  &  &  & \\ 
+Original 2 only (in dbSNP 138) & 0 &  &  &  & \\ 
 \hline
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
@@ -371,10 +845,6 @@ Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
 \hline
@@ -392,10 +862,6 @@ Original 2 only & 0 & 0 & 0 & 0 & 0\\
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -424,10 +890,6 @@ Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
 \hline
@@ -445,10 +907,6 @@ Original 2 only & 0 & 0 & 0 & 0 & 0\\
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -477,10 +935,6 @@ Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
 \hline
@@ -498,10 +952,6 @@ Original 2 only & 0 & 0 & 0 & 0 & 0\\
 Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -530,10 +980,6 @@ Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
 \hline
@@ -552,533 +998,8 @@ Original 1 only hom. & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
 \end{tabular}
 \end{center}
 \caption{ .. }
 \label{tab:orig-vs-orig2-delly-trans}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 2279678 & 1160574 & 83944 & 2098633 & 53726\\ 
-\hline
-Original 2 total & 2294808 & 1172610 & 91573 & 2107371 & 53954\\ 
-\hline
-Original 1 only & 10898 & 8577 & 1917 & 9205 & 253\\ 
-\hline
-Original 2 only & 26028 & 20613 & 9546 & 18381 & 572\\ 
-\hline
-Original 1 only dbsnp & 10802 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 24536 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 10648 & 8401 & 1842 & 9075 & 252\\ 
-\hline
-Original 2 only hom. & 25404 & 20236 & 9220 & 18042 & 561\\ 
-\hline
-Original 1 only SNV & 10775 & 8474 & 1877 & 9123 & 252\\ 
-\hline
-Original 2 only SNV & 25914 & 20516 & 9519 & 18328 & 572\\ 
-\hline
-\hline
-{\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 4654338 & 2423277 & 149867 & 4442738 & 158971\\ 
-\hline
-Original 2 total & 4625648 & 2399863 & 148480 & 4416242 & 158379\\ 
-\hline
-Original 1 only & 54051 & 43084 & 6020 & 48034 & 1249\\ 
-\hline
-Original 2 only & 25361 & 19670 & 4633 & 21538 & 657\\ 
-\hline
-Original 1 only dbsnp & 51002 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 23224 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 8228 & 6287 & 1546 & 7122 & 275\\ 
-\hline
-Original 2 only hom. & 3318 & 2725 & 468 & 2831 & 47\\ 
-\hline
-Original 1 only SNV & 53166 & 42338 & 5734 & 47515 & 1241\\ 
-\hline
-Original 2 only SNV & 24535 & 18964 & 4385 & 21049 & 643\\ 
-\hline 
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-hc}
-\end{table}
-
-
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 2470690 & 1335457 & 201057 & 2163192 & 56994\\ 
-\hline
-Original 2 total & 2174342 & 1096859 & 84130 & 2000691 & 53044\\ 
-\hline
-Original 1 only & 315174 & 247777 & 117368 & 189169 & 6103\\ 
-\hline
-Original 2 only & 18826 & 9179 & 441 & 18173 & 567\\ 
-\hline
-Original 1 only dbsnp & 265445 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 18774 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 111373 & 94551 & 25313 & 85263 & 1945\\ 
-\hline
-Original 2 only hom. & 18664 & 9083 & 422 & 18042 & 559\\ 
-\hline
-Original 1 only SNV & 314767 & 247454 & 117161 & 189091 & 6099\\ 
-\hline
-Original 2 only SNV & 18782 & 9138 & 426 & 18160 & 565\\ 
-\hline
-\hline
-{\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 4489253 & 2283267 & 132449 & 4294650 & 157013\\ 
-\hline
-Original 2 total & 4723109 & 2480235 & 173500 & 4494733 & 161795\\ 
-\hline
-Original 1 only & 38635 & 30414 & 9669 & 29858 & 1237\\ 
-\hline
-Original 2 only & 272491 & 227382 & 50720 & 229941 & 6019\\ 
-\hline
-Original 1 only dbsnp & 38091 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 262671 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 35484 & 28211 & 8682 & 27160 & 1080\\ 
-\hline
-Original 2 only hom. & 14214 & 11311 & 2257 & 11989 & 317\\ 
-\hline
-Original 1 only SNV & 37995 & 29865 & 9513 & 29412 & 1231\\ 
-\hline
-Original 2 only SNV & 271821 & 226836 & 50569 & 229411 & 6017\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-ug}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 2400545 & 1336125 & 172214 & 2125570 & 54445\\ 
-\hline
-Original 2 total & 2400595 & 1336148 & 172214 & 2125675 & 54447\\ 
-\hline
-Original 1 only & 992 & 789 & 400 & 341 & 11\\ 
-\hline
-Original 2 only & 1042 & 812 & 400 & 446 & 13\\ 
-\hline
-Original 1 only dbsnp & 549 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 566 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 265 & 224 & 93 & 125 & 0\\ 
-\hline
-Original 2 only hom. & 263 & 215 & 81 & 163 & 6\\ 
-\hline
-Original 1 only SNV & 848 & 655 & 361 & 281 & 9\\ 
-\hline
-Original 2 only SNV & 899 & 687 & 352 & 350 & 11\\ 
-\hline
-\hline
-{\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 5174644 & 2906071 & 380096 & 4735347 & 170214\\ 
-\hline
-Original 2 total & 5189285 & 2917114 & 382898 & 4748004 & 170638\\ 
-\hline
-Original 1 only & 4715 & 3878 & 1394 & 2711 & 61\\ 
-\hline
-Original 2 only & 19356 & 14921 & 4196 & 15368 & 485\\ 
-\hline
-Original 1 only dbsnp & 1570 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 9149 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 2128 & 1802 & 404 & 1697 & 33\\ 
-\hline
-Original 2 only hom. & 902 & 716 & 288 & 533 & 6\\ 
-\hline
-Original 1 only SNV & 3415 & 2712 & 1231 & 1618 & 45\\ 
-\hline
-Original 2 only SNV & 12633 & 9292 & 3632 & 9190 & 316\\  
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-freebayes}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 2277691 & 1269164 & 176433 & 2055105 & 69037\\ 
-\hline
-Original 2 total & 2277674 & 1269121 & 176401 & 2055168 & 69042\\ 
-\hline
-Original 1 only & 2683 & 2092 & 1361 & 878 & 56\\ 
-\hline
-Original 2 only & 2666 & 2049 & 1329 & 941 & 61\\ 
-\hline
-Original 1 only dbsnp & 1822 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 1845 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 1012 & 824 & 453 & 462 & 32\\ 
-\hline
-Original 2 only hom. & 989 & 765 & 450 & 480 & 24\\ 
-\hline
-Original 1 only SNV & 2492 & 1919 & 1286 & 830 & 55\\ 
-\hline
-Original 2 only SNV & 2488 & 1886 & 1255 & 865 & 60\\ 
-\hline
-\hline
-{\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 5355604 & 3055463 & 417874 & 4862553 & 175803\\ 
-\hline
-Original 2 total & 5355053 & 3055015 & 417735 & 4862421 & 175790\\ 
-\hline
-Original 1 only & 9838 & 7688 & 4494 & 4274 & 198\\ 
-\hline
-Original 2 only & 9287 & 7240 & 4355 & 4142 & 185\\ 
-\hline
-Original 1 only dbsnp & 5690 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 5553 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 2179 & 1813 & 938 & 1056 & 34\\ 
-\hline
-Original 2 only hom. & 2102 & 1716 & 908 & 1050 & 44\\ 
-\hline
-Original 1 only SNV & 8597 & 6572 & 4148 & 3458 & 182\\ 
-\hline
-Original 2 only SNV & 8074 & 6161 & 3993 & 3233 & 148\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-samtools}
-\end{table}
-
-\clearpage
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf Platypus} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 2022412 & 1073056 & 115590 & 1843781 & 47144\\ 
-\hline
-Original 2 total & 2022294 & 1072940 & 115538 & 1843952 & 47166\\ 
-\hline
-Original 1 only & 2342 & 1778 & 1097 & 1119 & 27\\ 
-\hline
-Original 2 only & 2224 & 1662 & 1045 & 1290 & 49\\ 
-\hline
-Original 1 only dbsnp & 1776 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 1723 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 1107 & 935 & 335 & 661 & 9\\ 
-\hline
-Original 2 only hom. & 1071 & 875 & 309 & 757 & 27\\ 
-\hline
-Original 1 only SNV & 2079 & 1571 & 973 & 977 & 27\\ 
-\hline
-Original 2 only SNV & 1977 & 1466 & 937 & 1134 & 44\\ 
-\hline
-\hline
-{\bf Platypus} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 4642336 & 2470826 & 235690 & 4355365 & 156396\\ 
-\hline
-Original 2 total & 4642300 & 2470844 & 235640 & 4355392 & 156401\\ 
-\hline
-Original 1 only & 6200 & 4741 & 2255 & 4004 & 123\\ 
-\hline
-Original 2 only & 6164 & 4759 & 2205 & 4031 & 128\\ 
-\hline
-Original 1 only dbsnp & 4620 &  &  &  & \\ 
-\hline
-Original 2 only dbsnp & 4675 &  &  &  & \\ 
-\hline
-Original 1 only hom. & 1653 & 1350 & 463 & 1249 & 28\\ 
-\hline
-Original 2 only hom. & 1698 & 1391 & 488 & 1368 & 35\\ 
-\hline
-Original 1 only SNV & 5113 & 3895 & 1932 & 3212 & 113\\ 
-\hline
-Original 2 only SNV & 5164 & 3967 & 1940 & 3342 & 115\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-platypus}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf Deletions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 1325 & 1052 & 495 & 460 & 17\\ 
-\hline
-Original 2 total & 1323 & 1054 & 491 & 453 & 15\\ 
-\hline
-Original 1 only & 37 & 32 & 21 & 7 & 2\\ 
-\hline
-Original 2 only & 35 & 34 & 17 & 0 & 0\\ 
-\hline
-Original 1 only hom. & 3 & 2 & 1 & 2 & 0\\ 
-\hline
-Original 2 only hom. & 4 & 3 & 2 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf Deletions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 13517 & 9237 & 3372 & 7999 & 489\\ 
-\hline
-Original 2 total & 13505 & 9229 & 3365 & 7997 & 490\\ 
-\hline
-Original 1 only & 831 & 698 & 273 & 158 & 1\\ 
-\hline
-Original 2 only & 819 & 690 & 266 & 156 & 2\\ 
-\hline
-Original 1 only hom. & 28 & 22 & 12 & 15 & 0\\ 
-\hline
-Original 2 only hom. & 25 & 19 & 6 & 12 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-delly-deletions}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf Tandem dups.} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 767 & 677 & 390 & 242 & 2\\ 
-\hline
-Original 2 total & 773 & 681 & 392 & 246 & 2\\ 
-\hline
-Original 1 only & 25 & 24 & 15 & 2 & 0\\ 
-\hline
-Original 2 only & 31 & 28 & 17 & 6 & 0\\ 
-\hline
-Original 1 only hom. & 3 & 3 & 1 & 0 & 0\\ 
-\hline
-Original 2 only hom. & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf Tandem dups.} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 6389 & 5157 & 2423 & 2036 & 114\\ 
-\hline
-Original 2 total & 6457 & 5229 & 2446 & 2047 & 113\\ 
-\hline
-Original 1 only & 384 & 334 & 152 & 61 & 1\\ 
-\hline
-Original 2 only & 452 & 406 & 175 & 72 & 0\\ 
-\hline
-Original 1 only hom. & 13 & 10 & 3 & 3 & 0\\ 
-\hline
-Original 2 only hom. & 9 & 9 & 4 & 1 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-delly-dups}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf Inversions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 610 & 545 & 202 & 63 & 2\\ 
-\hline
-Original 2 total & 621 & 557 & 209 & 64 & 2\\ 
-\hline
-Original 1 only & 30 & 29 & 14 & 1 & 0\\ 
-\hline
-Original 2 only & 41 & 41 & 21 & 2 & 0\\ 
-\hline
-Original 1 only hom. & 5 & 5 & 3 & 0 & 0\\ 
-\hline
-Original 2 only hom. & 1 & 1 & 1 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf Inversions} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 7242 & 5915 & 2757 & 1968 & 185\\ 
-\hline
-Original 2 total & 7317 & 5977 & 2804 & 1990 & 183\\ 
-\hline
-Original 1 only & 465 & 414 & 148 & 25 & 2\\ 
-\hline
-Original 2 only & 540 & 476 & 195 & 47 & 0\\ 
-\hline
-Original 1 only hom. & 14 & 13 & 5 & 0 & 0\\ 
-\hline
-Original 2 only hom. & 30 & 29 & 8 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-delly-inv}
-\end{table}
-
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|c||c|c|c|c|}
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG00096} \\
-\hline
-\cline{2-6}
-{\bf Translocations} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 4732 & 4449 & 1533 & 300 & 13\\ 
-\hline
-Original 2 total & 4722 & 4443 & 1519 & 303 & 13\\ 
-\hline
-Original 1 only & 165 & 153 & 62 & 1 & 0\\ 
-\hline
-Original 2 only & 155 & 147 & 48 & 4 & 0\\ 
-\hline
-Original 1 only hom. & 9 & 9 & 2 & 0 & 0\\ 
-\hline
-Original 2 only hom. & 17 & 17 & 4 & 0 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\hline
-{\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
-\hline
-\cline{2-6}
-{\bf Translocations} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
-\hline
-Original 1 total & 59362 & 45595 & 18445 & 12175 & 582\\ 
-\hline
-Original 2 total & 60337 & 46358 & 18684 & 12223 & 577\\ 
-\hline
-Original 1 only & 3126 & 2407 & 1021 & 229 & 13\\ 
-\hline
-Original 2 only & 4101 & 3170 & 1260 & 277 & 8\\ 
-\hline
-Original 1 only hom. & 105 & 75 & 41 & 6 & 0\\ 
-\hline
-Original 2 only hom. & 107 & 74 & 27 & 8 & 0\\ 
-\hline
-Original 1 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-Original 2 only SNV & 0 & 0 & 0 & 0 & 0\\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{ .. }
-\label{tab:orig-vs-shuf-delly-trans}
 \end{table}
