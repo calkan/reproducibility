@@ -13,6 +13,35 @@
 \pagenumbering{Roman} 
 
 \begin{table}[htb]
+\caption{...}
+\begin{center}
+\begin{tabular}{|l|c|c|c||c|c|c|}
+\hline
+{\bf Tool } & \multicolumn{3}{c||}{\bf Original} & \multicolumn{3}{c|}
+     {\bf Shuffled} \\
+\hline{\bf } & {\it Total} & {\it Private} & {\it Private (\%)}
+           & {\it Total} & {\it Private} & {\it Private (\%)} \\
+\hline
+mrFAST & 904,952 & 0 & - & 904,952 & 0 & - \\
+Bowtie & 929,393 & 0 & - & 929,393 & 0 & - \\
+Razers3 & 650,086 & 5,949 & 0.9 & 650,088 & 5,951 & 0.9 \\
+BWA-MEM & 897,548 & 29,577 & 3.3 & 897,534 & 29,563 & 3.3 \\
+\hline
+\end{tabular}
+\end{center}
+{\footnotesize 
+Command lines: \\
+mrfast --search human\_g1k\_v37.fasta --seq1 file\_1.fq --seq2 file\_2.fq -o mrfast.sam --min 0 --max 1000 --pe \\
+bowtie2 -x human\_g1k\_v37 -1 file\_1.fq -2 file\_2.fq -S bowtie.sam \\
+razers3  -i 96 -tc 12 -m 1 -o razers3.sam human\_g1k\_v37.fasta         file\_1.fq file\_2.fq \\
+bwa mem -t 16 human\_g1k\_v37.fasta file\_1.fq file\_2.fq $>$ bwa.sam \\
+We further filtered Bowtie and BWA-MEM mappings and removed both hard and soft-clipped reads, and mappings with edit distance $>$4.
+}
+\label{supptab:small-scale}
+\end{table}
+
+\begin{table}[htb]
+\caption{Summary of read mapping of the HG00096 genome in both original and shuffled order using BWA-MEM.}
 \begin{center}
 \begin{tabular}{|l|c|c|c|c|c|}
 \hline
@@ -25,12 +54,13 @@ Shuffled & 146,347,372 & 4,127,554 & 2.82 & 3,877,495 & 72,044\\
 \hline
 \end{tabular}
 \end{center}
-\caption{Summary of read mapping of the HG00096 genome in both original and shuffled order using BWA-MEM. Map locations that are specific to one order of reads are listed as {\it Private}. We also list the number of private mappings
+{\footnotesize Map locations that are specific to one order of reads are listed as {\it Private}. We also list the number of private mappings
 with $0$ and $\geq 30$ mapping quality.}
 \label{supptab:bwa-map}
 \end{table}
 
 \begin{table}[htb]
+\caption{Summary of HaplotypeCaller call sets. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -87,7 +117,7 @@ Shuffled only SNV & 24535 & 18964 & 4385 & 21049 & 643\\
 \hline 
 \end{tabular}
 \end{center}
-\caption{ .. }
+{\footnotesize We list the total number of SNVs and indels characterized by HaplotypeCaller, and further classify total and private calls that map to common repeats, segmental duplications, gene models, and coding exons.}
 \label{tab:orig-vs-shuf-hc}
 \end{table}
 
