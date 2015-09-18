@@ -1,6 +1,7 @@
 BAMDIR=$1
 OUTDIR=$2 #/home/cfirtina/SAMTOOLS/VCF
-QUALTHRESHOLD=$3
+NUMOFTHREADS=$3
+QUALTHRESHOLD=$4
 REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 
 samWithThreshold () {
@@ -20,9 +21,22 @@ samWoThreshold () {
 	gzip -d $OUTDIR/"$(echo $fname | sed s/".bam"/".vcf.gz"/)"
 }
 
-if [ "$#" -gt 2 ]; then
-	for i in `ls $BAMDIR/*bam`; do samWithThreshold "$i" & done
+countThreads=0
+if [ "$#" -gt 3 ]; then
+	for i in `ls $BAMDIR/*bam`; do samWithThreshold "$i" &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	done;
 else
-	for i in `ls $BAMDIR/*bam`; do samWoThreshold "$i" & done
+	for i in `ls $BAMDIR/*bam`; do samWoThreshold "$i" &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	done;
 fi
 wait
