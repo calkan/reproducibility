@@ -1,7 +1,8 @@
-export DELLYBIN=/mnt/compgen/inhouse/bin/delly
+DELLYBIN=/mnt/compgen/inhouse/bin/delly
+REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 BAMDIR=$1
 OUTDIR=$2 #/home/cfirtina/DELLY/VCF
-REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
+
 
 delyTra () {
 	local i=$1
@@ -41,6 +42,29 @@ delyDel () {
 
 for i in `ls $BAMDIR/*.bam`; do
 	fname=`basename $i`
-	delyTra "$i" & delyInv "$i" & delyDup "$i" & delyDel "$i" & done
+	delyTra "$i"  &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	delyInv "$i"  &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	delyDup "$i"  &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	delyDel "$i"  &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
 done;
 wait

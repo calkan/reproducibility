@@ -11,6 +11,7 @@ GENESFILENAME="b37_genes.bed"
 EXONSFILENAME="b37_exons.bed"
 DUPSFILENAME="build37.dups.bed"
 REPSFILENAME="build37.reps.bed"
+SNPFILE="/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/dbsnp_138.b37.vcf"
 
 #qual filter
 if [ "$#" -gt 5 ]; then
@@ -63,7 +64,7 @@ done;
 
 SNPDIR="$ORIGDIR/dbsnps"
 mkdir $SNPDIR
-for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -f 1.0 -r -a $i -b /mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/dbsnp_138.b37.vcf | uniq -w 50 > "$SNPDIR/$fname.dbsnp" &
+for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -header -f 1.0 -r -a $i -b $SNPFILE | uniq -w 50 > "$SNPDIR/$fname.dbsnp" &
 countThreads=$((countThreads+1))
 if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
         wait
@@ -117,6 +118,7 @@ if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
 fi
 done;
 wait
+
 countThreads=0
 #create diffs
 for j in $ORIGDIR $HOMDIR $HETDIR $SNVDIR $INDELDIR $SNPDIR; do
@@ -141,7 +143,7 @@ wait
 countThreads=0
 #create genes, exons, reps, dups intersection vcfs
 for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$DESTDIR/$j";
-	for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -a $i -b "$BEDSOURCEDIR/$j" > "$DESTDIR/$j/$fname.$j" &
+	for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; intersectBed -header -a $i -b "$BEDSOURCEDIR/$j" > "$DESTDIR/$j/$fname.$j" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
 	        wait
@@ -191,11 +193,18 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 	fi
 	done;
 
-	# INTRSCTSNPDIR="$CURCALLSETDIR/dbsnps"
-	# mkdir $INTRSCTSNPDIR
-	# for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; intersectBed -f 1.0 -r -a $i -b /mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/dbsnp_138.b37.vcf | uniq -w 50 > "$INTRSCTSNPDIR/$fname.dbsnp" & done;
+	INTRSCTSNPDIR="$CURCALLSETDIR/dbsnps"
+	mkdir $INTRSCTSNPDIR
+	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; intersectBed -header -f 1.0 -r -a $i -b $SNPFILE | uniq -w 50 > "$INTRSCTSNPDIR/$fname.dbsnp"  &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	done;
 	wait
 	countThreads=0
+
 	for i in `ls $CURCALLSETDIR/*.$j`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$CURCALLSETDIR/$fname.tsv" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
@@ -203,6 +212,7 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 	        countThreads=0
 	fi
 	done;
+
 	for i in `ls $INTRSCTHOMDIR/*.$j.hom`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTHOMDIR/$fname.tsv" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
@@ -210,6 +220,7 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 	        countThreads=0
 	fi
 	done;
+
 	for i in `ls $INTRSCTHETDIR/*.$j.het`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTHETDIR/$fname.tsv" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
@@ -217,6 +228,7 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 	        countThreads=0
 	fi
 	done;
+
 	for i in `ls $INTRSCTSNVDIR/*.$j.snv`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTSNVDIR/$fname.tsv" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
@@ -224,6 +236,7 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 	        countThreads=0
 	fi
 	done;
+
 	for i in `ls $INTRSCTINDELDIR/*.$j.indel`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTINDELDIR/$fname.tsv" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
@@ -231,11 +244,19 @@ for j in $GENESFILENAME $EXONSFILENAME $DUPSFILENAME $REPSFILENAME; do mkdir "$D
 	        countThreads=0
 	fi
 	done;
-	# for i in `ls $INTRSCTSNPDIR/*.$j.dbsnp`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTSNPDIR/$fname.tsv" & done;
+
+	for i in `ls $INTRSCTSNPDIR/*.$j.dbsnp`; do fname=`basename $i`; grep -v \# $i | cut -f 1,2,3,10 | sed s/":"/"\t"/ | cut -f 1,2,3,4 | sort -k 1,1 -k 2,2n > "$INTRSCTSNPDIR/$fname.tsv" &
+	countThreads=$((countThreads+1))
+	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
+	        wait
+	        countThreads=0
+	fi
+	done;
+
 	wait
 	countThreads=0
 	#create diffs
-	for k in $CURCALLSETDIR $INTRSCTHOMDIR $INTRSCTHETDIR $INTRSCTSNVDIR $INTRSCTINDELDIR; do
+	for k in $CURCALLSETDIR $INTRSCTHOMDIR $INTRSCTHETDIR $INTRSCTSNVDIR $INTRSCTINDELDIR $INTRSCTSNPDIR; do
 		mkdir "$k/diff"
 		for l in `ls $k/*.tsv`; do fname=`basename $l`;
 			if (echo "$fname" | grep -q ".$DIFFSECONDFILE.") then
