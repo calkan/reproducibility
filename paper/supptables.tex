@@ -311,8 +311,6 @@ and further classify total and private calls that map to common repeats, segment
 \label{supptab:orig-vs-shuf-samtools}
 \end{table}
 
-\clearpage
-
 \begin{table}[htb]
 \caption { Summary of Platypus call sets. }
 \begin{center}
@@ -375,6 +373,8 @@ Shuffled only (SNV) & 5,164 & 3,967 & 1,940 & 3,342 & 115 \\
 and further classify total and private calls that map to common repeats, segmental duplications, gene models, and coding exons.}
 \label{supptab:orig-vs-shuf-platypus}
 \end{table}
+
+\clearpage
 
 \begin{table}[htb]
 \caption{ Summary of DELLY call sets (deletions). }
@@ -981,6 +981,8 @@ and further classify total and private calls that map to common repeats, segment
 \label{supptab:orig-vs-orig2-platypus}
 \end{table}
 
+\clearpage
+
 \begin{table}[htb]
 \caption{ Summary of DELLY call sets using the same BAM file twice (deletions). }
 \begin{center}
@@ -1225,4 +1227,60 @@ Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\
 {\footnotesize We list the total number of (SV)s and indels characterized by LUMPY using same BAM file twice (Original$_1$ vs Original$_2$), 
 and further classify total and private calls that map to common repeats, segmental duplications, gene models, and coding exons.}
 \label{supptab:orig-vs-orig2-lumpy}
+\end{table}
+
+\begin{table}[htb]
+\caption{ ... }
+\begin{center}
+\begin{tabular}{|l||c|c|c|c|c|}
+\hline
+{\bf } & \multicolumn{2}{|c|}{Original$_1$} & \multicolumn{2}{|c|}{Original$_2$}\\
+\hline
+{\bf HaplotypeCaller} & {\it All} & {\it Private} & {\it All} & {\it Private} \\
+\hline
+HG00250 & 57,102 & 801 & 58,757 & 2,456 \\
+HG00251 & 58,216 & 810 & 59,888 & 2,482 \\
+HG00330 & 57,774 & 847 & 59,389 & 2,462 \\
+HG00731 & 52,623 & 719 & 54,605 & 2,701 \\
+HG00732 & 56,625 & 799 & 58,547 & 2,721 \\
+HG01075 & 81,556 & 1,219 & 83,102 & 2,765 \\
+HG01083 & 62,035 & 861 & 63,676 & 2,502 \\
+HG01133 & 55,079 & 670 & 56,736 & 2,327 \\
+HG01136 & 55,760 & 666 & 57,491 & 2,397 \\
+HG01140 & 59,226 & 732 & 60,772 & 2,278 \\
+HG01167 & 53,422 & 805 & 55,434 & 2,817 \\
+HG01176 & 84,434 & 1,252 & 86,091 & 2,909 \\
+\hline
+\end{tabular}
+\end{center}
+{\footnotesize ...}
+\label{supptab:orig-vs-orig2-multiple-hc}
+\end{table}
+
+\begin{table}[htb]
+\caption{ ... }
+\begin{center}
+\begin{tabular}{|l||c|c|c|c|c|}
+\hline
+{\bf } & \multicolumn{2}{|c|}{Original$_1$} & \multicolumn{2}{|c|}{Original$_2$}\\
+\hline
+{\bf UnifiedGenotyper} & {\it All} & {\it Private} & {\it All} & {\it Private} \\
+\hline
+HG00250 & 61,073 & 2,111 & 60,498 & 1,536 \\
+HG00251 & 62,031 & 1,994 & 61,473 & 1,436 \\
+HG00330 & 61,303 & 2,048 & 60,662 & 1,407 \\
+HG00731 & 54,987 & 2,260 & 54,184 & 1,457 \\
+HG00732 & 59,573 & 2,180 & 58,917 & 1,524 \\
+HG01075 & 87,838 & 2,146 & 87,679 & 1,987 \\
+HG01083 & 66,246 & 2,013 & 65,876 & 1,643 \\
+HG01133 & 57,713 & 2,060 & 56,924 & 1,271 \\
+HG01136 & 58,022 & 2,121 & 57,275 & 1,374 \\
+HG01140 & 62,026 & 2,025 & 61,373 & 1,372 \\
+HG01167 & 54,293 & 2,052 & 53,701 & 1,460 \\
+HG01176 & 90,791 & 2,345 & 90,370 & 1,924 \\
+\hline
+\end{tabular}
+\end{center}
+{\footnotesize ...}
+\label{supptab:orig-vs-orig2-multiple-ug}
 \end{table}
