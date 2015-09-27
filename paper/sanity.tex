@@ -192,7 +192,7 @@ We then repeated the same mapping, shuffling, and remapping strategy to the full
 would generate the same alignments before and after reshuffling based on the small scale test. We performed the standard BAM processing steps as described 
 in~\cite{VanderAuwera2013} (Methods) to obtain sorted, duplicate-removed, realigned, recalibrated, and indexed BAM files. We also investigated BWA-MEM's behavior of random placements in the
 HG00096 genome, and interestingly, although BWA-MEM reported zero mapping qualities for 
-most of the discrepant read mappings ($\sim$94\%), it also assigned high MAPQ values ($\geq$30) for a fraction of them ($\sim$1.75\%; Supplementary Table~\ref{supptab:bwa-map}). 
+most of the discrepant read mappings ($\sim$94\%), it also assigned high MAPQ values ($\geq$30) for a fraction of them  ($\sim$1.75\%; Supplementary Table~\ref{supptab:bwa-map}). However, a closer inspection of the high MAPQ discrepant mappings revealed that most were simply differentially marked as PCR duplicate.
 
 
 % main paper tables:
@@ -301,6 +301,7 @@ one would prefer full reproducibility.
 
 ... discrepancies maybe counted simply as false positives/negatives, but ....
 
+BWA-MEM marks with zero mapq; so the tools don't really filter them? What is GATK doing, diff calls with the same bams is just weird.
 
 \small
 \bibliographystyle{abbrv}
