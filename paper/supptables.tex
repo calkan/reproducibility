@@ -81,13 +81,13 @@ Original only (in dbSNP 138) & 10,802 & 8,495 & 1,892 & 4,224 & 132 \\
 \hline
 Shuffled only (in dbSNP 138) & 24,536 & 19,580 & 9,033 & 8,234 & 344 \\
 \hline
-Original only hom. & 10,648 & 8,401 & 1,842 & 9,075 & 252 \\
+Original only (homozygous) & 10,648 & 8,401 & 1,842 & 9,075 & 252 \\
 \hline
-Shuffled only hom. & 25,404 & 20,236 & 9,220 & 18,042 & 561 \\
+Shuffled only (homozygous) & 25,404 & 20,236 & 9,220 & 18,042 & 561 \\
 \hline
-Original only SNV & 10,775 & 8,474 & 1,877 & 9,123 & 252 \\
+Original only (SNV) & 10,775 & 8,474 & 1,877 & 9,123 & 252 \\
 \hline
-Shuffled only SNV & 25,914 & 20,516 & 9,519 & 18,328 & 572 \\ 
+Shuffled only (SNV) & 25,914 & 20,516 & 9,519 & 18,328 & 572 \\ 
 \hline
 \hline
 {\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -107,22 +107,23 @@ Original only (in dbSNP 138) & 51,002 & 40,733 & 5,490 & 20,943 & 628 \\
 \hline
 Shuffled only (in dbSNP 138) & 23,224 & 18,002 & 4,277 & 9,208 & 344 \\
 \hline
-Original only hom. & 8,228 & 6,287 & 1,546 & 7,122 & 275 \\
+Original only (homozygous) & 8,228 & 6,287 & 1,546 & 7,122 & 275 \\
 \hline
-Shuffled only hom. & 3,318 & 2,725 & 468 & 2,831 & 47 \\
+Shuffled only (homozygous) & 3,318 & 2,725 & 468 & 2,831 & 47 \\
 \hline
-Original only SNV & 53,166 & 42,338 & 5,734 & 47,515 & 1,241 \\
+Original only (SNV) & 53,166 & 42,338 & 5,734 & 47,515 & 1,241 \\
 \hline
-Shuffled only SNV & 24,535 & 18,964 & 4,385 & 21,049 & 643 \\ 
+Shuffled only (SNV) & 24,535 & 18,964 & 4,385 & 21,049 & 643 \\ 
 \hline
 \end{tabular}
 \end{center}
-{\footnotesize We list the total number of SNVs and indels characterized by HaplotypeCaller, and further classify total and private calls that map to common repeats, segmental duplications, gene models, and coding exons.}
+{\footnotesize We list the total number of (SNV)s and indels characterized by HaplotypeCaller using Original vs Shuffled order reads, 
+and further classify total and private calls that map to common repeats, segmental duplications, gene models, and coding exons.}
 \label{supptab:orig-vs-shuf-hc}
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of UnifiedGenotyper call sets. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -143,13 +144,13 @@ Original only (in dbSNP 138) & 265,445 & 210,294 & 105,250 & 83,544 & 3,503 \\
 \hline
 Shuffled only (in dbSNP 138) & 18,774 & 9,125 & 420 & 8,164 & 288 \\
 \hline
-Original only hom. & 111,373 & 94,551 & 25,313 & 85,263 & 1,945 \\
+Original only (homozygous) & 111,373 & 94,551 & 25,313 & 85,263 & 1,945 \\
 \hline
-Shuffled only hom. & 18,664 & 9,083 & 422 & 18,042 & 559 \\
+Shuffled only (homozygous) & 18,664 & 9,083 & 422 & 18,042 & 559 \\
 \hline
-Original only SNV & 314,767 & 247,454 & 117,161 & 189,091 & 6,099 \\
+Original only (SNV) & 314,767 & 247,454 & 117,161 & 189,091 & 6,099 \\
 \hline
-Shuffled only SNV & 18,782 & 9,138 & 426 & 18,160 & 565 \\ 
+Shuffled only (SNV) & 18,782 & 9,138 & 426 & 18,160 & 565 \\ 
 \hline
 \hline
 {\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -169,21 +170,23 @@ Original only (in dbSNP 138) & 38,091 & 29,935 & 9,523 & 13,742 & 690 \\
 \hline
 Shuffled only (in dbSNP 138) & 262,671 & 219,986 & 49,207 & 102,557 & 3,327 \\
 \hline
-Original only hom. & 35,484 & 28,211 & 8,682 & 27,160 & 1,080 \\
+Original only (homozygous) & 35,484 & 28,211 & 8,682 & 27,160 & 1,080 \\
 \hline
-Shuffled only hom. & 14,214 & 11,311 & 2,257 & 11,989 & 317 \\
+Shuffled only (homozygous) & 14,214 & 11,311 & 2,257 & 11,989 & 317 \\
 \hline
-Original only SNV & 37,995 & 29,865 & 9,513 & 29,412 & 1,231 \\
+Original only (SNV) & 37,995 & 29,865 & 9,513 & 29,412 & 1,231 \\
 \hline
-Shuffled only SNV & 271,821 & 226,836 & 50,569 & 229,411 & 6,017 \\ 
+Shuffled only (SNV) & 271,821 & 226,836 & 50,569 & 229,411 & 6,017 \\ 
 \hline
 \end{tabular}
 \end{center}
+{\footnotesize We list the total number of (SNV)s and indels characterized by UnifiedGenotyper using Original vs Shuffled order reads, 
+and further classify total and private calls that map to common repeats, segmental duplications, gene models, and coding exons.}
 \label{supptab:orig-vs-shuf-ug}
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of FreeBayes call sets. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -204,13 +207,13 @@ Original only (in dbSNP 138) & 549 & 394 & 270 & 113 & 8 \\
 \hline
 Shuffled only (in dbSNP 138) & 566 & 399 & 250 & 138 & 10 \\
 \hline
-Original only hom. & 265 & 224 & 93 & 125 & 0 \\
+Original only (homozygous) & 265 & 224 & 93 & 125 & 0 \\
 \hline
-Shuffled only hom. & 263 & 215 & 81 & 163 & 6 \\
+Shuffled only (homozygous) & 263 & 215 & 81 & 163 & 6 \\
 \hline
-Original only SNV & 848 & 655 & 361 & 281 & 9 \\
+Original only (SNV) & 848 & 655 & 361 & 281 & 9 \\
 \hline
-Shuffled only SNV & 899 & 687 & 352 & 350 & 11 \\ 
+Shuffled only (SNV) & 899 & 687 & 352 & 350 & 11 \\ 
 \hline
 \hline
 {\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -230,13 +233,13 @@ Original only (in dbSNP 138) & 1,570 & 1,154 & 707 & 379 & 20 \\
 \hline
 Shuffled only (in dbSNP 138) & 9,149 & 6,610 & 2,522 & 3,371 & 166 \\
 \hline
-Original only hom. & 2,128 & 1,802 & 404 & 1,697 & 33 \\
+Original only (homozygous) & 2,128 & 1,802 & 404 & 1,697 & 33 \\
 \hline
-Shuffled only hom. & 902 & 716 & 288 & 533 & 6 \\
+Shuffled only (homozygous) & 902 & 716 & 288 & 533 & 6 \\
 \hline
-Original only SNV & 3,415 & 2,712 & 1,231 & 1,618 & 45 \\
+Original only (SNV) & 3,415 & 2,712 & 1,231 & 1,618 & 45 \\
 \hline
-Shuffled only SNV & 12,633 & 9,292 & 3,632 & 9,190 & 316 \\  
+Shuffled only (SNV) & 12,633 & 9,292 & 3,632 & 9,190 & 316 \\  
 \hline
 \end{tabular}
 \end{center}
@@ -244,7 +247,7 @@ Shuffled only SNV & 12,633 & 9,292 & 3,632 & 9,190 & 316 \\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of SAMtools call sets. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -265,13 +268,13 @@ Original only (in dbSNP 138) & 1,822 & 1,364 & 1,113 & 378 & 26 \\
 \hline
 Shuffled only (in dbSNP 138) & 1,845 & 1,367 & 1,088 & 384 & 35 \\
 \hline
-Original only hom. & 1,012 & 824 & 453 & 462 & 32 \\
+Original only (homozygous) & 1,012 & 824 & 453 & 462 & 32 \\
 \hline
-Shuffled only hom. & 989 & 765 & 450 & 480 & 24 \\
+Shuffled only (homozygous) & 989 & 765 & 450 & 480 & 24 \\
 \hline
-Original only SNV & 2,492 & 1,919 & 1,286 & 830 & 55 \\
+Original only (SNV) & 2,492 & 1,919 & 1,286 & 830 & 55 \\
 \hline
-Shuffled only SNV & 2,488 & 1,886 & 1,255 & 865 & 60 \\ 
+Shuffled only (SNV) & 2,488 & 1,886 & 1,255 & 865 & 60 \\ 
 \hline
 \hline
 {\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -291,13 +294,13 @@ Original only (in dbSNP 138) & 5,690 & 4,356 & 3,219 & 1,193 & 89 \\
 \hline
 Shuffled only (in dbSNP 138) & 5,553 & 4,178 & 3,159 & 1,220 & 82 \\
 \hline
-Original only hom. & 2,179 & 1,813 & 938 & 1,056 & 34 \\
+Original only (homozygous) & 2,179 & 1,813 & 938 & 1,056 & 34 \\
 \hline
-Shuffled only hom. & 2,102 & 1,716 & 908 & 1,050 & 44 \\
+Shuffled only (homozygous) & 2,102 & 1,716 & 908 & 1,050 & 44 \\
 \hline
-Original only SNV & 8,597 & 6,572 & 4,148 & 3,458 & 182 \\
+Original only (SNV) & 8,597 & 6,572 & 4,148 & 3,458 & 182 \\
 \hline
-Shuffled only SNV & 8,074 & 6,161 & 3,993 & 3,233 & 148 \\ 
+Shuffled only (SNV) & 8,074 & 6,161 & 3,993 & 3,233 & 148 \\ 
 \hline
 \end{tabular}
 \end{center}
@@ -307,7 +310,7 @@ Shuffled only SNV & 8,074 & 6,161 & 3,993 & 3,233 & 148 \\
 \clearpage
 
 \begin{table}[htb]
-\caption{ .. }
+\caption { Summary of Platypus call sets. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -328,13 +331,13 @@ Original only (in dbSNP 138) & 1,776 & 1,351 & 864 & 507 & 18 \\
 \hline
 Shuffled only (in dbSNP 138) & 1,723 & 1,295 & 811 & 528 & 26 \\
 \hline
-Original only hom. & 1,107 & 935 & 335 & 661 & 9 \\
+Original only (homozygous) & 1,107 & 935 & 335 & 661 & 9 \\
 \hline
-Shuffled only hom. & 1,071 & 875 & 309 & 757 & 27 \\
+Shuffled only (homozygous) & 1,071 & 875 & 309 & 757 & 27 \\
 \hline
-Original only SNV & 2,079 & 1,571 & 973 & 977 & 27 \\
+Original only (SNV) & 2,079 & 1,571 & 973 & 977 & 27 \\
 \hline
-Shuffled only SNV & 1,977 & 1,466 & 937 & 1,134 & 44 \\ 
+Shuffled only (SNV) & 1,977 & 1,466 & 937 & 1,134 & 44 \\ 
 \hline
 \hline
 {\bf Platypus} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -354,13 +357,13 @@ Original only (in dbSNP 138) & 4,620 & 3,580 & 1,732 & 1,508 & 62 \\
 \hline
 Shuffled only (in dbSNP 138) & 4,675 & 3,590 & 1,745 & 1,550 & 68 \\
 \hline
-Original only hom. & 1,653 & 1,350 & 463 & 1,249 & 28 \\
+Original only (homozygous) & 1,653 & 1,350 & 463 & 1,249 & 28 \\
 \hline
-Shuffled only hom. & 1,698 & 1,391 & 488 & 1,368 & 35 \\
+Shuffled only (homozygous) & 1,698 & 1,391 & 488 & 1,368 & 35 \\
 \hline
-Original only SNV & 5,113 & 3,895 & 1,932 & 3,212 & 113 \\
+Original only (SNV) & 5,113 & 3,895 & 1,932 & 3,212 & 113 \\
 \hline
-Shuffled only SNV & 5,164 & 3,967 & 1,940 & 3,342 & 115 \\ 
+Shuffled only (SNV) & 5,164 & 3,967 & 1,940 & 3,342 & 115 \\ 
 \hline
 \end{tabular}
 \end{center}
@@ -368,7 +371,7 @@ Shuffled only SNV & 5,164 & 3,967 & 1,940 & 3,342 & 115 \\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets (deletions). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -385,9 +388,9 @@ Original only & 37 & 32 & 21 & 7 & 2\\
 \hline
 Shuffled only & 35 & 34 & 17 & 0 & 0\\ 
 \hline
-Original only hom. & 3 & 2 & 1 & 2 & 0\\ 
+Original only (homozygous) & 3 & 2 & 1 & 2 & 0\\ 
 \hline
-Shuffled only hom. & 4 & 3 & 2 & 0 & 0\\ 
+Shuffled only (homozygous) & 4 & 3 & 2 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -403,9 +406,9 @@ Original only & 831 & 698 & 273 & 158 & 1\\
 \hline
 Shuffled only & 819 & 690 & 266 & 156 & 2\\ 
 \hline
-Original only hom. & 28 & 22 & 12 & 15 & 0\\ 
+Original only (homozygous) & 28 & 22 & 12 & 15 & 0\\ 
 \hline
-Shuffled only hom. & 25 & 19 & 6 & 12 & 0\\ 
+Shuffled only (homozygous) & 25 & 19 & 6 & 12 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -413,7 +416,7 @@ Shuffled only hom. & 25 & 19 & 6 & 12 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets (tandem duplications). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -430,9 +433,9 @@ Original only & 25 & 24 & 15 & 2 & 0\\
 \hline
 Shuffled only & 31 & 28 & 17 & 6 & 0\\ 
 \hline
-Original only hom. & 3 & 3 & 1 & 0 & 0\\ 
+Original only (homozygous) & 3 & 3 & 1 & 0 & 0\\ 
 \hline
-Shuffled only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Shuffled only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -448,9 +451,9 @@ Original only & 384 & 334 & 152 & 61 & 1\\
 \hline
 Shuffled only & 452 & 406 & 175 & 72 & 0\\ 
 \hline
-Original only hom. & 13 & 10 & 3 & 3 & 0\\ 
+Original only (homozygous) & 13 & 10 & 3 & 3 & 0\\ 
 \hline
-Shuffled only hom. & 9 & 9 & 4 & 1 & 0\\ 
+Shuffled only (homozygous) & 9 & 9 & 4 & 1 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -458,7 +461,7 @@ Shuffled only hom. & 9 & 9 & 4 & 1 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets (inversions). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -475,9 +478,9 @@ Original only & 30 & 29 & 14 & 1 & 0\\
 \hline
 Shuffled only & 41 & 41 & 21 & 2 & 0\\ 
 \hline
-Original only hom. & 5 & 5 & 3 & 0 & 0\\ 
+Original only (homozygous) & 5 & 5 & 3 & 0 & 0\\ 
 \hline
-Shuffled only hom. & 1 & 1 & 1 & 0 & 0\\ 
+Shuffled only (homozygous) & 1 & 1 & 1 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -493,9 +496,9 @@ Original only & 465 & 414 & 148 & 25 & 2\\
 \hline
 Shuffled only & 540 & 476 & 195 & 47 & 0\\ 
 \hline
-Original only hom. & 14 & 13 & 5 & 0 & 0\\ 
+Original only (homozygous) & 14 & 13 & 5 & 0 & 0\\ 
 \hline
-Shuffled only hom. & 30 & 29 & 8 & 0 & 0\\ 
+Shuffled only (homozygous) & 30 & 29 & 8 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -503,7 +506,7 @@ Shuffled only hom. & 30 & 29 & 8 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets (translocations). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -520,9 +523,9 @@ Original only & 165 & 153 & 62 & 1 & 0\\
 \hline
 Shuffled only & 155 & 147 & 48 & 4 & 0\\ 
 \hline
-Original only hom. & 9 & 9 & 2 & 0 & 0\\ 
+Original only (homozygous) & 9 & 9 & 2 & 0 & 0\\ 
 \hline
-Shuffled only hom. & 17 & 17 & 4 & 0 & 0\\ 
+Shuffled only (homozygous) & 17 & 17 & 4 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -538,9 +541,9 @@ Original only & 3,126 & 2,407 & 1,021 & 229 & 13\\
 \hline
 Shuffled only & 4,101 & 3,170 & 1,260 & 277 & 8\\ 
 \hline
-Original only hom. & 105 & 75 & 41 & 6 & 0\\ 
+Original only (homozygous) & 105 & 75 & 41 & 6 & 0\\ 
 \hline
-Shuffled only hom. & 107 & 74 & 27 & 8 & 0\\ 
+Shuffled only (homozygous) & 107 & 74 & 27 & 8 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -548,11 +551,11 @@ Shuffled only hom. & 107 & 74 & 27 & 8 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of Genome STRiP call sets (deletions). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
-{\bf svtoolkit} & \multicolumn{5}{|c|}{\bf HG00096} \\
+{\bf Genome STRiP} & \multicolumn{5}{|c|}{\bf HG00096} \\
 \hline
 \cline{2-6}
 {\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
@@ -565,9 +568,9 @@ Original only & 25 & 24 & 6 & 6 & 2\\
 \hline
 Shuffled only & 25 & 18 & 6 & 4 & 0\\
 \hline
-Original only hom. & 1 & 1 & 0 & 0 & 0\\ 
+Original only (homozygous) & 1 & 1 & 0 & 0 & 0\\ 
 \hline
-Shuffled only hom. & 1 & 1 & 0 & 0 & 0\\  
+Shuffled only (homozygous) & 1 & 1 & 0 & 0 & 0\\  
 \hline
 \end{tabular}
 \end{center}
@@ -575,7 +578,7 @@ Shuffled only hom. & 1 & 1 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of LUMPY call sets (deletions, chromosome 3 only). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -592,9 +595,9 @@ Original only & 9 & 9 & 0 & 2 & 0\\
 \hline
 Shuffled only & 2 & 2 & 0 & 0 & 0 \\
 \hline
-Original only hom. & 1 & 1 & 0 & 0 & 0\\ 
+Original only (homozygous) & 1 & 1 & 0 & 0 & 0\\ 
 \hline
-Shuffled only hom. & 1 & 1 & 0 & 0 & 0\\  
+Shuffled only (homozygous) & 1 & 1 & 0 & 0 & 0\\  
 \hline
 \end{tabular}
 \end{center}
@@ -602,7 +605,7 @@ Shuffled only hom. & 1 & 1 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of HaplotypeCaller call sets using the same BAM file twice. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -623,13 +626,13 @@ Original$_1$ only (in dbSNP 138) & 10,599    & 8,354     & 1,680  & 4,112     & 
 \hline
 Original$_2$ only (in dbSNP 138) & 20,374    & 16,213    & 7,439  & 6,912     & 316    \\
 \hline
-Original$_1$ only hom. & 10,564    & 8,343     & 1,664  & 8,631     & 151    \\
+Original$_1$ only (homozygous) & 10,564    & 8,343     & 1,664  & 8,631     & 151    \\
 \hline
-Original$_2$ only hom. & 21,233    & 16,805    & 7,691  & 14,523    & 367    \\
+Original$_2$ only (homozygous) & 21,233    & 16,805    & 7,691  & 14,523    & 367    \\
 \hline
-Original$_1$ only SNV & 10,630    & 8,382     & 1,682  & 8,677     & 151    \\
+Original$_1$ only (SNV) & 10,630    & 8,382     & 1,682  & 8,677     & 151    \\
 \hline
-Original$_2$ only SNV & 21,499    & 16,968    & 7,854  & 14,612    & 370    \\
+Original$_2$ only (SNV) & 21,499    & 16,968    & 7,854  & 14,612    & 370    \\
 \hline
 \hline
 {\bf HaplotypeCaller} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -649,13 +652,13 @@ Original$_1$ only (in dbSNP 138) & 41,782    & 33,034    & 4,231   & 17,475    &
 \hline
 Original$_2$ only (in dbSNP 138) & 102,255   & 87,936    & 17,222  & 40,172    & 1,282   \\
 \hline
-Original$_1$ only hom. & 10,442    & 8,455     & 1,293   & 9,351     & 154     \\
+Original$_1$ only (homozygous) & 10,442    & 8,455     & 1,293   & 9,351     & 154     \\
 \hline
-Original$_2$ only hom. & 33,704    & 29,413    & 6,519   & 26,681    & 547     \\
+Original$_2$ only (homozygous) & 33,704    & 29,413    & 6,519   & 26,681    & 547     \\
 \hline
-Original$_1$ only SNV & 44,148    & 34,770    & 4,556   & 39,189    & 715     \\
+Original$_1$ only (SNV) & 44,148    & 34,770    & 4,556   & 39,189    & 715     \\
 \hline
-Original$_2$ only SNV & 107,697   & 92,350    & 18,224  & 89,880    & 1,733   \\
+Original$_2$ only (SNV) & 107,697   & 92,350    & 18,224  & 89,880    & 1,733   \\
 \hline
 \end{tabular}
 \end{center}
@@ -663,7 +666,7 @@ Original$_2$ only SNV & 107,697   & 92,350    & 18,224  & 89,880    & 1,733   \\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of UnifiedGenotyper call sets using the same BAM file twice. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -684,13 +687,13 @@ Original$_1$ only (in dbSNP 138) & 19,618 & 9,943 & 782 & 8,186 & 318 \\
 \hline
 Original$_2$ only (in dbSNP 138) & 19,085 & 9,552 & 747 & 8,073 & 282 \\
 \hline
-Original$_1$ only hom. & 19,260 & 9,599 & 527 & 17,965 & 447 \\
+Original$_1$ only (homozygous) & 19,260 & 9,599 & 527 & 17,965 & 447 \\
 \hline
-Original$_2$ only hom. & 18,771 & 9,236 & 508 & 17,534 & 434 \\
+Original$_2$ only (homozygous) & 18,771 & 9,236 & 508 & 17,534 & 434 \\
 \hline
-Original$_1$ only SNV & 20,077 & 10,388 & 941 & 17,972 & 447 \\
+Original$_1$ only (SNV) & 20,077 & 10,388 & 941 & 17,972 & 447 \\
 \hline
-Original$_2$ only SNV & 19,481 & 9,923 & 868 & 17,541 & 435 \\
+Original$_2$ only (SNV) & 19,481 & 9,923 & 868 & 17,541 & 435 \\
 \hline
 \hline
 {\bf UnifiedGenotyper} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -710,13 +713,13 @@ Original$_1$ only (in dbSNP 138) & 38,378 & 29,804 & 9,209 & 13,995 & 689 \\
 \hline
 Original$_2$ only (in dbSNP 138) & 266,185 & 222,200 & 54,265 & 102,812 & 3,440 \\
 \hline
-Original$_1$ only hom. & 31,498 & 24,884 & 8,070 & 22,873 & 718 \\
+Original$_1$ only (homozygous) & 31,498 & 24,884 & 8,070 & 22,873 & 718 \\
 \hline
-Original$_2$ only hom. & 15,586 & 12,444 & 2,537 & 12,903 & 279 \\
+Original$_2$ only (homozygous) & 15,586 & 12,444 & 2,537 & 12,903 & 279 \\
 \hline
-Original$_1$ only SNV & 38,991 & 30,241 & 9,275 & 29,731 & 899 \\
+Original$_1$ only (SNV) & 38,991 & 30,241 & 9,275 & 29,731 & 899 \\
 \hline
-Original$_2$ only SNV & 279,518 & 232,800 & 56,605 & 225,180 & 4,650 \\
+Original$_2$ only (SNV) & 279,518 & 232,800 & 56,605 & 225,180 & 4,650 \\
 \hline
 \end{tabular}
 \end{center}
@@ -724,7 +727,7 @@ Original$_2$ only SNV & 279,518 & 232,800 & 56,605 & 225,180 & 4,650 \\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of Freebayes call sets using the same BAM file twice. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -745,13 +748,13 @@ Original$_1$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf Freebayes} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -771,13 +774,13 @@ Original$_1$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -785,7 +788,7 @@ Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of SAMtools call sets using the same BAM file twice. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -806,13 +809,13 @@ Original$_1$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf SAMtools} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -832,13 +835,13 @@ Original$_1$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -846,7 +849,7 @@ Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of Platypus call sets using the same BAM file twice. }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -867,13 +870,13 @@ Original$_1$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf Platypus} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -893,13 +896,13 @@ Original$_1$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only (in dbSNP 138) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (SNV) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -907,7 +910,7 @@ Original$_2$ only SNV & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets using the same BAM file twice (deletions). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -924,9 +927,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -942,9 +945,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -952,7 +955,7 @@ Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets using the same BAM file twice (tandem duplications). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -969,9 +972,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -987,9 +990,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -997,7 +1000,7 @@ Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets using the same BAM file twice (inversions). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -1014,9 +1017,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -1032,9 +1035,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -1042,7 +1045,7 @@ Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of DELLY call sets using the same BAM file twice (translocations). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -1059,9 +1062,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \hline
 {\bf DELLY} & \multicolumn{5}{|c|}{\bf HG02107} \\
@@ -1077,9 +1080,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -1087,11 +1090,11 @@ Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of Genome STRiP call sets using the same BAM file twice (deletions). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
-{\bf svtoolkit} & \multicolumn{5}{|c|}{\bf HG00096} \\
+{\bf Genome STRiP} & \multicolumn{5}{|c|}{\bf HG00096} \\
 \hline
 \cline{2-6}
 {\bf} & {\it All} & {\it Repeat} & {\it Duplication} & {\it Gene} & {\it Exon} \\
@@ -1104,9 +1107,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\  
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\  
 \hline
 \end{tabular}
 \end{center}
@@ -1114,7 +1117,7 @@ Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\
 \end{table}
 
 \begin{table}[htb]
-\caption{ .. }
+\caption{ Summary of LUMPY call sets using the same BAM file twice (deletions, chromosome 3 only). }
 \begin{center}
 \begin{tabular}{|l|c||c|c|c|c|}
 \hline
@@ -1131,9 +1134,9 @@ Original$_1$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
 Original$_2$ only & 0 & 0 & 0 & 0 & 0\\
 \hline
-Original$_1$ only hom. & 0 & 0 & 0 & 0 & 0\\ 
+Original$_1$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-Original$_2$ only hom. & 0 & 0 & 0 & 0 & 0\\  
+Original$_2$ only (homozygous) & 0 & 0 & 0 & 0 & 0\\  
 \hline
 \end{tabular}
 \end{center}
