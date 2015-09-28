@@ -3,7 +3,7 @@
 % all tables here
 
 \newpage
-\section{Supplementary Tables}
+\section*{Supplementary Tables}
 \setcounter{table}{0}
 \setcounter{page}{1}
 
@@ -13,7 +13,7 @@
 \pagenumbering{Roman} 
 
 \begin{table}[htb]
-\caption{...}
+\caption{Summary of alignments of 1 million reads sampled from HG00096 in original vs. shuffled order.}
 \begin{center}
 \begin{tabular}{|l|c|c|c||c|c|c|}
 \hline
@@ -1230,7 +1230,7 @@ and further classify total and private calls that map to common repeats, segment
 \end{table}
 
 \begin{table}[htb]
-\caption{ ... }
+\caption{ Summary of HaplotypeCaller call sets from 12 WES data sets using the same BAM file twice.}
 \begin{center}
 \begin{tabular}{|l||c|c|c|c|c|}
 \hline
@@ -1253,12 +1253,13 @@ HG01176 & 84,434 & 1,252 & 86,091 & 2,909 \\
 \hline
 \end{tabular}
 \end{center}
-{\footnotesize ...}
+{\footnotesize We list the total number of (SNV)s and indels characterized by HaplotypeCaller simultaneously in 12 WES data sets using same BAM files twice (Original$_1$ vs Original$_2$).
+Private: variants found in one execution of HaplotypeCaller and not the other.}
 \label{supptab:orig-vs-orig2-multiple-hc}
 \end{table}
 
 \begin{table}[htb]
-\caption{ ... }
+\caption{ Summary of UnifiedGenotyper call sets from 12 WES data sets using the same BAM file twice.}
 \begin{center}
 \begin{tabular}{|l||c|c|c|c|c|}
 \hline
@@ -1281,6 +1282,7 @@ HG01176 & 90,791 & 2,345 & 90,370 & 1,924 \\
 \hline
 \end{tabular}
 \end{center}
-{\footnotesize ...}
+{\footnotesize We list the total number of (SNV)s and indels characterized by UnifiedGenotyper simultaneously in 12 WES data sets using same BAM files twice (Original$_1$ vs Original$_2$).
+Private: variants found in one execution of UnifiedGenotyper and not the other.}
 \label{supptab:orig-vs-orig2-multiple-ug}
 \end{table}
