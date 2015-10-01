@@ -47,14 +47,14 @@ We further filtered Bowtie and BWA-MEM mappings and removed both hard and soft-c
 \hline
 {\bf Order } & {\it Total} & {\it Private} & {\it Private (\%)} & {\it Private (MAPQ=0)} & {\it Private (MAPQ$\geq$30)} \\
 \hline
-Original & 146,347,388 & 4,127,562 & 2.82 & 3,877,429  & 72,225 \\ 
-Shuffled & 146,347,372 & 4,127,554 & 2.82 & 3,877,495 & 72,044\\
+Original & 146,347,388 & 3,725,916 & 2.54 & 3,614,369  & 27,927 \\ 
+Shuffled & 146,347,372 & 3,725,916 & 2.54 & 3,614,438 & 27,873 \\
 %HG00096 & 146,347,388 & 4,127,562 & 2.82 & 146,347,372 & 4,127,554 & 2.82\\
 %HG02107 & 1,319,393,745 & & & 1,319,369,530 & &  \\
 \hline
 \end{tabular}
 \end{center}
-{\footnotesize Map locations that are specific to one order of reads are listed as {\it Private}. We also list the number of private mappings
+{\footnotesize Map locations that are specific to one order of reads (including the alignment flags) are listed as {\it Private}. We also list the number of private mappings
 with $0$ and $\geq 30$ mapping quality.}
 \label{supptab:bwa-map}
 \end{table}
