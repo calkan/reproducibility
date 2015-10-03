@@ -22,16 +22,16 @@
 \hline{\bf } & {\it Total} & {\it Private} & {\it Private (\%)}
            & {\it Total} & {\it Private} & {\it Private (\%)} \\
 \hline
-mrFAST & 904,952 & 0 & - & 904,952 & 0 & - \\
+%mrFAST & 904,952 & 0 & - & 904,952 & 0 & - \\
 Bowtie & 929,393 & 0 & - & 929,393 & 0 & - \\
-Razers3 & 650,086 & 5,949 & 0.9 & 650,088 & 5,951 & 0.9 \\
+RazerS3 & 650,086 & 5,949 & 0.9 & 650,088 & 5,951 & 0.9 \\
 BWA-MEM & 897,548 & 18,862 & 2.1 & 897,534 & 18,848 & 2.1 \\
 \hline
 \end{tabular}
 \end{center}
 {\footnotesize 
 Command lines: \\
-mrfast --search human\_g1k\_v37.fasta --seq1 file\_1.fq --seq2 file\_2.fq -o mrfast.sam --min 0 --max 1000 --pe \\
+%mrfast --search human\_g1k\_v37.fasta --seq1 file\_1.fq --seq2 file\_2.fq -o mrfast.sam --min 0 --max 1000 --pe \\
 bowtie2 -x human\_g1k\_v37 -1 file\_1.fq -2 file\_2.fq -S bowtie.sam \\
 razers3  -i 96 -tc 12 -m 1 -o razers3.sam human\_g1k\_v37.fasta         file\_1.fq file\_2.fq \\
 bwa mem -t 16 human\_g1k\_v37.fasta file\_1.fq file\_2.fq $>$ bwa.sam \\
