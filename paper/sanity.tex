@@ -104,10 +104,10 @@ Our results raise questions about reproducibility and accuracy of several common
 
 \section*{Results}
 
-\subsection*{Obtaining the data}
+\subsection*{Data and the tools}
 We downloaded two whole genome shotgun sequence data sets, one at low coverage ($\sim$5X, HG00096) and one at high coverage ($\sim$ 44X, HG02107) from the 1000 Genomes Project~\cite{1000GP2012}.
 We also downloaded 12 whole exome shotgun sequence data sets, again from the 1000 Genomes Project, with coverage ranging from 120X to 656X (Table~\ref{tab:data}). We tested the behavior of 
-four different read mappers, four SNV/indel callers, and three SV characterization algorithms (Table~\ref{tab:tools}, Online Methods).
+three different read mappers, four SNV/indel callers, and three SV characterization algorithms (Table~\ref{tab:tools}, Online Methods).
 
 \begin{table}[htb]
 \caption{List of data sets used in this study.}
@@ -156,8 +156,8 @@ BWA-MEM~\cite{Li2013} & 0.7.12-r1039 & Read Mapping\\
 Picard~\cite{picard} & 1.105 & BAM processing\\
 SAMtools~~\cite{Li2009b} & 1.2 & SNVs and indels\\
 GATK~\cite{DePristo2011} & 3.4-0-g7e26428 & SNVs and indels\\
-Freebayes~\cite{Garrison2012} & 3.4-0-g7e26428 & SNVs and indels\\
-Platypus~\cite{Rimmer2014} & 3.4-0-g7e26428 & SNVs and indels\\
+Freebayes~\cite{Garrison2012} & v0.9.21-19-gc003c1e & SNVs and indels\\
+Platypus~\cite{Rimmer2014} & 1.2.1 & SNVs and indels\\
 DELLY~\cite{Rausch2012} & 0.6.7 & Structural Variation\\
 LUMPY~\cite{Layer2014} & 0.2.11 & Structural Variation\\
 Genome STRiP~\cite{Handsaker2011,Handsaker2015} & 2.00.1602 & Structural Variation\\
@@ -366,7 +366,7 @@ resulting BAM files for SNV, indel, and SV calling. The names and version number
 \subsection*{SNVs and indels}
 
 We used GATK's~\cite{DePristo2011} both UnifiedGenotyper and HaplotypeCaller algorithms, SAMtools~\cite{Li2009b}, Freebayes~\cite{Garrison2012}, and Platypus~\cite{Rimmer2014} to characterize
-SNV and indels. We followed the developer's recommendations and default parameters for all variant calling tools, including potential false positive filters. 
+SNV and indels. We followed the developers' recommendations and default parameters for all variant calling tools, including potential false positive filters. 
 Specifically, we used both Variant Quality Score Recalibrator and SnpCluster algorithms to filter out false positives in GATK call sets, and additionally, 
 we required a mapping quality of at least 30 for all tools we tested.
 
