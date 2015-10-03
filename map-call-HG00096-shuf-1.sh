@@ -91,7 +91,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.hc.recal \
  -tranchesFile $BAMFILE.hc.tranches \
  -rscriptFile $BAMFILE.hc.R \
- -nt $THREADS --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
+ --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
  --TStranche 98.0 --TStranche 97.0 --TStranche 96.0 --TStranche 95.0 --TStranche 94.0 \
  --TStranche 93.0 --TStranche 92.0 --TStranche 91.0 --TStranche 90.0 --disable_auto_index_creation_and_locking_when_reading_rods
 

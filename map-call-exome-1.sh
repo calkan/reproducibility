@@ -12,16 +12,23 @@ SAMPLE=$1
 BAMFILE=$1.orig
 THREADS=32
 
+echo "sample: " $SAMPLE
 cd $1;
 
+
 FASTQ=`ls *_1.filt.fastq.gz | sed s/_1.filt.fastq.gz//`
+COUNT=`ls *_1.filt.fastq.gz | sed s/_1.filt.fastq.gz// | wc -l`
 
 for i in `echo $FASTQ`;
 do
         bwa mem -M -t $THREADS $REF $i\_1.filt.fastq.gz $i\_2.filt.fastq.gz  | samtools view -@ $THREADS -S -b -u - | samtools sort -@ $THREADS -m $MAXMEM -  tmp.$BAMFILE.$i;
 done
 
-samtools merge $BAMFILE.bam tmp*.bam 
+if [ "$COUNT" -gt "1" ]; then
+    samtools merge $BAMFILE.bam tmp.$BAMFILE.*bam 
+else
+    mv tmp.$BAMFILE.$i.bam $BAMFILE.bam
+fi
 
 picard-tools AddOrReplaceReadGroups I= $BAMFILE.bam O= $BAMFILE.rg.bam RGPU= tata RGID= $SAMPLE RGLB= $SAMPLE RGPL= illumina RGSM= $SAMPLE;
 
@@ -84,7 +91,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.hc.recal \
  -tranchesFile $BAMFILE.hc.tranches \
  -rscriptFile $BAMFILE.hc.R \
- -nt $THREADS --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
+ --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
  --TStranche 98.0 --TStranche 97.0 --TStranche 96.0 --TStranche 95.0 --TStranche 94.0 \
  --TStranche 93.0 --TStranche 92.0 --TStranche 91.0 --TStranche 90.0 --disable_auto_index_creation_and_locking_when_reading_rods
 
@@ -134,7 +141,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.ug.recal \
  -tranchesFile $BAMFILE.ug.tranches \
  -rscriptFile $BAMFILE.ug.R \
- -nt $THREADS --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
+ --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
  --TStranche 98.0 --TStranche 97.0 --TStranche 96.0 --TStranche 95.0 --TStranche 94.0 \
  --TStranche 93.0 --TStranche 92.0 --TStranche 91.0 --TStranche 90.0 --disable_auto_index_creation_and_locking_when_reading_rods
 
