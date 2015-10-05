@@ -6,7 +6,7 @@ Mapping Scripts
 ===============
 
 Using BWA:
-
+	*mapping_scripts/*
 	map-HG00096-orig-1.sh: Mapping HG00096 (original order)
 	map-HG00096-shuf-1.sh: Reshuffling and mapping HG00096 (shuffled order)
 	map-HG02107-orig.sh: Mapping HG02107 (original order)
@@ -15,7 +15,7 @@ Using BWA:
 
 Variant Callers
 ===============
-
+	*variant_caller_scripts/*
 	GATK-call-HG00096-orig-1.sh: SNV+Indels using GATK. HG00096, original order.
 	GATK-call-HG00096-orig-2.sh: SNV+Indels using GATK. HG00096, original order - rerun.
 	GATK-call-HG00096-shuf-1.sh: SNV+Indels using GATK. HG00096, shuffled order.
@@ -36,5 +36,6 @@ Variant Callers
 
 Read Shuffler
 =============
+	*read_shuffler/*
 	Makefile
 	shuffle-fastq.c
