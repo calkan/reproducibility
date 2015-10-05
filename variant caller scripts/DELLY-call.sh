@@ -1,7 +1,7 @@
 DELLYBIN=/mnt/compgen/inhouse/bin/delly
 REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 BAMDIR=$1
-OUTDIR=$2 #/home/cfirtina/DELLY/VCF
+OUTDIR=$2
 
 
 delyTra () {

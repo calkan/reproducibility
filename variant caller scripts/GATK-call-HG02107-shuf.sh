@@ -1,4 +1,4 @@
-# whole genome HG00096 original order - run 1
+# whole genome HG0217 shuffled order 
 
 export GATKDIR=/mnt/compgen/inhouse/bin/
 export REF=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
@@ -8,24 +8,8 @@ export HAPMAP=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/hapmap_3.3.b37.vcf
 export MILLS=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/Mills_and_1000G_gold_standard.indels.b37.vcf
 
 MAXMEM=16g
-SAMPLE=HG02107
-BAMFILE=HG02107.orig2
+BAMFILE=HG02107.shuf
 THREADS=16
-
-FASTQ=`ls *_1.filt.fastq.gz | sed s/_1.filt.fastq.gz//`
-
-for i in `echo $FASTQ`;
-do
-        bwa mem -M -t $THREADS $REF $i\_1.filt.fastq.gz $i\_2.filt.fastq.gz  | samtools view -@ $THREADS -S -b -u - | samtools sort -@ $THREADS -m $MAXMEM -  tmp.$BAMFILE.$i;
-done
-
-samtools merge $BAMFILE.bam tmp.$BAMFILE.*.bam 
-
-picard-tools AddOrReplaceReadGroups I= $BAMFILE.bam O= $BAMFILE.rg.bam RGPU= tata RGID= $SAMPLE RGLB= $SAMPLE RGPL= illumina RGSM= $SAMPLE;
-
-picard-tools MarkDuplicates I= $BAMFILE.rg.bam O= $BAMFILE.rmdup.bam M= $BAMFILE.txt;
-
-samtools index $BAMFILE.rmdup.bam
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T RealignerTargetCreator  \
@@ -160,8 +144,8 @@ grep  "\#\|PASS" $BAMFILE.ug.vqsrfilter_refilter.vcf > $BAMFILE.ug.final.vcf
 
 # cleanup
 
-#rm -f $BAMFILE.bam $BAMFILE.rg.bam
-#rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
+rm -f $BAMFILE.bam $BAMFILE.rg.bam
+rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
 rm -f tmp.$BAMFILE.*.bam
 rm -f $BAMFILE.hc.recal $BAMFILE.hc.recal.idx $BAMFILE.hc.tranches $BAMFILE.hc.tranches.pdf $BAMFILE.hc.R $BAMFILE.recal_data.grp 
 rm -f $BAMFILE.rmdup.bam.intervals

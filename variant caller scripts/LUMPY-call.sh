@@ -1,6 +1,6 @@
 LUMPYBIN=/mnt/compgen/inhouse/src/lumpy/lumpy-sv-0.2.11/bin/lumpyexpress
 BAMDIR=$1
-OUTDIR=$2 #/home/cfirtina/LUMPY/VCF
+OUTDIR=$2
 NUMOFTHREADS=$3
 
 lumpyWoThreshold () {

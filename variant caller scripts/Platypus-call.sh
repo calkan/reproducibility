@@ -1,7 +1,7 @@
 PLATYPUSLOC=/mnt/compgen/inhouse/src/platypus/Platypus.py
 REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 BAMDIR=$1
-OUTDIR=$2 #/home/cfirtina/PLATYPUS/VCF
+OUTDIR=$2
 NUMOFTHREADS=$3
 
 platypusWoThreshold () {

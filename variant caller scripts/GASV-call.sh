@@ -1,5 +1,5 @@
 BAMDIR=$1
-OUTDIR=$2 #/home/cfirtina/SAMTOOLS/VCF
+OUTDIR=$2
 QUALTHRESHOLD=$3
 REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 
