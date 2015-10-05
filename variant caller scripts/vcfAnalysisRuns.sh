@@ -1,10 +1,9 @@
 #!/bin/bash
-VCFSOURCEDIR=$1
-DESTDIR=$2
-DIFFFIRSTFILE=$3
-DIFFSECONDFILE=$4
-NUMOFTHREADS=$5
-QUALTHRESHOLD=$6
+VCFSOURCEDIR=$1 #(required) directory where vcf files exist. Your files should end with .vcf to be processed by this script. It processes all the vcf files in this directory
+DESTDIR=$2 #(required) base directory where the results will be located
+DIFFFIRSTFILE=$3 #(required)This script is designed to compare two vcf files. Therefore these two files should have exactly the same name except a pattern that creates the difference between two files. For example HG00006.orig.vcf and HG00096.shuf.vcf. Only differences are orig and shuf here. This argument takes the string that creates the difference in first file (orig, for the example).
+DIFFSECONDFILE=$4 #(required) second file's difference. (see DIFFFIRSTFILE for the detailed explanation)
+NUMOFTHREADS=$5 #(required) number of threads allowed for this script
 BEDSOURCEDIR="/mnt/storage1/projects/shuffle/GATK/b37/"
 ORIGDIR="$DESTDIR/noIntersectBed/"
 GENESFILENAME="b37_genes.bed"
@@ -13,12 +12,6 @@ DUPSFILENAME="build37.dups.bed"
 REPSFILENAME="build37.reps.bed"
 SNPFILE="/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/dbsnp_138.b37.vcf"
 
-#qual filter
-if [ "$#" -gt 5 ]; then
-	mkdir $VCFSOURCEDIR/filtered/
-	for i in `ls $VCFSOURCEDIR/*.vcf*`; do fname=`basename $i`; cat $i | awk -F'\t' '{if($6 >= qual || substr($1,1,1) == "#") print $0;}' qual="$QUALTHRESHOLD" > "$VCFSOURCEDIR/filtered/$fname.filtered"; done;
-	VCFSOURCEDIR=$VCFSOURCEDIR/filtered/
-fi
 #create hom, het, snvs, indels
 countThreads=0
 mkdir $ORIGDIR
