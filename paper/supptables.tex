@@ -35,7 +35,7 @@ Command lines: \\
 bowtie2 -x human\_g1k\_v37 -1 file\_1.fq -2 file\_2.fq -S bowtie.sam \\
 razers3  -i 96 -tc 12 -m 1 -o razers3.sam human\_g1k\_v37.fasta         file\_1.fq file\_2.fq \\
 bwa mem -t 16 human\_g1k\_v37.fasta file\_1.fq file\_2.fq $>$ bwa.sam \\
-We further filtered Bowtie and BWA-MEM mappings and removed both hard and soft-clipped reads, and mappings with edit distance $>$4.
+We further filtered mappings and removed both hard and soft-clipped reads, and mappings with edit distance $>$4 in this small-scale experiment only to easily characterize private mappings. We used the full set of alignments in the variant caller tests.
 }
 \label{supptab:small-scale}
 \end{table}

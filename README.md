@@ -6,6 +6,7 @@ Mapping Scripts
 ===============
 
 Using BWA:
+
 	*mapping_scripts/*
 	map-HG00096-orig-1.sh: Mapping HG00096 (original order)
 	map-HG00096-shuf-1.sh: Reshuffling and mapping HG00096 (shuffled order)

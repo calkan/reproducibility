@@ -374,6 +374,7 @@ We used GATK's~\cite{DePristo2011} both UnifiedGenotyper and HaplotypeCaller alg
 SNV and indels. We followed the developers' recommendations and default parameters for all variant calling tools, including potential false positive filters. 
 Specifically, we used both Variant Quality Score Recalibrator and SnpCluster algorithms to filter out false positives in GATK call sets, and additionally, 
 we required a mapping quality of at least 30 for all tools we tested.
+For GATK, we used the GATK Resource Bundle version 2.8 as the reference genome, reference genome annotations, and variant score recalibration training material.
 
 \subsection*{Structural variation}
 
@@ -386,9 +387,11 @@ We used default parameters for each tool and followed recommendations in relativ
 \subsection*{Variant annotation and comparison}
 
 We downloaded the coordinates for segmental duplications, genes, coding exons, and common repeats from the UCSC Genome Browser~\cite{Kent2002}. 
-We then used the BEDtools suite~\cite{Quinlan2010a} to calculate intersections between discrepancies in call sets with the annotations listed above.
+We then used the BEDtools suite~\cite{Quinlan2010a} and standard UNIX tools 
+ to calculate intersections between discrepancies in call sets with the annotations listed above.
 
-%\subsection*{Code and script availability} FASTQ read shuffling tool we developed, and all scripts we used to map reads and call variants are available at 
+\subsection*{Code and script availability} FASTQ read shuffling tool we developed, and all scripts we used to map reads and call variants are submitted as Supplementary Material attached to this manuscript.
+%available at 
 %\url{https://github.com/BilkentCompGen/reproducibility}.
 
 
