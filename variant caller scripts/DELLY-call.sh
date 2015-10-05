@@ -1,8 +1,10 @@
+#Arguments (see below for the detailed descriptions): BAMDIR(required) OUTDIR(required) NUMOFTHREADS(required)
+
 DELLYBIN=/mnt/compgen/inhouse/bin/delly
 REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
-BAMDIR=$1
-OUTDIR=$2
-
+BAMDIR=$1 #path to the directory where bam files exist. This caller will process all the bam files in this directory. Your bam files should end with ".bam" extension.
+OUTDIR=$2 #created VCFs will be created in this directory
+NUMOFTHREADS=$3 #number of threads allowed for this run
 
 delyTra () {
 	local i=$1

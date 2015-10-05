@@ -1,7 +1,9 @@
-BAMDIR=$1
-OUTDIR=$2
-NUMOFTHREADS=$3
-QUALTHRESHOLD=$4
+#Arguments (see below for the detailed descriptions): BAMDIR(required) OUTDIR(required) NUMOFTHREADS(required) QUALTHRESHOLD(optional)
+
+BAMDIR=$1 #path to the directory where bam files exist. This caller will process all the bam files in this directory. Your bam files should end with ".bam" extension.
+OUTDIR=$2 #created VCFs will be created in this directory
+NUMOFTHREADS=$3 #number of threads allowed for this run
+QUALTHRESHOLD=$4 #quality threshold
 REFFILE=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 
 samWithThreshold () {
@@ -23,7 +25,7 @@ samWoThreshold () {
 
 countThreads=0
 if [ "$#" -gt 3 ]; then
-	for i in `ls $BAMDIR/*bam`; do samWithThreshold "$i" &
+	for i in `ls $BAMDIR/*.bam`; do samWithThreshold "$i" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
 	        wait
@@ -31,7 +33,7 @@ if [ "$#" -gt 3 ]; then
 	fi
 	done;
 else
-	for i in `ls $BAMDIR/*bam`; do samWoThreshold "$i" &
+	for i in `ls $BAMDIR/*.bam`; do samWoThreshold "$i" &
 	countThreads=$((countThreads+1))
 	if [ "$countThreads" -eq "$NUMOFTHREADS" ]; then
 	        wait

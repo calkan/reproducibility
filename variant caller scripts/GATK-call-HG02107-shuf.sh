@@ -1,4 +1,4 @@
-# whole genome HG0217 shuffled order 
+# whole genome HG02107 shuffled order - run 1 call
 
 export GATKDIR=/mnt/compgen/inhouse/bin/
 export REF=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
@@ -25,16 +25,13 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
 
 #Base quality score recalibration 
 
-
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T BaseRecalibrator \
  -R $REF -knownSites $DBSNP \
  -I $BAMFILE.realigned.bam \
  -nct ${THREADS}  -o $BAMFILE.recal_data.grp
 
-
 #Apply base quality score recalibration 
-
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T PrintReads \
@@ -42,7 +39,6 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -I $BAMFILE.realigned.bam \
  -BQSR $BAMFILE.recal_data.grp \
  -o $BAMFILE.recal.bam
-
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T HaplotypeCaller \
@@ -66,7 +62,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.hc.recal \
  -tranchesFile $BAMFILE.hc.tranches \
  -rscriptFile $BAMFILE.hc.R \
- --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
+ -nt $THREADS --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
  --TStranche 98.0 --TStranche 97.0 --TStranche 96.0 --TStranche 95.0 --TStranche 94.0 \
  --TStranche 93.0 --TStranche 92.0 --TStranche 91.0 --TStranche 90.0 --disable_auto_index_creation_and_locking_when_reading_rods
 
@@ -78,7 +74,6 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.hc.recal \
  -tranchesFile $BAMFILE.hc.tranches \
  -o $BAMFILE.hc.vqsrfilter.vcf 
-
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T VariantFiltration \
@@ -92,7 +87,6 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
 
 grep  "\#\|PASS" $BAMFILE.hc.vqsrfilter_refilter.vcf > $BAMFILE.hc.final.vcf
 
-
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T UnifiedGenotyper -glm BOTH \
  -R $REF --dbsnp $DBSNP \
@@ -101,7 +95,6 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -U ALLOW_UNSET_BAM_SORT_ORDER \
  -gt_mode DISCOVERY \
  -mbq 20 -stand_emit_conf 20 -G Standard -A AlleleBalance -nt $THREADS --disable_auto_index_creation_and_locking_when_reading_rods
-
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T VariantRecalibrator \
@@ -116,7 +109,7 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.ug.recal \
  -tranchesFile $BAMFILE.ug.tranches \
  -rscriptFile $BAMFILE.ug.R \
- --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
+ -nt $THREADS --TStranche 100.0 --TStranche 99.9 --TStranche 99.5 --TStranche 99.0 \
  --TStranche 98.0 --TStranche 97.0 --TStranche 96.0 --TStranche 95.0 --TStranche 94.0 \
  --TStranche 93.0 --TStranche 92.0 --TStranche 91.0 --TStranche 90.0 --disable_auto_index_creation_and_locking_when_reading_rods
 
@@ -128,7 +121,6 @@ java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -recalFile $BAMFILE.ug.recal \
  -tranchesFile $BAMFILE.ug.tranches \
  -o $BAMFILE.ug.vqsrfilter.vcf 
-
 
 java -d64 -Xmx${MAXMEM} -jar $GATKDIR/GenomeAnalysisTK.jar \
  -T VariantFiltration \
@@ -144,8 +136,8 @@ grep  "\#\|PASS" $BAMFILE.ug.vqsrfilter_refilter.vcf > $BAMFILE.ug.final.vcf
 
 # cleanup
 
-rm -f $BAMFILE.bam $BAMFILE.rg.bam
-rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
+# rm -f $BAMFILE.bam $BAMFILE.rg.bam
+# rm -f $BAMFILE.realigned.bam $BAMFILE.realigned.bam.bai
 rm -f tmp.$BAMFILE.*.bam
 rm -f $BAMFILE.hc.recal $BAMFILE.hc.recal.idx $BAMFILE.hc.tranches $BAMFILE.hc.tranches.pdf $BAMFILE.hc.R $BAMFILE.recal_data.grp 
 rm -f $BAMFILE.rmdup.bam.intervals

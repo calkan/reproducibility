@@ -1,5 +1,8 @@
 # exome original order - run 2 map
 
+#arguments:
+#$1: basename of the sample (bam files fill be created based on this name)
+
 export REF=/mnt/compgen/inhouse/share/gatk_bundle/2.8/b37/human_g1k_v37.fasta
 
 MAXMEM=32g
