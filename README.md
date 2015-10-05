@@ -29,6 +29,10 @@ Variant Callers
 	SAMTools-call.sh: SNV+Indels using SAMtools.
 	DELLY-call.sh: SV using DELLY.	
 	LUMPY-call.sh: SV using LUMPY.
+	genomestrip-HG00096.sh: SV using Genome STRiP (HG00096).
+	genomestrip-HG02107.sh: SV using Genome STRiP (HG02107).
+	vcfAnalysisRuns.sh: Comparison of VCF files.
+	Makefile: to run them all
 
 Read Shuffler
 =============

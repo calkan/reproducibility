@@ -4,13 +4,13 @@
 #include <time.h>
 #include <zlib.h>
 
-#define SEQLEN 200
-char **seqs;
-char **names;
-char **quals;
-char **seqs2;
-char **names2;
-char **quals2;
+#define MAX_SEQUENCE_LENGTH 200
+char **sequences;
+char **sequence_names;
+char **qualities;
+char **sequences2;
+char **sequence_names2;
+char **qualities2;
 
 main(int argc, char **argv){
   char tmp[500];
@@ -19,18 +19,18 @@ main(int argc, char **argv){
   FILE *in2;
   FILE *out;
   FILE *out2;
-  gzFile gin;
-  gzFile gin2;
-  gzFile gout;
-  gzFile gout2;
+  gzFile gzipped_in;
+  gzFile gzipped_in2;
+  gzFile gzipped_out;
+  gzFile gzipped_out2;
   int copies;
-  char outfname[SEQLEN];
-  char outprefix[SEQLEN];
+  char outfname[MAX_SEQUENCE_LENGTH];
+  char outprefix[MAX_SEQUENCE_LENGTH];
   char ch;
   int seqcnt=0;
   int gzmode=0;
 
-  char name[SEQLEN]; char qual[SEQLEN]; char seq[SEQLEN];
+  char name[MAX_SEQUENCE_LENGTH]; char qual[MAX_SEQUENCE_LENGTH]; char seq[MAX_SEQUENCE_LENGTH];
   
   if (argc != 4){
     printf("Shuffles a given pair of FASTQ sequence files.\n");
@@ -54,12 +54,12 @@ main(int argc, char **argv){
     }
   }
   else{
-    if ((gin = gzopen(argv[1], "r")) == NULL){
+    if ((gzipped_in = gzopen(argv[1], "r")) == NULL){
       printf("Unable  to open file %s\n", argv[1]);
       exit (0);
     }
     
-    if ((gin2 = gzopen(argv[2], "r")) == NULL){
+    if ((gzipped_in2 = gzopen(argv[2], "r")) == NULL){
       printf("Unable  to open file %s\n", argv[2]);
       exit (0);
     }
@@ -71,45 +71,45 @@ main(int argc, char **argv){
 
   if (!gzmode){
     while (!feof(in)){
-      fgets(tmp, SEQLEN, in); 
+      fgets(tmp, MAX_SEQUENCE_LENGTH, in); 
       if (feof(in)) break;
-      fgets(tmp, SEQLEN, in);
-      fgets(tmp, SEQLEN, in); // + line
-      fgets(tmp, SEQLEN, in);    
+      fgets(tmp, MAX_SEQUENCE_LENGTH, in);
+      fgets(tmp, MAX_SEQUENCE_LENGTH, in); // + line
+      fgets(tmp, MAX_SEQUENCE_LENGTH, in);    
       
       seqcnt++;
     }
     rewind(in);
   }
   else{
-    while (!gzeof(gin)){
-      gzgets(gin, tmp, SEQLEN); 
-      if (gzeof(gin)) break;
-      gzgets(gin, tmp, SEQLEN);
-      gzgets(gin, tmp, SEQLEN); // + line
-      gzgets(gin, tmp, SEQLEN);    
+    while (!gzeof(gzipped_in)){
+      gzgets(gzipped_in, tmp, MAX_SEQUENCE_LENGTH); 
+      if (gzeof(gzipped_in)) break;
+      gzgets(gzipped_in, tmp, MAX_SEQUENCE_LENGTH);
+      gzgets(gzipped_in, tmp, MAX_SEQUENCE_LENGTH); // + line
+      gzgets(gzipped_in, tmp, MAX_SEQUENCE_LENGTH);    
       
       seqcnt++;
     }
-    gzrewind(gin);
+    gzrewind(gzipped_in);
   }
 
-  seqs = (char **) malloc(sizeof(char *) * seqcnt);
-  names = (char **) malloc(sizeof(char *) * seqcnt);
-  quals = (char **) malloc(sizeof(char *) * seqcnt);
+  sequences = (char **) malloc(sizeof(char *) * seqcnt);
+  sequence_names = (char **) malloc(sizeof(char *) * seqcnt);
+  qualities = (char **) malloc(sizeof(char *) * seqcnt);
 
-  seqs2 = (char **) malloc(sizeof(char *) * seqcnt);
-  names2 = (char **) malloc(sizeof(char *) * seqcnt);
-  quals2 = (char **) malloc(sizeof(char *) * seqcnt);
+  sequences2 = (char **) malloc(sizeof(char *) * seqcnt);
+  sequence_names2 = (char **) malloc(sizeof(char *) * seqcnt);
+  qualities2 = (char **) malloc(sizeof(char *) * seqcnt);
 
 
   for (i=0;i<seqcnt;i++){
-    seqs[i] = (char *) malloc(sizeof(char) * SEQLEN);
-    names[i] = (char *) malloc(sizeof(char) * SEQLEN);
-    quals[i] = (char *) malloc(sizeof(char) * SEQLEN);
-    seqs2[i] = (char *) malloc(sizeof(char) * SEQLEN);
-    names2[i] = (char *) malloc(sizeof(char) * SEQLEN);
-    quals2[i] = (char *) malloc(sizeof(char) * SEQLEN);
+    sequences[i] = (char *) malloc(sizeof(char) * MAX_SEQUENCE_LENGTH);
+    sequence_names[i] = (char *) malloc(sizeof(char) * MAX_SEQUENCE_LENGTH);
+    qualities[i] = (char *) malloc(sizeof(char) * MAX_SEQUENCE_LENGTH);
+    sequences2[i] = (char *) malloc(sizeof(char) * MAX_SEQUENCE_LENGTH);
+    sequence_names2[i] = (char *) malloc(sizeof(char) * MAX_SEQUENCE_LENGTH);
+    qualities2[i] = (char *) malloc(sizeof(char) * MAX_SEQUENCE_LENGTH);
   }
 
   i = 0; j =0;
@@ -118,32 +118,32 @@ main(int argc, char **argv){
 
   if (!gzmode){
     while (!feof(in)){
-      fgets(names[i], SEQLEN, in); 
+      fgets(sequence_names[i], MAX_SEQUENCE_LENGTH, in); 
       if (feof(in)) break;
-      fgets(seqs[i], SEQLEN, in);
-      fgets(tmp, SEQLEN, in); // + line
-      fgets(quals[i], SEQLEN, in);
+      fgets(sequences[i], MAX_SEQUENCE_LENGTH, in);
+      fgets(tmp, MAX_SEQUENCE_LENGTH, in); // + line
+      fgets(qualities[i], MAX_SEQUENCE_LENGTH, in);
       
-      fgets(names2[i], SEQLEN, in2); 
-      fgets(seqs2[i], SEQLEN, in2);
-      fgets(tmp, SEQLEN, in2); // + line
-      fgets(quals2[i], SEQLEN, in2);
+      fgets(sequence_names2[i], MAX_SEQUENCE_LENGTH, in2); 
+      fgets(sequences2[i], MAX_SEQUENCE_LENGTH, in2);
+      fgets(tmp, MAX_SEQUENCE_LENGTH, in2); // + line
+      fgets(qualities2[i], MAX_SEQUENCE_LENGTH, in2);
       
       i++;
     }
   }
   else{
-    while (!gzeof(gin)){
-      gzgets(gin, names[i], SEQLEN); 
-      if (gzeof(gin)) break;
-      gzgets(gin, seqs[i], SEQLEN);
-      gzgets(gin, tmp, SEQLEN); // + line
-      gzgets(gin, quals[i], SEQLEN);
+    while (!gzeof(gzipped_in)){
+      gzgets(gzipped_in, sequence_names[i], MAX_SEQUENCE_LENGTH); 
+      if (gzeof(gzipped_in)) break;
+      gzgets(gzipped_in, sequences[i], MAX_SEQUENCE_LENGTH);
+      gzgets(gzipped_in, tmp, MAX_SEQUENCE_LENGTH); // + line
+      gzgets(gzipped_in, qualities[i], MAX_SEQUENCE_LENGTH);
       
-      gzgets(gin2, names2[i], SEQLEN); 
-      gzgets(gin2, seqs2[i], SEQLEN);
-      gzgets(gin2, tmp, SEQLEN); // + line
-      gzgets(gin2, quals2[i], SEQLEN);
+      gzgets(gzipped_in2, sequence_names2[i], MAX_SEQUENCE_LENGTH); 
+      gzgets(gzipped_in2, sequences2[i], MAX_SEQUENCE_LENGTH);
+      gzgets(gzipped_in2, tmp, MAX_SEQUENCE_LENGTH); // + line
+      gzgets(gzipped_in2, qualities2[i], MAX_SEQUENCE_LENGTH);
       
       i++;
     }
@@ -157,29 +157,29 @@ main(int argc, char **argv){
   fprintf(stderr, "Shuffling.\n");
   for (i=0; i<seqcnt; i++){
     j = rand() % seqcnt;
-    strcpy(seq, seqs[i]);
-    strcpy(seqs[i], seqs[j]);
-    strcpy(seqs[j], seq);
+    strcpy(seq, sequences[i]);
+    strcpy(sequences[i], sequences[j]);
+    strcpy(sequences[j], seq);
     
-    strcpy(qual, quals[i]);
-    strcpy(quals[i], quals[j]);
-    strcpy(quals[j], qual);
+    strcpy(qual, qualities[i]);
+    strcpy(qualities[i], qualities[j]);
+    strcpy(qualities[j], qual);
     
-    strcpy(name, names[i]);
-    strcpy(names[i], names[j]);
-    strcpy(names[j], name);
+    strcpy(name, sequence_names[i]);
+    strcpy(sequence_names[i], sequence_names[j]);
+    strcpy(sequence_names[j], name);
     
-    strcpy(seq, seqs2[i]);
-    strcpy(seqs2[i], seqs2[j]);
-    strcpy(seqs2[j], seq);
+    strcpy(seq, sequences2[i]);
+    strcpy(sequences2[i], sequences2[j]);
+    strcpy(sequences2[j], seq);
 
-    strcpy(qual, quals2[i]);
-    strcpy(quals2[i], quals2[j]);
-    strcpy(quals2[j], qual);
+    strcpy(qual, qualities2[i]);
+    strcpy(qualities2[i], qualities2[j]);
+    strcpy(qualities2[j], qual);
     
-    strcpy(name, names2[i]);
-    strcpy(names2[i], names2[j]);
-    strcpy(names2[j], name);
+    strcpy(name, sequence_names2[i]);
+    strcpy(sequence_names2[i], sequence_names2[j]);
+    strcpy(sequence_names2[j], name);
   }
   
 
@@ -190,23 +190,23 @@ main(int argc, char **argv){
     out2 = fopen(outfname, "w");
     
     for (i=0; i<seqcnt; i++){
-      fprintf(out, "%s%s+\n%s", names[i], seqs[i], quals[i]);
-      fprintf(out2, "%s%s+\n%s", names2[i], seqs2[i], quals2[i]);
+      fprintf(out, "%s%s+\n%s", sequence_names[i], sequences[i], qualities[i]);
+      fprintf(out2, "%s%s+\n%s", sequence_names2[i], sequences2[i], qualities2[i]);
     }
     
     fclose(out); fclose(out2);
   }
   else{
     sprintf(outfname, "%sshuf_1.fq.gz", outprefix);
-    gout = gzopen(outfname, "w");
+    gzipped_out = gzopen(outfname, "w");
     sprintf(outfname, "%sshuf_2.fq.gz", outprefix);
-    gout2 = gzopen(outfname, "w");
+    gzipped_out2 = gzopen(outfname, "w");
   
     for (i=0; i<seqcnt; i++){
-      gzprintf(gout, "%s%s+\n%s", names[i], seqs[i], quals[i]);
-      gzprintf(gout2, "%s%s+\n%s", names2[i], seqs2[i], quals2[i]);
+      gzprintf(gzipped_out, "%s%s+\n%s", sequence_names[i], sequences[i], qualities[i]);
+      gzprintf(gzipped_out2, "%s%s+\n%s", sequence_names2[i], sequences2[i], qualities2[i]);
     }
   
-    gzclose(gout); gzclose(gout2);
+    gzclose(gzipped_out); gzclose(gzipped_out2);
   }
 }
