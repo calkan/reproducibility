@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass{bioinfo}
 \usepackage{graphicx,amssymb}
 \usepackage{authblk}
 \usepackage{fullpage}
@@ -9,56 +9,46 @@
 \captionsetup[table]{labelfont=bf,singlelinecheck=false}
 \usepackage[utf8]{inputenc}
 
-%\usepackage{geometry}
-%\geometry{lmargin=0.3in,rmargin=0.3in,tmargin=0in,bmargin=0.1in}
+\copyrightyear{2015} \pubyear{2015}
 
-%\textwidth=18cm \hoffset=-0.6cm
-%\textheight=28cm \voffset=-1cm
-
-\newcommand {\junk}[1]{}
-
-
-\date{}
-
-\def\keywords#1{\begin{center}{\bf Keywords}\\{#1}\end{center}}
-
-\def\titulo#1{\title{#1}}
-\def\autores#1{\author{#1}}
+\access{Advance Access Publication Date: Day Month Year}
+\appnotes{Manuscript Category}
 
 \begin{document}
+\firstpage{1}
 
-\titulo{On Genomic Repeats and Reproducibility}
+\subtitle{Subject Section}
 
-%\author[1]{Can Firtina}
-%\author[1]{Can Alkan}
-\author[1]{}
-%\affil[1]{\small Dept. of Computer Engineering, Bilkent University, 06800 Ankara, Turkey}
-%\renewcommand\Authands{ and }
+\title[short Title]{On Genomic Repeats and Reproducibility}
+\author[Sample \textit{et~al}.]{Can Firtina\,$^{\text{\sfb 1,}}$ and Can Alkan\,$^{\text{\sfb 1}}$}
+\address{$^{\text{\sf 1}}$Department, Institution, City, Post Code, Country and \\
+$^{\text{\sf 2}}$Dept. of Computer Engineering, Bilkent University, 06800 Ankara, Turkey}
 
-\maketitle
-\thispagestyle{empty}
+%\corresp{$^\ast$To whom correspondence should be addressed.}
 
-% The abstract
+\history{Received on XXXXX; revised on XXXXX; accepted on XXXXX}
 
-\begin{abstract}
-\junk{
-High throughput sequencing (HTS) technologies have been transforming biological research since their inception. More recent projects such as ClinSeq, now explore the possibility
+\editor{Associate Editor: XXXXXXX}
+
+\abstract{\textbf{Motivation:} High throughput sequencing (HTS) technologies have been transforming biological research since their inception. More recent projects such as ClinSeq, now explore the possibility
 of using HTS in the clinic as medical tests. However, the reproducibility of HTS-based analysis is yet to be proven, especially within the complex regions of the genome.
 Although it is known that the HTS platforms do not yet produce perfect data, and every sequencing experiment may show different error profile, there is no study that characterize
-the effects of read mapping ambiguity within repeats and duplications. 
-}
-
-Here we present a comprehensive analysis on the reproducibility of computational characterization of genomic variants using HTS data. We re-analyzed the same data sets twice, using the same tools with the
+the effects of read mapping ambiguity within repeats and duplications.\\
+\textbf{Results:} Here we present a comprehensive analysis on the reproducibility of computational characterization of genomic variants using HTS data. We re-analyzed the same data sets twice, using the same tools with the
 same parameters, where we only altered the order of reads in the input (i.e. FASTQ file). Reshuffling caused the reads from repetitive regions being mapped to different locations in the second alignment.
 Our results show that, some of the most common variation discovery algorithms
 do not handle the ambigious read mappings accurately when random locations are selected. In addition, we also observed that even when the exact same alignment is used, both GATK HaplotypeCaller and UnifiedGenotyper generate slightly different call sets, which we pinpoint to the variant filtration step. We conclude that, algorithms at each step of genomic variation
-discovery and characterization need to treat ambigious mappings and large training data sets in a deterministic fashion to ensure full replication of results.
+discovery and characterization need to treat ambigious mappings and large training data sets in a deterministic fashion to ensure full replication of results.\\
+\textbf{Availability:} Text  Text Text Text Text Text Text Text Text Text  Text Text Text Text
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text\\
+\textbf{Contact:} \href{calkan@cs.bilkent.edu.tr}{cfirtina@bilkent.edu.tr}\\
+\textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
+online.}
 
-\keywords{genome analysis, reproducibility, replication, repeats}
-\end{abstract}
+\maketitle
 
-\section*{}
-%\section*{Introduction}
+\section{Introduction}
+
 The advancements in high throughput sequencing (HTS) technologies have increased the demand on producing genome sequence data for many research questions, and prompted pilot projects to test its
 power in clinical settings~\cite{Biesecker2009}. Any ``medical test'' to be reliably used in the clinic has to be proven to be both accurate and reproducible.
 However, the fast-evolving nature of HTS technologies make it difficult to generate essentially same data using the same DNA resources. 
@@ -102,9 +92,89 @@ where UnifiedGenotyper showed the highest number of different calls between two 
 Our results raise questions about reproducibility and accuracy of several commonly used genomic variation discovery tools. 
 
 
+\begin{methods}
+\section{Methods}
+
+\subsection*{Data acquisition}
+
+We downloaded both whole genome and whole exome sequencing data sets from the 1000 Genomes Project~\cite{1000GP2012,1000GP2015} 
+FTP server (\url{ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/}).
+
+\subsection*{Read mapping, shuffling, and BAM file processing}
+We used  Bowtie~\cite{Langmead2009}, RazerS3~\cite{Weese2012}, and BWA-MEM~\cite{Li2009a,Li2013} %, and mrFAST~\cite{Alkan2009} 
+(Table~\ref{tab:tools}) 
+to align the reads generated by the Illumina 
+platform to human reference genome (GRCh37) using default options. For testing the effects of read order, we randomly 
+shuffled the reads in the FASTQ file using an in-house program, while keeping the relative order of read pairs intact.
+The reason for reshuffling the reads is the following. In our small scale test, we noticed that BWA-MEM uses the same pseudorandom number generator seed in all mapping experiments. This
+causes the same ambiguously mapping read to be randomly assigned to the same position when the read order is intact. However, when we shuffle the reads, the random number that corresponds to 
+the read changes, causing it to be placed to another random location. Note that, the DNA molecules are hybridized randomly to the oligos on the flow cell, thus, our read randomization simulates the randomness
+in cluster generation.
+Next, we used SAMtools~\cite{Li2009b} to merge, sort, and index BAM files, and Picard~\cite{picard} to remove PCR duplicates (MarkDuplicates).
+We then followed the GATK's ``best practices'' guide~\cite{VanderAuwera2013} to
+realign around indels (RealignerTargetCreator and IndelRealigner) and recalibrate base quality values (BaseRecalibrator). We used the 
+resulting BAM files for SNV, indel, and SV calling. The names and version numbers of the tools we used are listed in Table~\ref{tab:tools}.
 
 
-\section*{Results}
+\subsection*{SNVs and indels}
+
+We used GATK's~\cite{DePristo2011} both UnifiedGenotyper and HaplotypeCaller algorithms, SAMtools~\cite{Li2009b}, Freebayes~\cite{Garrison2012}, and Platypus~\cite{Rimmer2014} to characterize
+SNV and indels. We followed the developers' recommendations and default parameters for all variant calling tools, including potential false positive filters. 
+Specifically, we used both Variant Quality Score Recalibrator and SnpCluster algorithms to filter out false positives in GATK call sets, and additionally, 
+we required a mapping quality of at least 30 for all tools we tested.
+For GATK, we used the GATK Resource Bundle version 2.8 as the reference genome, reference genome annotations, and variant score recalibration training material.
+
+\subsection*{Structural variation}
+
+For structural variation discovery using the BWA-generated BAM files, we tested the reproducibility of the calls produced by DELLY~\cite{Rausch2012}, LUMPY~\cite{Layer2014}, and Genome STRiP~\cite{Handsaker2011,Handsaker2015}. 
+We used default parameters for each tool and followed recommendations in relative documentations.
+
+%Additionally we also tested VariationHunter~\cite{Hormozdiari2009,Hormozdiari2010} (version 3.0), however, since VariationHunter explicitly requires mrFAST~\cite{Alkan2009,Xin2013} for read mapping, 
+%both the map location and the calls were fully reproduced. We therefore omit VariationHunter in comparisons in the remainder of the paper.
+
+\subsection*{Variant annotation and comparison}
+
+We downloaded the coordinates for segmental duplications, genes, coding exons, and common repeats from the UCSC Genome Browser~\cite{Kent2002}. 
+We then used the BEDtools suite~\cite{Quinlan2010a} and standard UNIX tools 
+ to calculate intersections between discrepancies in call sets with the annotations listed above.
+
+\subsection*{Code and script availability} FASTQ read shuffling tool we developed, and all scripts we used to map reads and call variants
+ are submitted as Supplementary Material attached to this manuscript. In addition we provide links to the VCF files generated for this study in the Supplementary Material. Note that we will upload the same VCF files to \url{http://www.zenodo.org}, which is an open access data archival site upon the publication of this manuscript.
+%available at 
+%\url{https://github.com/BilkentCompGen/reproducibility}.
+
+\section{Discussion}
+
+The introduction of HTS platforms  quickly revolutionized the way we do biological research\cite{Mardis2008,Metzker2010}. Furthermore, HTS technology  already started to make impact on human health in the form of personalized medicine
+through clinical sequencing~\cite{Biesecker2009}, breast cancer subtype detection~\cite{Bosdet2013}, and small molecule drug target site identification~\cite{Rodriguez2014}. However, both sequencing technologies themselves,%~\cite{Kavak2015},
+ and the computational tools are still far from being mature in terms of accuracy~\cite{Alkan2011,Nielsen2011}. The complexity and repetitive nature of human genomes introduce further challenges for reliable characterization of genomic variants~\cite{Treangen2012}.
+
+In this paper, we documented the effects of different approaches to handle ambiguities due to genomic repeats. We focused on more widely used computational tools for read mapping and variant calling. Our main observation was that, random placement of ambiguously mapping reads have an effect on variation calling. Although discordancies within repeats are less of a concern due to their relatively negligible 
+effects to phenotype, we also discovered hundreds to thousands variants differently detected within coding exons. GATK UnifiedGenotyper was effected the most, where the discordant calls were less pronounced in Freebayes and Platypus results. It was also surprising to see differences in call sets generated using HaplotypeCaller and UnifiedGenotyper even when the same alignments and variant filtration training data sets were provided. Although we could not fully characterize the reasons
+of this observation with GATK, since HaplotypeCaller algorithm is yet unpublished, and UnifiedGenotyper algorithm description~\cite{DePristo2011} is presented as a summary, we observed that the differences were
+mainly due to different calculation of the {\it VQSLOD} score during the Variant Quality Score Recalibration (VQSR) filter. The VQSR algorithm is an expectation-maximization based algorithm~\cite{DePristo2011},
+which uses ``true sites'' (i.e. HapMap 3 sites, Omni 2.5 SNP chip array, etc.) as training data sets. Since we also used the same training data sets, 
+we speculate that the differences in VQSLOD calculations is due to the random sampling of the training data
+to reduce computational burden\footnote{This random subsampling can be seen in the GATK code VariantDataManager.java at \url{https://github.com/broadgsa/gatk-protected/blob/master/protected/gatk-tools-protected/src/main/java/org/broadinstitute/gatk/tools/walkers/variantrecalibration/} (commit ID: {\tt 8ea4dcab8d78e7a7d573fcdc519bd0947a875c06}, line 255)}. It may be possible to work around this problem by setting the {\tt maxNumTrainingData} parameter to a high value, however, disabling this randomization
+by default may be a better practice for uninformed users.
+
+Mapping short reads to repetitive regions accurately still remains an open problem~\cite{Treangen2012}. Bowtie uses %and mrFAST use 
+edit distance and paired-end span distance 
+to deterministically assign a single ``best'' map location to ambiguously mapping reads, where BWA-MEM selects a random map location all mapping properties are calculated the same. BWA-MEM assigns a zero mapping quality
+to such randomly selected alignments. This approach is still perfectly valid since it informs the downstream analysis tools for problematic alignments, however, as we have documented in this manuscript, 
+several variant discovery tools do not fully utilize this information. Complete analysis of the reasons for these discrepancies may warrant code inspection and full disclosure of every algorithmic detail.
+
+The differences in call sets we observed in this study 
+may have similar sensitivity and specificity.
+It is also expected to
+have differences between different algorithms and/or parameters, but
+obtaining different results should not be due to the order of {\it independently generated} reads in the input file. 
+We may simply count these discordant variants towards ``usual'' false positives and negatives, however, 
+we argue that computational predictions should not be effected by ``luck'', and inaccuracies in computational results should be deterministic.
+When it comes to use any technology for human health, one would prefer full reproducibility. 
+
+
+\section{Conclusion}
 
 \subsection*{Data and the tools}
 We downloaded two whole genome shotgun sequence data sets, one at low coverage ($\sim$5X, HG00096) and one at high coverage ($\sim$ 44X, HG02107) from the 1000 Genomes Project~\cite{1000GP2012}.
@@ -294,104 +364,28 @@ one of the VCF files five times. Each iteration of the VQSR filtering generated 
 Finally, we tested the effect of discordant call sets generated by GATK even with the same alignment files using 12 whole exome shotgun sequence (WES) data sets from the 1000 Genomes Project (Table~\ref{tab:data}). We followed the same alignment and post-processing procedures for the WES data sets using BWA-MEM, SAMtools, Picard, and GATK's IndelRealigner and BaseRecalibrator. We then generated two call sets using HaplotypeCaller, and two call sets using UnifiedGenotyper on the same BAM files, followed with filtering as described in the GATK Best Practices Guide~\cite{VanderAuwera2013} (Methods). In this experiment, we used the multi-sample calling options (i.e. SNV and indels in all samples were called simultaneously). Both HaplotypeCaller and UnifiedGenotyper produced discordant calls at 1-to 3\% rate
 (Supplementary Tables~\ref{supptab:orig-vs-orig2-hc},\ref{supptab:orig-vs-orig2-ug},\ref{supptab:orig-vs-orig2-multiple-hc},\ref{supptab:orig-vs-orig2-multiple-ug}). 
 
-\section*{Methods}
 
-\subsection*{Data acquisition}
+\section*{Acknowledgements}
 
-We downloaded both whole genome and whole exome sequencing data sets from the 1000 Genomes Project~\cite{1000GP2012,1000GP2015} 
-FTP server (\url{ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/}).
-
-\subsection*{Read mapping, shuffling, and BAM file processing}
-We used  Bowtie~\cite{Langmead2009}, RazerS3~\cite{Weese2012}, and BWA-MEM~\cite{Li2009a,Li2013} %, and mrFAST~\cite{Alkan2009} 
-(Table~\ref{tab:tools}) 
-to align the reads generated by the Illumina 
-platform to human reference genome (GRCh37) using default options. For testing the effects of read order, we randomly 
-shuffled the reads in the FASTQ file using an in-house program, while keeping the relative order of read pairs intact.
-The reason for reshuffling the reads is the following. In our small scale test, we noticed that BWA-MEM uses the same pseudorandom number generator seed in all mapping experiments. This
-causes the same ambiguously mapping read to be randomly assigned to the same position when the read order is intact. However, when we shuffle the reads, the random number that corresponds to 
-the read changes, causing it to be placed to another random location. Note that, the DNA molecules are hybridized randomly to the oligos on the flow cell, thus, our read randomization simulates the randomness
-in cluster generation.
-Next, we used SAMtools~\cite{Li2009b} to merge, sort, and index BAM files, and Picard~\cite{picard} to remove PCR duplicates (MarkDuplicates).
-We then followed the GATK's ``best practices'' guide~\cite{VanderAuwera2013} to
-realign around indels (RealignerTargetCreator and IndelRealigner) and recalibrate base quality values (BaseRecalibrator). We used the 
-resulting BAM files for SNV, indel, and SV calling. The names and version numbers of the tools we used are listed in Table~\ref{tab:tools}.
-
-
-\subsection*{SNVs and indels}
-
-We used GATK's~\cite{DePristo2011} both UnifiedGenotyper and HaplotypeCaller algorithms, SAMtools~\cite{Li2009b}, Freebayes~\cite{Garrison2012}, and Platypus~\cite{Rimmer2014} to characterize
-SNV and indels. We followed the developers' recommendations and default parameters for all variant calling tools, including potential false positive filters. 
-Specifically, we used both Variant Quality Score Recalibrator and SnpCluster algorithms to filter out false positives in GATK call sets, and additionally, 
-we required a mapping quality of at least 30 for all tools we tested.
-For GATK, we used the GATK Resource Bundle version 2.8 as the reference genome, reference genome annotations, and variant score recalibration training material.
-
-\subsection*{Structural variation}
-
-For structural variation discovery using the BWA-generated BAM files, we tested the reproducibility of the calls produced by DELLY~\cite{Rausch2012}, LUMPY~\cite{Layer2014}, and Genome STRiP~\cite{Handsaker2011,Handsaker2015}. 
-We used default parameters for each tool and followed recommendations in relative documentations.
-
-%Additionally we also tested VariationHunter~\cite{Hormozdiari2009,Hormozdiari2010} (version 3.0), however, since VariationHunter explicitly requires mrFAST~\cite{Alkan2009,Xin2013} for read mapping, 
-%both the map location and the calls were fully reproduced. We therefore omit VariationHunter in comparisons in the remainder of the paper.
-
-\subsection*{Variant annotation and comparison}
-
-We downloaded the coordinates for segmental duplications, genes, coding exons, and common repeats from the UCSC Genome Browser~\cite{Kent2002}. 
-We then used the BEDtools suite~\cite{Quinlan2010a} and standard UNIX tools 
- to calculate intersections between discrepancies in call sets with the annotations listed above.
-
-\subsection*{Code and script availability} FASTQ read shuffling tool we developed, and all scripts we used to map reads and call variants
- are submitted as Supplementary Material attached to this manuscript. In addition we provide links to the VCF files generated for this study in the Supplementary Material. Note that we will upload the same VCF files to \url{http://www.zenodo.org}, which is an open access data archival site upon the publication of this manuscript.
-%available at 
-%\url{https://github.com/BilkentCompGen/reproducibility}.
-
-\section*{Discussion}
-
-The introduction of HTS platforms  quickly revolutionized the way we do biological research\cite{Mardis2008,Metzker2010}. Furthermore, HTS technology  already started to make impact on human health in the form of personalized medicine
-through clinical sequencing~\cite{Biesecker2009}, breast cancer subtype detection~\cite{Bosdet2013}, and small molecule drug target site identification~\cite{Rodriguez2014}. However, both sequencing technologies themselves,%~\cite{Kavak2015},
- and the computational tools are still far from being mature in terms of accuracy~\cite{Alkan2011,Nielsen2011}. The complexity and repetitive nature of human genomes introduce further challenges for reliable characterization of genomic variants~\cite{Treangen2012}.
-
-In this paper, we documented the effects of different approaches to handle ambiguities due to genomic repeats. We focused on more widely used computational tools for read mapping and variant calling. Our main observation was that, random placement of ambiguously mapping reads have an effect on variation calling. Although discordancies within repeats are less of a concern due to their relatively negligible 
-effects to phenotype, we also discovered hundreds to thousands variants differently detected within coding exons. GATK UnifiedGenotyper was effected the most, where the discordant calls were less pronounced in Freebayes and Platypus results. It was also surprising to see differences in call sets generated using HaplotypeCaller and UnifiedGenotyper even when the same alignments and variant filtration training data sets were provided. Although we could not fully characterize the reasons
-of this observation with GATK, since HaplotypeCaller algorithm is yet unpublished, and UnifiedGenotyper algorithm description~\cite{DePristo2011} is presented as a summary, we observed that the differences were
-mainly due to different calculation of the {\it VQSLOD} score during the Variant Quality Score Recalibration (VQSR) filter. The VQSR algorithm is an expectation-maximization based algorithm~\cite{DePristo2011},
-which uses ``true sites'' (i.e. HapMap 3 sites, Omni 2.5 SNP chip array, etc.) as training data sets. Since we also used the same training data sets, 
-we speculate that the differences in VQSLOD calculations is due to the random sampling of the training data
-to reduce computational burden\footnote{This random subsampling can be seen in the GATK code VariantDataManager.java at \url{https://github.com/broadgsa/gatk-protected/blob/master/protected/gatk-tools-protected/src/main/java/org/broadinstitute/gatk/tools/walkers/variantrecalibration/} (commit ID: {\tt 8ea4dcab8d78e7a7d573fcdc519bd0947a875c06}, line 255)}. It may be possible to work around this problem by setting the {\tt maxNumTrainingData} parameter to a high value, however, disabling this randomization
-by default may be a better practice for uninformed users.
-
-Mapping short reads to repetitive regions accurately still remains an open problem~\cite{Treangen2012}. Bowtie uses %and mrFAST use 
-edit distance and paired-end span distance 
-to deterministically assign a single ``best'' map location to ambiguously mapping reads, where BWA-MEM selects a random map location all mapping properties are calculated the same. BWA-MEM assigns a zero mapping quality
-to such randomly selected alignments. This approach is still perfectly valid since it informs the downstream analysis tools for problematic alignments, however, as we have documented in this manuscript, 
-several variant discovery tools do not fully utilize this information. Complete analysis of the reasons for these discrepancies may warrant code inspection and full disclosure of every algorithmic detail.
-
-The differences in call sets we observed in this study 
-may have similar sensitivity and specificity.
-It is also expected to
-have differences between different algorithms and/or parameters, but
-obtaining different results should not be due to the order of {\it independently generated} reads in the input file. 
-We may simply count these discordant variants towards ``usual'' false positives and negatives, however, 
-we argue that computational predictions should not be effected by ``luck'', and inaccuracies in computational results should be deterministic.
-When it comes to use any technology for human health, one would prefer full reproducibility. 
-
-
-\junk{
-\section*{Acknowledgments}
 We thank H.I. Özercan, A. Gündoğdu, A.K. Şenol, and M.Y. Özkaya for the initial observation of the effects of reshuffling reads in alignment results using BWA-MEM. We also thank M. Somel, 
 O. Gokcumen, E. Cicek, and O. Tastan for
-their valuable comments during the preparation of this manuscript. 
+their valuable comments during the preparation of this manuscript.
+
+\section*{Funding}
 
 Funding for this project was provided by a Marie Curie Career Integration Grant (303772) and an 
 EMBO Installation Grant (IG-2521) to C.A.
 
+%\bibliographystyle{natbib}
+%\bibliographystyle{achemnat}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{abbrv}
+%\bibliographystyle{bioinformatics}
+%
+%\bibliographystyle{plain}
+%
+%\bibliography{Document}
 
-\section*{Author Contributions}
-C.A. conceived the project. C.F. and C.A. analyzed the data and wrote the manuscript.
-
-}
-
-\section*{Competing Financial Interests}
-The authors declare no competing financial interests.
 
 \small
 \bibliographystyle{naturemag}
