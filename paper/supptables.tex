@@ -2,15 +2,16 @@
 
 % all tables here
 
-\newpage
+%\newpage
 \section*{Supplementary Tables}
 \setcounter{table}{0}
 \setcounter{page}{1}
 
 \renewcommand{\tablename}{Supplementary Table}
-%\renewcommand{\thetable}{S\arabic{table}}%
+\renewcommand{\thetable}{S\arabic{table}}%
 
 \pagenumbering{Roman} 
+\onecolumn
 
 \begin{table}[htb]
 \caption{Summary of alignments of 1 million reads sampled from HG00096 in original vs. shuffled order.}
@@ -22,7 +23,7 @@
 \hline{\bf } & {\it Total} & {\it Private} & {\it Private (\%)}
            & {\it Total} & {\it Private} & {\it Private (\%)} \\
 \hline
-%mrFAST & 904,952 & 0 & - & 904,952 & 0 & - \\
+mrFAST & 904,952 & 0 & - & 904,952 & 0 & - \\
 Bowtie & 929,393 & 0 & - & 929,393 & 0 & - \\
 RazerS3 & 650,086 & 5,949 & 0.9 & 650,088 & 5,951 & 0.9 \\
 BWA-MEM & 897,548 & 18,862 & 2.1 & 897,534 & 18,848 & 2.1 \\
@@ -31,13 +32,32 @@ BWA-MEM & 897,548 & 18,862 & 2.1 & 897,534 & 18,848 & 2.1 \\
 \end{center}
 {\footnotesize 
 Command lines: \\
-%mrfast --search human\_g1k\_v37.fasta --seq1 file\_1.fq --seq2 file\_2.fq -o mrfast.sam --min 0 --max 1000 --pe \\
+mrfast --search human\_g1k\_v37.fasta --seq1 file\_1.fq --seq2 file\_2.fq -o mrfast.sam --min 0 --max 1000 --pe \\
 bowtie2 -x human\_g1k\_v37 -1 file\_1.fq -2 file\_2.fq -S bowtie.sam \\
 razers3  -i 96 -tc 12 -m 1 -o razers3.sam human\_g1k\_v37.fasta         file\_1.fq file\_2.fq \\
 bwa mem -t 16 human\_g1k\_v37.fasta file\_1.fq file\_2.fq $>$ bwa.sam \\
 We further filtered mappings and removed both hard and soft-clipped reads, and mappings with edit distance $>$4 in this small-scale experiment only to easily characterize private mappings. We used the full set of alignments in the variant caller tests.
 }
 \label{supptab:small-scale}
+\end{table}
+
+\begin{table}[htb]
+\caption{Summary of scatter/gather based parallel read mapping of 1 million reads using BWA-MEM.}
+\begin{center}
+\begin{tabular}{|r|c|c|c|c|c|}
+\hline
+{\bf Chunk Size } & {\it Total} & {\it Private} & {\it Private (\%)} & {\it Private (MAPQ=0)} & {\it Private (MAPQ$\geq$30)} \\
+\hline
+50,000 &  997,192 & 20920 & 2.1 & 13,907  & 4,346 \\ 
+100,000 & 997,202 & 20930 & 2.1 & 13,916 & 4,305 \\
+\hline
+\end{tabular}
+\end{center}
+{\footnotesize We mapped 1 million reads in a scatter/gather fashion using two different chunk sizes (50,000 and 100,000 read pairs per chunk). We first divided 1 million reads (500,000 read pairs) to
+different chunks, mapped them separately using BWA-MEM, and then merged the resulting BAM files. We also removed the secondary and supplementary mappings from the alignments (i.e. -F 256+2048) for non-redundant comparison.
+Map locations that are specific to one chunk size are listed as {\it Private}. We also list the number of private mappings
+with $0$ and $\geq 30$ mapping quality.}
+\label{supptab:bwa-map-scatter}
 \end{table}
 
 \begin{table}[htb]
@@ -1323,7 +1343,9 @@ Private: variants found in one execution of UnifiedGenotyper and not the other.}
 \label{supptab:orig-vs-orig2-multiple-ug}
 \end{table}
 
-\clearpage
+%\clearpage
+\junk{
+
 \section*{Call sets}
 
 Note: We will upload all files to zenodo.org, which is an Open Access Data Archival site upon acceptance of this manuscript.
@@ -1409,3 +1431,5 @@ Note: We will upload all files to zenodo.org, which is an Open Access Data Archi
 {\bf LUMPY}\\
 \url{http://rapidgator.net/file/a7c594d2ec096511830adc9910d4c82c/LUMPY.tar.gz.html}\\
 \end{tabular}
+
+}

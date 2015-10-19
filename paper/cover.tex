@@ -236,13 +236,13 @@
 
 \begin{minipage}{0.49\textwidth}
 \begin{flushleft}
-  \noindent Tal Nawy\\
-Associate Editor\\
-Nature Methods\\
-One New York Plaza, Suite 4500
-New York NY 10004-1562
-75 Varick Street, 9th Floor\\
-New York NY 10013-1917
+  \noindent 
+Janet Kelso\\
+Editor-in-Chief\\
+Bioinformatics\\
+Max Planck Institute for Evolutionary Anthropology\\
+Deutscher Platz 6 \\
+04103 Leipzig, Germany
 \end{flushleft}
 \end{minipage}
 \begin{minipage}{0.47\textwidth}
@@ -254,17 +254,18 @@ New York NY 10013-1917
 
 \vspace*{0.7cm}  
 
-Dear Dr. Nawy:
+Dear Janet:
 
 Attached, please find a copy of our manuscript entitled ``On Genomic Repeats and Reproducibility''
-for consideration as an Analysis article in Nature Methods.
+for consideration as a Discovery Note article in Bioinformatics.
 
-Inspired from our earlier paper ``Limitations of next-generation genome sequence assembly'', previously published in Nature Methods, here we analyze the robustness of genomic variation characterization 
+Inspired from our earlier paper ``Limitations of next-generation genome sequence assembly'', 
+here we analyze the robustness of genomic variation characterization 
 using high throughput sequencing technologies.
 In this manuscript, we describe the behavior of several popular read mapping algorithms when a read can be aligned to multiple locations, and how various SNV, indel, and SV calling algorithms 
 handle such alignments. It is known, for example, that the BWA-MEM algorithm selects random locations among possible map location candidates, and reports a zero mapping quality. It is expected
 for tha variation calling algorithms to filter such alignments accordingly, however, we show that this is not the case, and the order of reads in the input files affects the 
-final variation call set due to random placement. More interestingly, we also found that, even when the same alignment file (i.e. BAM file) is used, the popular GATK tool (both HaplotypeCaller and UnifiedGenotyper) produce slightly different call sets, which we pinpoint to a randomization step in variant filtration.
+final variation call set due to random placement. We also observed the same behavior when scatter/gather approach is used for read mapping, where reads are mapped in chunks in different CPUs and the alignment results are merged in post-processing. More interestingly, we also found that, even when the same alignment file (i.e. BAM file) is used, the popular GATK tool (both HaplotypeCaller and UnifiedGenotyper) produce slightly different call sets, which we pinpoint to a randomization step in variant filtration.
 
 The HTS platforms are now being considered to be used in clinical setting to enhance both diagnosis and treatment of patients. However, any ``medical test''
 has to be proven to be both accurate and reproducible  to be reliably used in the clinic. However, the fast-evolving nature of HTS technologies make it difficult
@@ -272,11 +273,8 @@ to generate essentially same data using the same DNA resources. There is some le
 we argue that the bioinformatic analyses should be deterministic, since computers are deterministic machines. Our analysis shows that this is not the case for some of the most popular variation characterization pipelines due to randomization in several steps. I am concerned that, if left undocumented, discordancies in call sets even when using the {\bf same} data
  may cause harm when HTS use becomes routine in the clinic.
 
-We would like to note that we wish to submit this article for a {\it double blind} review. We have anonymized the manuscript and avoided any phrase and several self citations
- that might reveal our names. The manuscript has only two authors, and if accepted, we would like the author names to be ordered as: Can Firtina and Can Alkan.
-
 We recommend referees in the area of genome analysis (David Haussler, Jim Mullikin, Steve O'Brien), and
-bioinformatics (Lior Pachter, Vineet Bafna, Christina Boucher).
+bioinformatics (Lior Pachter, Bonnie Berger, Vineet Bafna, Christina Boucher).
 We request that researchers at the Broad Institute (Heng Li, Mark Daly, Bob Handsaker, Steve McCarroll) be excluded as reviewers due to conflict of interest.
 
 Thank you for consideration of this manuscript.
