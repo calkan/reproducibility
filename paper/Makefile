@@ -7,7 +7,7 @@ TEX = $(wildcard ./*.tex)
 all: $(TEX) $(FIGS) 
 	pdflatex $(PAPER) 
 	pdflatex $(PAPER)
-	bibtex $(PAPER)
+#	bibtex $(PAPER)
 	pdflatex $(PAPER)
 	pdflatex $(PAPER)
 bib:
