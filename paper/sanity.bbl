@@ -1,0 +1,143 @@
+\begin{thebibliography}{}
+
+\bibitem[Alkan {\em et~al.}(2009)Alkan, Kidd, Marques-Bonet, Aksay, Antonacci,
+  Hormozdiari, Kitzman, Baker, Malig, Mutlu, Sahinalp, Gibbs, and
+  Eichler]{Alkan2009}
+Alkan, C., et~al. (2009).
+\newblock Personalized copy number and segmental duplication maps using
+  next-generation sequencing.
+\newblock {\em Nat Genet\/}, {\bf 41}(10), 1061--1067.
+
+\bibitem[Biesecker {\em et~al.}(2009)Biesecker, Mullikin, Facio, Turner,
+  Cherukuri, Blakesley, Bouffard, Chines, Cruz, Hansen, Teer, Maskeri, Young,
+  ~, Manolio, Wilson, Finkel, Hwang, Arai, Remaley, Sachdev, Shamburek, Cannon,
+  and Green]{Biesecker2009}
+Biesecker, L.~G., et~al.  (2009).
+\newblock The {ClinSeq} project: piloting large-scale genome sequencing for
+  research in genomic medicine.
+\newblock {\em Genome Res\/}, {\bf 19}(9), 1665--1674.
+
+\bibitem[DePristo {\em et~al.}(2011)DePristo, Banks, Poplin, Garimella,
+  Maguire, Hartl, Philippakis, {del Angel}, Rivas, Hanna, McKenna, Fennell,
+  Kernytsky, Sivachenko, Cibulskis, Gabriel, Altshuler, and Daly]{DePristo2011}
+DePristo, M.~A., et~al. (2011).
+\newblock A framework for variation discovery and genotyping using
+  next-generation {DNA} sequencing data.
+\newblock {\em Nat Genet\/}, {\bf 43}(5), 491--498.
+
+\bibitem[Garrison and Marth(2012)Garrison and Marth]{Garrison2012}
+Garrison, E. and Marth, G. (2012).
+\newblock Haplotype-based variant detection from short-read sequencing.
+\newblock {\em arXiv preprint arXiv:1207.3907v2}.
+
+\bibitem[Handsaker {\em et~al.}(2015)Handsaker, {Van Doren}, Berman, Genovese,
+  Kashin, Boettger, and McCarroll]{Handsaker2015}
+Handsaker, R.~E., et~al.  (2015).
+\newblock Large multiallelic copy number variations in humans.
+\newblock {\em Nat Genet\/}, {\bf 47}(3), 296--303.
+
+\bibitem[Hormozdiari {\em et~al.}(2009)Hormozdiari, Alkan, Eichler, and
+  Sahinalp]{Hormozdiari2009}
+Hormozdiari, F., et~al. (2009).
+\newblock Combinatorial algorithms for structural variation detection in
+  high-throughput sequenced genomes.
+\newblock {\em Genome Res\/}, {\bf 19}(7), 1270--1278.
+
+\bibitem[Hormozdiari {\em et~al.}(2011)Hormozdiari, Hajirasouliha, McPherson,
+  Eichler, and Sahinalp]{Hormozdiari2011b}
+Hormozdiari, F., et~al. (2011).
+\newblock Simultaneous structural variation discovery among multiple paired-end
+  sequenced genomes.
+\newblock {\em Genome Res\/}, {\bf 21}(12), 2203--2212.
+
+\bibitem[Kavak {\em et~al.}(2015)Kavak, Yuksel, Aksu, Kulekci, Gungor, Hach,
+  Sahinalp, Project, Alkan, and Sagiroglu]{Kavak2015}
+Kavak, P., et~al.  (2015).
+\newblock Robustness of massively parallel sequencing platforms.
+\newblock {\em {PLoS One}\/}, {\bf 10}(9), e0138259.
+
+\bibitem[Kent {\em et~al.}(2002)Kent, Sugnet, Furey, Roskin, Pringle, Zahler,
+  and Haussler]{Kent2002}
+Kent, W.~J., et~al. (2002).
+\newblock The human genome browser at {UCSC}.
+\newblock {\em Genome Res\/}, {\bf 12}(6), 996--1006.
+
+\bibitem[Langmead {\em et~al.}(2009)Langmead, Trapnell, Pop, and
+  Salzberg]{Langmead2009}
+Langmead, B., et~al. (2009).
+\newblock Ultrafast and memory-efficient alignment of short {DNA} sequences to
+  the human genome.
+\newblock {\em Genome Biol\/}, {\bf 10}(3), R25.
+
+\bibitem[Layer {\em et~al.}(2014)Layer, Chiang, Quinlan, and Hall]{Layer2014}
+Layer, R.~M., et~al. (2014).
+\newblock {LUMPY}: a probabilistic framework for structural variant discovery.
+\newblock {\em Genome Biol\/}, {\bf 15}(6), R84.
+
+\bibitem[Li(2013)Li]{Li2013}
+Li, H. (2013).
+\newblock Aligning sequence reads, clone sequences and assembly contigs with
+  {BWA-MEM}.
+\newblock {\em arXiv preprint arXiv:1303.3997\/}.
+
+\bibitem[Li {\em et~al.}(2009)Li, Handsaker, Wysoker, Fennell, Ruan, Homer,
+  Marth, Abecasis, Durbin, and Subgroup]{Li2009b}
+Li, H., et~al. (2009).
+\newblock The sequence alignment/map format and {SAMtools}.
+\newblock {\em Bioinformatics\/}, {\bf 25}(16), 2078--2079.
+
+\bibitem[Quinlan and Hall(2010)Quinlan and Hall]{Quinlan2010a}
+Quinlan, A.~R. and Hall, I.~M. (2010).
+\newblock {BEDTools}: a flexible suite of utilities for comparing genomic
+  features.
+\newblock {\em Bioinformatics\/}, {\bf 26}(6), 841--842.
+
+\bibitem[Rausch {\em et~al.}(2012)Rausch, Zichner, Schlattl, St{\"{u}}tz,
+  Benes, and Korbel]{Rausch2012}
+Rausch, T., et~al. (2012).
+\newblock {DELLY}: structural variant discovery by integrated paired-end and
+  split-read analysis.
+\newblock {\em Bioinformatics\/}, {\bf 28}(18), i333--i339.
+
+\bibitem[Rimmer {\em et~al.}(2014)Rimmer, Phan, Mathieson, Iqbal, Twigg, ~,
+  Wilkie, McVean, and Lunter]{Rimmer2014}
+Rimmer, A., et~al. (2014).
+\newblock Integrating mapping-, assembly- and haplotype-based approaches for
+  calling variants in clinical sequencing applications.
+\newblock {\em Nat Genet\/}, {\bf 46}(8), 912--918.
+
+
+\bibitem[{The 1000 Genomes Project Consortium}(2015){The 1000 Genomes Project
+  Consortium}]{1000GP2015}
+{The 1000 Genomes Project Consortium} (2015).
+\newblock A global reference for human genetic variation.
+\newblock {\em Nature\/}, {\bf 526}(7571), 68--74.
+
+\bibitem[Treangen and Salzberg(2012)Treangen and Salzberg]{Treangen2012}
+Treangen, T.~J. and Salzberg, S.~L. (2012).
+\newblock Repetitive {DNA} and next-generation sequencing: computational
+  challenges and solutions.d.
+\newblock {\em Nat Rev Genet\/}, {\bf 13}(1), 36--46.
+
+\bibitem[{Van der Auwera} {\em et~al.}(2013){Van der Auwera}, Carneiro, Hartl,
+  Poplin, {Del Angel}, Levy-Moonshine, Jordan, Shakir, Roazen, Thibault, Banks,
+  Garimella, Altshuler, Gabriel, and DePristo]{VanderAuwera2013}
+{Van der Auwera}, G.~A., et~al. (2013).
+\newblock From FASTQ data to high confidence variant calls: the genome analysis
+  toolkit best practices pipeline.
+\newblock {\em Curr Protoc Bioinformatics\/}, {\bf 11}(1110),
+  11.10.1--11.10.33.
+
+\bibitem[Weese {\em et~al.}(2012)Weese, Holtgrewe, and Reinert]{Weese2012}
+Weese, D., et~al.  (2012).
+\newblock {RazerS} 3: faster, fully sensitive read mapping.
+\newblock {\em Bioinformatics\/}, {\bf 28}(20), 2592--2599.
+
+\bibitem[Zook {\em et~al.}(2014)Zook, Chapman, Wang, Mittelman, Hofmann, Hide,
+  and Salit]{Zook2014}
+Zook, J.~M., et~al. (2014).
+\newblock Integrating human sequence data sets provides a resource of benchmark
+  snp and indel genotype calls.
+\newblock {\em Nat Biotechnol\/}, {\bf 32}(3), 246--251.
+
+\end{thebibliography}
