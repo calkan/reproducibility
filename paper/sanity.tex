@@ -203,7 +203,10 @@ As expected, 72- to 80\% of the discrepant calls were found within common repeat
 In most genomic analysis studies high copy regions are removed from consideration, however, we also observed 253 to 1,249 
 SNVs that were called within one alignment but not the other that map to coding exons using HaplotypeCaller (Table~\ref{supptab:orig-vs-shuf-hc}). 
 % UPDATED
-Furthermore, 2,910 of the 6,099 (47.71\%) discordant exonic SNVs predicted by GATK HaplotypeCaller did not intersect with any common repeats or segmental duplications.
+Furthermore, 1,543 of the 1,884 (81.9\%) discordant exonic SNVs predicted by GATK HaplotypeCaller (either original or shuffled order) {\bf did not} intersect with any common repeats or segmental duplications.
+% 1000 of 1241 for orig hg02107 hc
+%(05:12:42 PM) Can Fırtına: 543 of 643 for shuf
+%(05:13:02 PM) Can Fırtına: in total 1543 of 1884
 % END_UPDATED
 Freebayes, Platypus, and SAMtools predictions were more reproducible, as $>$98.5\% of the calls were identical, and the number of exonic discrepant SNV calls were substantially lower than
 that of GATK's (Tables~\ref{supptab:orig-vs-shuf-freebayes},\ref{supptab:orig-vs-shuf-samtools},\ref{supptab:orig-vs-shuf-platypus}). 
