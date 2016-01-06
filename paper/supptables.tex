@@ -1462,6 +1462,125 @@ Private: variants found in one execution of UnifiedGenotyper and not the other.}
 \end{table}
 }
 
+\clearpage
+
+
+\begin{table}[htb]
+\caption{Caption OMNI here }
+\begin{center}
+\begin{tabular}{|l||c|c|c|c|c|c|c|c|}
+\hline
+{\bf OMNI} & \multicolumn{8}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-8}
+{\bf} & {\it True Positive} & {\it False Positive} & {\it True Negative} & {\it False Negative} & {\it Genotype Error} & {\it Precision} & {\it Recall} & {\it Accuracy}\\
+\hline
+HaplotypeCaller 1 & 410,031 & 5,424 & 1,678,715 & 288,997 & 32,032 & 0.9162970097 & 0.58657307 & 0.8648339122 \\
+\hline
+HaplotypeCaller 2 & 409,904 & 5,424 & 1,678,715 & 289,153 & 32,003 & 0.9163326485 & 0.5863670631 & 0.8647813286 \\
+\hline
+HaplotypeCaller Shuffled & 409,943 & 5,422 & 1,678,717 & 289,122 & 31,995 & 0.9163604256 & 0.5864161416 & 0.8647983044 \\
+\hline
+FreeBayes & 368,576 & 726 & 1,683,413 & 328,626 & 33,858 & 0.9142176803 & 0.5286502334 & 0.8496148765 \\
+\hline
+FreeBayes Shuffled & 368,581 & 723 & 1,683,416 & 328,623 & 33,856 & 0.9142300823 & 0.5286558884 & 0.8496181888 \\
+\hline
+SAMtools & 357,952 & 1,587 & 1,682,552 & 344,158 & 28,952 & 0.9213907143 & 0.5098232471 & 0.8448588751 \\
+\hline
+SAMtools Shuffled & 357,961 & 1,590 & 1,682,549 & 344,147 & 28,954 & 0.9213806772 & 0.5098375179 & 0.8448613594 \\
+\hline
+Platypus & 299,609 & 5,338 & 1,678,771 & 375,215 & 25,237 & 0.9074001163 & 0.4439809491 & 0.8297982107 \\
+\hline
+Platypus Shuffled & 299,611 & 5,340 & 1,678,769 & 375,206 & 25,242 & 0.9073814406 & 0.4439885184 & 0.8297989068 \\
+\hline
+\hline
+{\bf OMNI} & \multicolumn{8}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-8}
+{\bf} & {\it True Positive} & {\it False Positive} & {\it True Negative} & {\it False Negative} & {\it Genotype Error} & {\it Precision} & {\it Recall} & {\it Accuracy}\\
+\hline
+HaplotypeCaller 1 & 768,092 & 10,582 & 1,614,337 & 28,838 & 1,260 & 0.984816664 & 0.9638136348 & 0.9832116508 \\
+\hline
+HaplotypeCaller 2 & 768,302 & 10,615 & 1,614,304 & 28,569 & 1,319 & 0.9847046278 & 0.9641485259 & 0.9832846975 \\
+\hline
+HaplotypeCaller Shuffled & 767,494 & 10,629 & 1,614,290 & 29,443 & 1,253 & 0.9847544702 & 0.9630547961 & 0.9829454639 \\
+\hline
+FreeBayes & 754,824 & 1,772 & 1,623,147 & 42,128 & 1,238 & 0.9960281539 & 0.9471385981 & 0.9813718656 \\
+\hline
+FreeBayes Shuffled & 755,205 & 1,799 & 1,623,120 & 41,744 & 1,241 & 0.9959907418 & 0.9476202367 & 0.981517959 \\
+\hline
+SAMtools & 768,616 & 3,414 & 1,621,505 & 28,301 & 1,297 & 0.9939081398 & 0.9644868914 & 0.9863763153 \\
+\hline
+SAMtools Shuffled & 768,615 & 3,408 & 1,621,511 & 28,303 & 1,296 & 0.9939171286 & 0.9644844263 & 0.9863783787 \\
+\hline
+Platypus & 618,355 & 7,828 & 1,617,091 & 58,376 & 1,111 & 0.9857499036 & 0.9137382505 & 0.9707677002 \\
+\hline
+Platypus Shuffled & 618,353 & 7,826 & 1,617,093 & 58,374 & 1,114 & 0.9857482867 & 0.913740696 & 0.9707681217 \\
+\hline
+\end{tabular}
+\end{center}
+{\footnotesize Footnote omni here}
+\label{supptab:orig-vs-shuf-hc}
+\end{table}
+
+
+\begin{table}[htb]
+\caption{Caption 1000G here}
+\begin{center}
+\begin{tabular}{|l||c|c|c|c|c|c|c|c|}
+\hline
+{\bf 1000G} & \multicolumn{8}{|c|}{\bf HG00096} \\
+\hline
+\cline{2-8}
+{\bf} & {\it True Positive} & {\it False Positive} & {\it True Negative} & {\it False Negative} & {\it Genotype Error} & {\it Precision} & {\it Recall} & {\it Accuracy}\\
+\hline
+HaplotypeCaller 1 & 1,755,897 & 7,720 & 74,394,633 & 7,720 & 180,912 & 0.9029934755 & 0.9956226324 & 0.9974281595 \\
+\hline
+HaplotypeCaller 2 & 2,062,619 & 15,209 & 74,387,144 & 15,209 & 209,042 & 0.9019397692 & 0.9926803374 & 0.9968775274 \\
+\hline
+HaplotypeCaller Shuffled & 1,763,761 & 7,790 & 74,394,563 & 7,790 & 182,710 & 0.9025206971 & 0.9956027233 & 0.9974031064 \\
+\hline
+FreeBayes & 1,702,886 & 6,977 & 74,395,377 & 6,977 & 210,308 & 0.8868408074 & 0.9959195561 & 0.9970616538 \\
+\hline
+FreeBayes Shuffled & 1,702,929 & 6,971 & 74,395,383 & 6,971 & 210,310 & 0.8868451888 & 0.9959231534 & 0.9970617863 \\
+\hline
+SAMtools & 1,672,206 & 9,676 & 74,392,677 & 9,676 & 178,863 & 0.8986755305 & 0.994246921 & 0.9974009055 \\
+\hline
+SAMtools Shuffled & 1,672,232 & 9,666 & 74,392,687 & 9,666 & 178,873 & 0.8986769463 & 0.9942529214 & 0.9974010375 \\
+\hline
+Platypus & 1,458,048 & 7,297 & 74,395,056 & 7,297 & 147,975 & 0.9037562294 & 0.9950202853 & 0.9978613752 \\
+\hline
+Platypus Shuffled & 1,457,995 & 7,312 & 74,395,041 & 7,312 & 147,990 & 0.9037362618 & 0.9950099194 & 0.9978607826 \\
+\hline
+\hline
+{\bf 1000G} & \multicolumn{8}{|c|}{\bf HG02107} \\
+\hline
+\cline{2-8}
+{\bf} & {\it True Positive} & {\it False Positive} & {\it True Negative} & {\it False Negative} & {\it Genotype Error} & {\it Precision} & {\it Recall} & {\it Accuracy}\\
+\hline
+HaplotypeCaller 1 & 3,705,845 & 12,862 & 73,569,468 & 12,862 & 102,624 & 0.9697785929 & 0.9965412709 & 0.9983418355 \\
+\hline
+HaplotypeCaller 2 & 4,199,867 & 27,802 & 73,554,528 & 27,802 & 128,157 & 0.9641953099 & 0.9934237993 & 0.9976422203 \\
+\hline
+HaplotypeCaller Shuffled & 3,676,596 & 12,920 & 73,569,410 & 12,920 & 102,379 & 0.9695933036 & 0.9964981857 & 0.9983428719 \\
+\hline
+FreeBayes & 3,997,561 & 9,266 & 73,573,069 & 9,266 & 115,627 & 0.9697042102 & 0.9976874469 & 0.9982734784 \\
+\hline
+FreeBayes Shuffled & 4,002,945 & 9,377 & 73,572,959 & 9,377 & 115,666 & 0.9697084875 & 0.9976629493 & 0.9982702427 \\
+\hline
+SAMtools & 4,170,590 & 15,272 & 73,567,061 & 15,272 & 122,851 & 0.9679433279 & 0.9963515281 & 0.9980306466 \\
+\hline
+SAMtools Shuffled & 4,170,654 & 15,235 & 73,567,098 & 15,235 & 122,805 & 0.9679624499 & 0.9963603908 & 0.9980321867 \\
+\hline
+Platypus & 3,723,505 & 11,094 & 73,571,236 & 11,094 & 101,341 & 0.9706890619 & 0.9970293999 & 0.9984043947 \\
+\hline
+Platypus Shuffled & 3,723,629 & 11,079 & 73,571,251 & 11,079 & 101,332 & 0.9706960824 & 0.997033503 & 0.9984049005 \\
+\hline
+\end{tabular}
+\end{center}
+{\footnotesize Footnote for 1000g here}
+\label{supptab:orig-vs-shuf-hc}
+\end{table}
 
 %\clearpage
 \junk{
