@@ -74,21 +74,20 @@ Genome STRiP~\citep{Handsaker2015} & 2.00.1602 & Structural Variation\\
 \end{table*}
 
 
-
 \begin{table}[htb]
 \caption{Summary of alignments of 1 million reads sampled from HG00096 in original vs. shuffled order.}
 \begin{center}
-\begin{tabular}{|l|c|c|c||c|c|c|}
+\begin{tabular}{|l|c|c|c||c|c|c|c|}
 \hline
 {\bf Tool } & \multicolumn{3}{c||}{\bf Original} & \multicolumn{3}{c|}
-     {\bf Shuffled} \\
+     {\bf Shuffled} & {\bf Run time} \\
 \hline{\bf } & {\it Total} & {\it Private} & {\it Private (\%)}
-           & {\it Total} & {\it Private} & {\it Private (\%)} \\
+           & {\it Total} & {\it Private} & {\it Private (\%)} & \\
 \hline
-mrFAST & 904,952 & 0 & - & 904,952 & 0 & - \\
-Bowtie & 929,393 & 0 & - & 929,393 & 0 & - \\
-RazerS3 & 650,086 & 5,949 & 0.9 & 650,088 & 5,951 & 0.9 \\
-BWA-MEM & 897,548 & 18,862 & 2.1 & 897,534 & 18,848 & 2.1 \\
+mrFAST & 904,952 & 0 & - & 904,952 & 0 & - & 106m 41s  \\
+Bowtie & 929,393 & 0 & - & 929,393 & 0 & - & 8m 56sec  \\
+RazerS3 & 650,086 & 5,949 & 0.9 & 650,088 & 5,951 & 0.9 & 20m 38s \\
+BWA-MEM & 897,548 & 18,862 & 2.1 & 897,534 & 18,848 & 2.1 & 11m 21s \\
 \hline
 \end{tabular}
 \end{center}
@@ -1582,25 +1581,6 @@ Platypus Shuffled & 3,723,629 & 11,079 & 73,571,251 & 11,079 & 101,332 & 0.97069
 \label{supptab:orig-vs-shuf-hc}
 \end{table}
 
-\clearpage
-
-\begin{table*}[htb]
-\caption{Caption for timings}
-\begin{center}
-\begin{tabular}{|l|r|}
-\hline
-{\bf Tool} & {\bf Time}\\
-\hline
-Bowtie$^*$~\citep{Langmead2009} & 8min 56.049sec  \\
-RazerS3$^*$~\citep{Weese2012} & 20min 38.536sec \\
-mrFAST$^*$~\citep{Alkan2009} & 106min 41.196sec  \\
-BWA-MEM~\citep{Li2013} & 11min 21.061sec \\
-\hline
-\end{tabular}
-\end{center}
-{\footnotesize Footnote for timings}
-\label{supptab:tools}
-\end{table*}
 
 %\clearpage
 \junk{
