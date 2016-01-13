@@ -17,6 +17,11 @@ Biesecker, L.~G., et~al.  (2009).
   research in genomic medicine.
 \newblock {\em Genome Res\/}, {\bf 19}(9), 1665--1674.
 
+\bibitem[Cornish and Guda(2015)]{Cornish2015}
+Cornish, A. and Guda, C.
+\newblock A Comparison of Variant Calling Pipelines Using {Genome in a Bottle} as a Reference.
+\newblock {\em Biomed Res Int\/}, {\bf 2015}, 456479..
+
 \bibitem[DePristo {\em et~al.}(2011)DePristo, Banks, Poplin, Garimella,
   Maguire, Hartl, Philippakis, {del Angel}, Rivas, Hanna, McKenna, Fennell,
   Kernytsky, Sivachenko, Cibulskis, Gabriel, Altshuler, and Daly]{DePristo2011}
