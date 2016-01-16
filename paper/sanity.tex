@@ -17,7 +17,7 @@
 \appnotes{Discovery Note}
 \setlength{\textfloatsep}{0.2cm}
 
-\addtolength{\textheight}{0.25in}
+\addtolength{\textheight}{0.3in}
 
 \begin{document}\firstpage{1}
 
@@ -321,16 +321,20 @@ through clinical sequencing~\citep{Biesecker2009}, breast cancer subtype detecti
  and the computational tools are still far from being mature in terms of accuracy~\citep{Alkan2011,Nielsen2011}. The complexity and repetitive nature of human genomes introduce further challenges for reliable characterization of genomic variants~\citep{Treangen2012}.
 }
 
-In this paper, we documented the effects of different approaches to handle ambiguities in read mapping due to genomic repeats. We focused on more widely used computational tools for read mapping and variant calling, and observed that random placement of ambiguously mapping reads have an effect on called variants. Although discordancies within repeats are less of a concern due to their relatively negligible 
-effects to phenotype, we also discovered hundreds to thousands variants differently detected within coding exons. HaplotypeCaller showed the most discrepancies, where the discordant calls were less pronounced in Freebayes and Platypus results. It was also surprising to see differences in call sets generated using HaplotypeCaller even when the same alignments and variant filtration training data sets were provided. Although we could not fully characterize the reasons
+In this paper, we documented the effects of different approaches to handle ambiguities in read mapping due to genomic repeats. We focused on more widely used computational tools for read mapping and variant calling, and observed that random placement of ambiguously mapping reads have an effect on called variants. 
+ Although discordancies within repeats are less of a concern due to their relatively negligible 
+effects to phenotype, we also discovered hundreds to thousands variants differently detected within coding exons. HaplotypeCaller showed the most discrepancies, where the discordant calls were less pronounced in Freebayes and Platypus results. 
+Using the same alignments twice, we found that the callers themselves are deterministic, however, they return different call sets when the same data is remapped.
+Interestingly, we observed differences in call sets generated using HaplotypeCaller even when the same alignments and variant filtration training data sets were provided. Although we could not fully characterize the reasons
 of this observation with GATK, since HaplotypeCaller algorithm is yet unpublished, we observed that the differences were
 mainly due to differences in calculation of the {\it VQSLOD} score by the VQSR filter (Results). 
+Therefore, a second source of randomness we observed is within the training step of the VQSR filter, which is specific to GATK.
 
 \paragraph{Recommendations.}
 We, point out that randomized algorithms may achieve better accuracy in practice, albeit without 100\% reproducibility.
  Full reproducibility could only be achieved through using deterministic methods. Therefore, {\bf for full reproducibility}, 
 we recommend to opt for a deterministic read mapper such as Bowtie, mrFAST, etc., and a deterministic
-variant caller, such as Platypus or Freebayes  for SNV and indels. We note that all SV calling algorithms we surveyed in this paper are deterministic algorithms, therefore the SV call sets can be fully reproducible when they are used together with a deterministic mapper. 
+variant caller, such as Platypus or Freebayes for SNV and indels. We note that all SV calling algorithms we surveyed in this paper are deterministic algorithms, therefore the SV call sets can be fully reproducible when they are used together with a deterministic mapper. 
 Another approach may be more strict filtering of variants that map to repeats and duplications, however this may result in lower detection power in functionally important duplicated genes such as the MHC and KIR loci.
  It may be possible to work around the GATK's VQSLOD calculation problem outlined above by setting the {\tt maxNumTrainingData} parameter and other downsampling parameters to high values, however, we recommend disabling these randomizations by default to be a better practice for uninformed users. In our tests, changing only the {\tt maxNumTrainingData} parameter did not fully resolve the variant filtration problem, which points that there may be other downsampling and/or randomization step within the VQSR filter. 
 
@@ -344,7 +348,7 @@ to such randomly selected alignments. This approach is still valid since it info
 several variant discovery tools do not fully utilize this information. Complete analysis of the reasons for these discrepancies may warrant code inspection and full disclosure of every algorithmic detail.
 
 The differences in call sets we observed in this study 
-have similar sensitivity and specificity when compared to 1000 Genomes data (Supplementary Table~\ref{supptab:1kg-comparison-omni,supptab:1kg-comparison}). In addition a recent study did not find any significant difference between deterministic and non-deterministic mappers in terms of accuracy~\citep{Cornish2015}.
+have similar accuracy when compared to 1000 Genomes data (Supplementary Table~\ref{supptab:1kg-comparison-omni},\ref{supptab:1kg-comparison}). In addition a recent study did not find any significant difference between deterministic and non-deterministic mappers in terms of accuracy~\citep{Cornish2015}.
 It is still expected to 
 have differences between different algorithms and/or parameters, but
 obtaining different results should not be due to the order of {\it independently generated} reads in the input file. 
